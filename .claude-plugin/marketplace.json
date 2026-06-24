@@ -19,7 +19,7 @@
     },
     {
       "name": "governance-tools",
-      "source": "./governance-tools",
+      "source": "./plugins/governance-tools",
       "description": "Governance and compliance tools — ISO delivery requirements audit, RAG status reporting, and remediation guidance",
       "version": "1.0.0",
       "category": "governance",
