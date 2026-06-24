@@ -11,7 +11,7 @@
   "plugins": [
     {
       "name": "delivery-tooling",
-      "source": "./plugins/delivery-tooling",
+      "source": "./delivery-tooling",
       "description": "Delivery workflow tools — new project KB setup, changelog hooks, and team onboarding",
       "version": "1.0.0",
       "category": "delivery",
@@ -19,7 +19,7 @@
     },
     {
       "name": "governance-tools",
-      "source": "./plugins/governance-tools",
+      "source": "./governance-tools",
       "description": "Governance and compliance tools — ISO delivery requirements audit, RAG status reporting, and remediation guidance",
       "version": "1.0.0",
       "category": "governance",
@@ -27,7 +27,7 @@
     },
     {
       "name": "sow-tools",
-      "source": "./plugins/sow-tools",
+      "source": "./sow-tools",
       "description": "Statement of Work tools — supplier-side risk analysis, redline recommendations, and negotiation briefs",
       "version": "1.0.0",
       "category": "delivery",
@@ -35,7 +35,7 @@
     },
     {
       "name": "agent-setup",
-      "source": "./plugins/agent-setup",
+      "source": "./agent-setup",
       "description": "Interactive setup wizard for personalising your Claude Code agent",
       "version": "1.0.0",
       "category": "setup",
