@@ -19,6 +19,14 @@
       "tags": ["delivery", "project", "kb", "onboarding"]
     },
     {
+      "name": "governance-tools",
+      "source": "./governance-tools",
+      "description": "Governance and compliance tools — ISO delivery requirements audit, RAG status reporting, and remediation guidance",
+      "version": "1.0.0",
+      "category": "governance",
+      "tags": ["governance", "iso", "compliance", "audit", "rag"]
+    },
+    {
       "name": "sow-tools",
       "source": "./sow-tools",
       "description": "Statement of Work tools — supplier-side risk analysis, redline recommendations, and negotiation briefs",

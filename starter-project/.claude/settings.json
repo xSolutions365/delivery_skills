@@ -9,6 +9,7 @@
   },
   "enabledPlugins": {
     "delivery-tooling@createfuture-delivery-marketplace": true,
+    "governance-tools@createfuture-delivery-marketplace": true,
     "sow-tools@createfuture-delivery-marketplace": true,
     "agent-setup@createfuture-delivery-marketplace": true
   }

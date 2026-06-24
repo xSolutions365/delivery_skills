@@ -22,6 +22,7 @@ Open Claude Code in any project and type:
 
 ```
 /plugin install delivery-tooling@createfuture-delivery-marketplace
+/plugin install governance-tools@createfuture-delivery-marketplace
 /plugin install sow-tools@createfuture-delivery-marketplace
 /plugin install agent-setup@createfuture-delivery-marketplace
 ```
@@ -37,6 +38,14 @@ Delivery workflow and project setup tools.
 | Skill | What It Does |
 | ----- | ------------ |
 | `new-project-kb` | Set up a new client project knowledge base — copies the KB template, creates the local folder structure, and creates or updates a GitHub repo under `xSolutions365` |
+
+### governance-tools
+
+Governance and compliance tools.
+
+| Skill | What It Does |
+| ----- | ------------ |
+| `iso-compliance-check` | Audit a delivery KB against the seven CreateFuture ISO requirements — produces a RAG status report per requirement, cross-reference checks, and prioritised remediation steps |
 
 ### sow-tools
 
