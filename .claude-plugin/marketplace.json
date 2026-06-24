@@ -1,0 +1,30 @@
+{
+  "name": "createfuture-delivery-marketplace",
+  "owner": {
+    "name": "CreateFuture",
+    "email": "richard.davidson@createfuture.com"
+  },
+  "metadata": {
+    "description": "Claude Code plugins for CreateFuture delivery and engineering teams",
+    "version": "1.0.0",
+    "pluginRoot": "./plugins"
+  },
+  "plugins": [
+    {
+      "name": "delivery-tooling",
+      "source": "./delivery-tooling",
+      "description": "Delivery workflow tools — new project KB setup, changelog hooks, and team onboarding",
+      "version": "1.0.0",
+      "category": "delivery",
+      "tags": ["delivery", "project", "kb", "onboarding"]
+    },
+    {
+      "name": "agent-setup",
+      "source": "./agent-setup",
+      "description": "Interactive setup wizard for personalising your Claude Code agent",
+      "version": "1.0.0",
+      "category": "setup",
+      "tags": ["setup", "onboarding"]
+    }
+  ]
+}

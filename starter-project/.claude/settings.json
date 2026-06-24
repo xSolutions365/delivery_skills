@@ -1,0 +1,14 @@
+{
+  "extraKnownMarketplaces": {
+    "createfuture-delivery-marketplace": {
+      "source": {
+        "source": "github",
+        "repo": "xSolutions365/delivery_skills"
+      }
+    }
+  },
+  "enabledPlugins": {
+    "delivery-tooling@createfuture-delivery-marketplace": true,
+    "agent-setup@createfuture-delivery-marketplace": true
+  }
+}
