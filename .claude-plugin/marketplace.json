@@ -6,13 +6,12 @@
   },
   "metadata": {
     "description": "Claude Code plugins for CreateFuture delivery and engineering teams",
-    "version": "1.0.0",
-    "pluginRoot": "./plugins"
+    "version": "1.0.0"
   },
   "plugins": [
     {
       "name": "delivery-tooling",
-      "source": "./delivery-tooling",
+      "source": "./plugins/delivery-tooling",
       "description": "Delivery workflow tools — new project KB setup, changelog hooks, and team onboarding",
       "version": "1.0.0",
       "category": "delivery",
@@ -28,7 +27,7 @@
     },
     {
       "name": "sow-tools",
-      "source": "./sow-tools",
+      "source": "./plugins/sow-tools",
       "description": "Statement of Work tools — supplier-side risk analysis, redline recommendations, and negotiation briefs",
       "version": "1.0.0",
       "category": "delivery",
@@ -36,7 +35,7 @@
     },
     {
       "name": "agent-setup",
-      "source": "./agent-setup",
+      "source": "./plugins/agent-setup",
       "description": "Interactive setup wizard for personalising your Claude Code agent",
       "version": "1.0.0",
       "category": "setup",
