@@ -19,6 +19,14 @@
       "tags": ["delivery", "project", "kb", "onboarding"]
     },
     {
+      "name": "sow-tools",
+      "source": "./sow-tools",
+      "description": "Statement of Work tools — supplier-side risk analysis, redline recommendations, and negotiation briefs",
+      "version": "1.0.0",
+      "category": "delivery",
+      "tags": ["sow", "contract", "risk", "supplier", "negotiation"]
+    },
+    {
       "name": "agent-setup",
       "source": "./agent-setup",
       "description": "Interactive setup wizard for personalising your Claude Code agent",

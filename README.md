@@ -22,6 +22,7 @@ Open Claude Code in any project and type:
 
 ```
 /plugin install delivery-tooling@createfuture-delivery-marketplace
+/plugin install sow-tools@createfuture-delivery-marketplace
 /plugin install agent-setup@createfuture-delivery-marketplace
 ```
 
@@ -36,6 +37,14 @@ Delivery workflow and project setup tools.
 | Skill | What It Does |
 | ----- | ------------ |
 | `new-project-kb` | Set up a new client project knowledge base — copies the KB template, creates the local folder structure, and creates or updates a GitHub repo under `xSolutions365` |
+
+### sow-tools
+
+Statement of Work analysis tools.
+
+| Skill | What It Does |
+| ----- | ------------ |
+| `sow-risk-analyzer` | Analyse SOWs from the supplier's perspective — produces a summary card, an interactive 5×5 risk radar, and a prioritised risk and redline recommendations table |
 
 ### agent-setup
 
