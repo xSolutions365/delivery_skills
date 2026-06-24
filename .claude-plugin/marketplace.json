@@ -6,7 +6,8 @@
   },
   "metadata": {
     "description": "Claude Code plugins for CreateFuture delivery and engineering teams",
-    "version": "1.0.0"
+    "version": "1.0.0",
+    "pluginRoot": "./plugins"
   },
   "plugins": [
     {
