@@ -4,5 +4,8 @@
   "version": "1.0.0",
   "author": { "name": "CreateFuture" },
   "license": "MIT",
-  "keywords": ["delivery", "project", "kb", "setup", "onboarding"]
+  "keywords": ["delivery", "project", "kb", "setup", "onboarding"],
+  "commands": [
+    { "name": "new-project-kb", "path": "./commands/new-project-kb.md" }
+  ]
 }

@@ -1,11 +1,6 @@
----
-name: new-project-kb
-description: Set up a new delivery knowledge base and GitHub repo for a client project. Use when the user says "new project", "set up a KB", "create a project KB", "new client project", "start a new engagement", or "set up a repo for a project".
----
-
 # New Project KB
 
-This skill guides the user through setting up a new client project knowledge base — copying the template, creating the local folder structure, and optionally creating or updating a GitHub repo.
+This command guides you through setting up a new client project knowledge base — copying the template, creating the local folder structure, and optionally creating or updating a GitHub repo.
 
 ---
 
@@ -248,4 +243,3 @@ Tell the user:
 > 3. Run the **setup-changelog-hook** skill (from inside the project folder in Claude Code) to enable automatic changelog tracking
 >
 > **Reminder:** The KB template files all contain `[placeholder]` values — replace them as you learn more about the project. It's better to leave `[TBC]` than to guess.
-
