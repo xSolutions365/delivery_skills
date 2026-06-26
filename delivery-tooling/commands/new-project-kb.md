@@ -1,3 +1,7 @@
+---
+description: Set up a new client project knowledge base — copies the delivery KB template, creates the local folder structure, and optionally creates or updates a GitHub repo under xSolutions365.
+---
+
 # New Project KB
 
 This command guides you through setting up a new client project knowledge base — copying the template, creating the local folder structure, and optionally creating or updating a GitHub repo.
