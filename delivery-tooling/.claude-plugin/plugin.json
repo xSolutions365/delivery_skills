@@ -1,7 +1,7 @@
 {
   "name": "delivery-tooling",
   "description": "Delivery workflow tools — new project KB setup, changelog hooks, and team onboarding",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": { "name": "CreateFuture" },
   "license": "MIT",
   "keywords": ["delivery", "project", "kb", "setup", "onboarding"],
