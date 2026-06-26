@@ -13,7 +13,7 @@
       "name": "delivery-tooling",
       "source": "./delivery-tooling",
       "description": "Delivery workflow tools — new project KB setup, changelog hooks, and team onboarding",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "category": "delivery",
       "tags": ["delivery", "project", "kb", "onboarding"]
     },
