@@ -25,9 +25,10 @@ Open Claude Code in any project and type:
 /plugin install governance-tools@createfuture-delivery-marketplace
 /plugin install sow-tools@createfuture-delivery-marketplace
 /plugin install agent-setup@createfuture-delivery-marketplace
+/plugin install OKF-commands@createfuture-delivery-marketplace
 ```
 
-Your skills are now available in every Claude Code session. Type `/` to see them.
+Your commands and skills are now available in every Claude Code session. Type `/` to see them.
 
 ## Available Plugins
 
@@ -35,9 +36,9 @@ Your skills are now available in every Claude Code session. Type `/` to see them
 
 Delivery workflow and project setup tools.
 
-| Skill | What It Does |
-| ----- | ------------ |
-| `new-project-kb` | Set up a new client project knowledge base — copies the KB template, creates the local folder structure, and creates or updates a GitHub repo under `xSolutions365` |
+| Command | What It Does |
+| ------- | ------------ |
+| `/new-project-kb` | Set up a new client project knowledge base — copies the KB template, creates the local folder structure, and creates or updates a GitHub repo under `xSolutions365` |
 
 ### governance-tools
 
@@ -62,6 +63,18 @@ Agent personalisation.
 | Skill | What It Does |
 | ----- | ------------ |
 | `customise-agent` | Interactive wizard to personalise your Claude Code agent for delivery work |
+
+### OKF-commands
+
+Open Knowledge Format vault management commands for running an Obsidian vault as an LLM-friendly knowledge base.
+
+| Command | What It Does |
+| ------- | ------------ |
+| `/new-note [folder] [title]` | Create a new OKF-stamped note with frontmatter, `## Related` links, and updates `index.md` + `log.md` |
+| `/summarise-section [folder]` | Regenerate a folder's `index.md` Map of Content, grouped by note type |
+| `/lint-vault` | Full vault health check — broken links, orphans, missing frontmatter, index drift, and knowledge gaps |
+| `/ask [question]` | Answer a question from the vault with citations; optionally file the answer back as a new note |
+| `/validate-links` | Fast scan for broken `[[wiki links]]` only |
 
 ## Auto-Enable for a Project
 
@@ -122,23 +135,39 @@ Then restart your terminal. If you skip this, you can update manually with `/plu
 
 New skills are always welcome! If you've built something useful with Claude Code, consider sharing it here so others can benefit.
 
-### How to Add a New Skill
+### How to Add a Command or Skill
+
+Plugins can contain **commands** (user-invoked with `/`) or **skills** (AI-invoked based on context). Commands are the preferred approach for most use cases.
 
 1. **Fork and clone** the repo, then create a feature branch.
-2. **Decide which plugin** your skill belongs to (e.g. `delivery-tooling`), or propose a new plugin if it doesn't fit an existing one.
-3. **Create a skill directory** at `plugins/<plugin-name>/skills/<your-skill-name>/` containing:
-   - **`SKILL.md`** (required) — YAML frontmatter with `name` and `description`, followed by markdown instructions for how the skill works.
-   - **`references/`** (optional) — Templates, guidelines, or documentation the skill loads into context.
-   - **`scripts/`** (optional) — Executable code (Python, Bash, etc.) the skill runs.
-   - **`assets/`** (optional) — Output templates or boilerplate.
-4. **Use the official `skill-creator` skill** (from the `claude-plugins-official` marketplace) if you want a guided walkthrough.
-5. **Open a pull request** with a short description of what the skill does and when it's useful.
+2. **Decide which plugin** your asset belongs to, or create a new plugin directory at `<plugin-name>/` if it doesn't fit an existing one.
+3. **For a command**, create `<plugin-name>/commands/<your-command-name>.md` with YAML frontmatter:
+   ```markdown
+   ---
+   description: One sentence shown in the command picker
+   argument-hint: "[optional-arg]"   # shown as usage hint
+   ---
+   
+   Your command instructions here...
+   ```
+4. **For a skill**, create `<plugin-name>/skills/<your-skill-name>/SKILL.md` with YAML frontmatter:
+   ```markdown
+   ---
+   name: your-skill-name
+   description: Trigger phrases that cause this skill to activate automatically
+   ---
+   
+   Your skill instructions here...
+   ```
+5. **If creating a new plugin**, add a `<plugin-name>/.claude-plugin/plugin.json` manifest and register it in `.claude-plugin/marketplace.json`.
+6. **Use the official `skill-creator` skill** (from the `claude-plugins-official` marketplace) if you want a guided walkthrough.
+7. **Open a pull request** with a short description of what the command/skill does and when it's useful.
 
 ### Tips
 
-- Keep `SKILL.md` focused — put detailed reference material in the `references/` folder.
-- Look at `new-project-kb` for a good example of structure and style.
-- Test your skill locally before submitting by running it in a Claude Code session.
+- Commands are discovered automatically from the `commands/` folder — no need to declare them in `plugin.json`.
+- Put detailed reference material in a `references/` subfolder alongside your skill.
+- Test locally before submitting by installing the plugin from your branch in a Claude Code session.
 
 ## Credits
 
