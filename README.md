@@ -26,7 +26,7 @@ Open Claude Code in any project and type:
 /plugin install sow-tools@createfuture-delivery-marketplace
 /plugin install agent-setup@createfuture-delivery-marketplace
 /plugin install OKF-commands@createfuture-delivery-marketplace
-/plugin install sandbox@createfuture-delivery-marketplace
+/plugin install demo@createfuture-delivery-marketplace
 ```
 
 Your commands and skills are now available in every Claude Code session. Type `/` to see them.
@@ -77,7 +77,7 @@ Open Knowledge Format vault management commands for running an Obsidian vault as
 | `/ask [question]` | Answer a question from the vault with citations; optionally file the answer back as a new note |
 | `/validate-links` | Fast scan for broken `[[wiki links]]` only |
 
-### sandbox
+### demo
 
 Demo plugin with simple example skills for showing how Claude Code skills work.
 
