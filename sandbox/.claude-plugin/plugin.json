@@ -1,0 +1,8 @@
+{
+  "name": "sandbox",
+  "description": "Sandbox demo plugin — simple example skills for showing how Claude Code skills work",
+  "version": "1.0.0",
+  "author": { "name": "CreateFuture" },
+  "license": "MIT",
+  "keywords": ["sandbox", "demo", "example", "skills"]
+}

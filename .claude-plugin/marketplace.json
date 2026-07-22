@@ -48,6 +48,14 @@
       "version": "1.0.0",
       "category": "knowledge",
       "tags": ["okf", "obsidian", "vault", "knowledge", "wiki", "notes"]
+    },
+    {
+      "name": "sandbox",
+      "source": "./sandbox",
+      "description": "Sandbox demo plugin — simple example skills for showing how Claude Code skills work",
+      "version": "1.0.0",
+      "category": "demo",
+      "tags": ["sandbox", "demo", "example", "skills"]
     }
   ]
 }
