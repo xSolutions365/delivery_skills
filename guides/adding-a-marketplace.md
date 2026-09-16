@@ -21,28 +21,35 @@ Once a plugin is installed, it gives you **commands** and/or **skills**:
 
 In short: commands are things you do, skills are things Claude does for you when it makes sense.
 
-## Step-by-step: adding the CreateFuture marketplace
+## A note on the desktop app vs. the terminal
 
-These steps use the **Claude Code desktop app** (the Mac/Windows app — not the general claude.ai chat app).
+Claude Code can be used from a terminal (the CLI) or from the **Claude Code desktop app** (Mac/Windows). The two look and feel similar, but they don't have identical menus. In particular, the desktop app doesn't have its own screen for typing in a brand-new marketplace's GitHub repo — it can only *browse and install* from marketplaces that have already been "configured" for your account or project. The steps below use the two supported ways to get the CreateFuture marketplace configured, both without needing to use a terminal.
 
-1. **Open the Claude Code desktop app.**
-2. **Open or create a project.** Claude Code works within a project folder, so open the folder you're working in (or create a new one) from the app's start screen.
-3. **Find the chat/prompt box** at the bottom of the window — this is where you type messages to Claude.
-4. **Type the following and press Enter:**
-   ```
-   /plugin marketplace add xSolutions365/delivery_skills
-   ```
-   This tells Claude Code where to find the CreateFuture marketplace. You only need to do this once — after that, the marketplace is available in every project you open.
-5. **Install the plugins you want.** Type each of these on its own line and press Enter after each:
-   ```
-   /plugin install delivery-tooling@createfuture-delivery-marketplace
-   /plugin install governance-tools@createfuture-delivery-marketplace
-   /plugin install sow-tools@createfuture-delivery-marketplace
-   /plugin install agent-setup@createfuture-delivery-marketplace
-   /plugin install OKF-commands@createfuture-delivery-marketplace
-   ```
-   You don't have to install all of them — just the ones relevant to your work.
-6. **Check it worked.** Type `/` on its own in the chat box. You should see a list appear that includes the new commands (like `/new-project-kb`) alongside Claude Code's built-in ones.
+## Step-by-step: adding the CreateFuture marketplace (desktop app)
+
+### Option A — Recommended: use the pre-configured project file
+
+CreateFuture ships a ready-made settings file that registers the marketplace automatically the first time you open a project with it — no typing required.
+
+1. **Get the `starter-project` files.** Copy the contents of the `starter-project/` folder from the [`xSolutions365/delivery_skills`](https://github.com/xSolutions365/delivery_skills) repo into the root of your project folder. (If you're not sure how to do this, ask a colleague or **#ITSD** to do it once — after that it's just a folder you keep in the project.)
+2. **Open that project folder in the Claude Code desktop app.**
+3. **Trust the folder** when prompted. Claude Code reads the `.claude/settings.json` file that came with `starter-project/` and registers the CreateFuture marketplace for you automatically.
+4. **Open the plugin panel.** Click the **+** button next to the chat/prompt box, then select **Plugins**.
+5. **Check or install the plugins.** Select **Manage plugins** to see the CreateFuture plugins (`delivery-tooling`, `governance-tools`, `sow-tools`, `agent-setup`). If any show as available but not yet installed, select it and choose **Install**.
+6. **Check it worked.** Type `/` on its own in the chat box. You should see the new commands (like `/new-project-kb`) alongside Claude Code's built-in ones.
+
+### Option B — If the marketplace is already known to your machine
+
+If a colleague has already added the CreateFuture marketplace on your machine before (for example, using the terminal), you can install plugins from it directly through the desktop app's GUI:
+
+1. Click the **+** button next to the chat/prompt box.
+2. Select **Plugins**, then **Add plugin**.
+3. Find the CreateFuture plugin you want in the browser and select it.
+4. Choose a scope — just for you, for everyone on this project, or just this project — and install.
+
+### If neither option shows the marketplace
+
+The very first time the CreateFuture marketplace is added to your account or machine, someone needs to register it — either by using Option A above, or by having anyone with terminal access run `/plugin marketplace add xSolutions365/delivery_skills` once. After that, it's "configured" and appears for anyone using the desktop app on that same machine/account, per Option B.
 
 That's it — the tools are now available every time you use Claude Code.
 
@@ -52,10 +59,7 @@ The marketplace lives in a private GitHub repository (`xSolutions365/delivery_sk
 
 ## Keeping it up to date
 
-The marketplace is updated from time to time with new tools. To pull in the latest version, type:
-```
-/plugin marketplace update
-```
+Claude Code checks for marketplace and plugin updates in the background automatically, so you'll usually get new tools without doing anything. If you want to check manually, open the plugin panel (**+** → **Plugins** → **Manage plugins**) and look for an update prompt there.
 
 ## Getting help
 
