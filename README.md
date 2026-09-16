@@ -10,6 +10,8 @@ A Claude Code plugin marketplace for CreateFuture delivery managers and engineer
 2. **GitHub CLI** installed and authenticated (see [Authentication](#authenticating-with-github) below)
 3. Access to the `xSolutions365/delivery_skills` repo — if you don't have access, reach out to **#ITSD** on Slack
 
+> **New to marketplaces and plugins, or not technical?** See [`guides/adding-a-marketplace.md`](guides/adding-a-marketplace.md) for a plain-English walkthrough using the Claude Code desktop app.
+
 ### Add the Marketplace
 
 Open Claude Code in any project and type:
