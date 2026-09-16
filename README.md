@@ -80,12 +80,6 @@ Open Knowledge Format vault management commands for running an Obsidian vault as
 
 > The `demo` plugin (example skills for learning how Claude Code skills work) has moved to its own marketplace: [xSolutions365/demoMarketplace](https://github.com/xSolutions365/demoMarketplace).
 
-## Auto-Enable for a Project
-
-To make the marketplace plugins available to everyone on a project, copy the `starter-project/` contents into your project root. When team members open the project in Claude Code, they'll be prompted to install the marketplace automatically.
-
-See `starter-project/README.md` for details.
-
 ## Authenticating with GitHub
 
 This is a private repo, so you need to authenticate with the GitHub CLI before Claude Code can access it.
