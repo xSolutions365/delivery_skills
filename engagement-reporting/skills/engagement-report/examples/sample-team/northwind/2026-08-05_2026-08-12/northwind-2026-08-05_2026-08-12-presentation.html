@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Engagement Report</title>
+<style>
+:root {
+  --cf-purple-dark: #2D1B4E;
+  --cf-purple-mid: #4A2C7A;
+  --cf-table-purple: #6B2FA0;
+  --cf-lime: #D4FF3D;
+  --cf-text-dark: #1A1A2E;
+  --rag-red: #E15554;
+  --rag-amber: #F2A65A;
+  --rag-green: #8FBC6B;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  color: var(--cf-text-dark);
+  background: #f1f5f9;
+  height: 100vh;
+  overflow: hidden;
+}
+#deck { width: 100vw; height: 100vh; position: relative; }
+.slide {
+  display: none;
+  width: 100vw;
+  height: 100vh;
+  padding: 56px 64px;
+  background: #fff;
+  overflow-y: auto;
+}
+.slide.active { display: block; }
+
+/* Cover slide */
+.slide.cover {
+  display: none;
+  position: relative;
+  padding-left: 96px;
+}
+.slide.cover.active { display: flex; flex-direction: column; justify-content: center; }
+.slide.cover::before {
+  content: '';
+  position: absolute; top: 0; left: 0; bottom: 0; width: 24px;
+  background: var(--cf-lime);
+}
+.slide.cover .eyebrow { font-weight: 700; font-size: 14px; margin-bottom: 16px; }
+.slide.cover h1 { font-size: 64px; font-weight: 800; margin-bottom: 24px; letter-spacing: -0.02em; }
+.slide.cover .subtitle { font-size: 16px; color: #475569; margin-bottom: 8px; }
+.slide.cover .logo { position: absolute; bottom: 56px; left: 96px; font-weight: 700; font-size: 22px; }
+.slide.cover .client-logo { position: absolute; top: 56px; right: 64px; max-height: 48px; max-width: 200px; }
+
+/* Feedback / closing slide */
+.slide.feedback {
+  background: linear-gradient(135deg, var(--cf-purple-dark), var(--cf-purple-mid));
+  color: #fff;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 96px;
+}
+.slide.feedback.active { display: flex; }
+.slide.feedback h1 { font-size: 56px; font-weight: 800; margin-bottom: 40px; }
+.slide.feedback .logo { font-size: 20px; font-weight: 700; }
+.slide.feedback .strapline { font-size: 13px; opacity: 0.75; margin-top: 4px; font-style: italic; }
+
+/* Content slide shared chrome */
+.slide h2.title { font-size: 32px; font-weight: 800; margin-bottom: 28px; }
+.slide .page-num { position: absolute; bottom: 24px; left: 64px; font-size: 12px; color: #94a3b8; }
+.slide .cf-footer { position: absolute; bottom: 24px; right: 64px; font-size: 13px; font-weight: 700; color: #1A1A2E; }
+
+/* Pagination controls */
+#nav {
+  position: fixed; bottom: 20px; right: 50%; transform: translateX(50%);
+  z-index: 100; display: flex; align-items: center; gap: 10px;
+  background: rgba(255,255,255,0.95); border: 1px solid #e2e8f0; border-radius: 8px;
+  padding: 8px 14px;
+}
+#nav button {
+  border: 1px solid #cbd5e1; background: #fff; border-radius: 4px;
+  padding: 4px 12px; cursor: pointer; font-size: 14px; font-weight: 600; color: var(--cf-text-dark);
+}
+#nav button:hover { background: #f8fafc; }
+#nav button:disabled { opacity: 0.4; cursor: default; }
+#nav .counter { font-size: 12px; color: #64748b; min-width: 48px; text-align: center; }
+
+/* Overall / RAG table */
+.rag-table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+.rag-table td { padding: 14px 18px; vertical-align: top; border-bottom: 4px solid #fff; }
+.rag-table td.dim {
+  width: 220px; color: #fff; font-weight: 700; text-align: right; font-size: 13px;
+}
+.rag-table td.detail { background: #f1f5f9; font-size: 14px; line-height: 1.5; }
+.rag-table tr.Red td.dim { background: var(--rag-red); }
+.rag-table tr.Amber td.dim { background: var(--rag-amber); }
+.rag-table tr.Green td.dim { background: var(--rag-green); }
+.rag-table tr.Red td.detail { background: #fdecec; }
+.rag-table tr.Amber td.detail { background: #fef3e6; }
+.rag-table tr.Green td.detail { background: #eef6e9; }
+
+/* Key points / two-column layout */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 16px; }
+.two-col .col-header {
+  background: var(--cf-table-purple); color: #fff; font-weight: 700;
+  font-size: 13px; padding: 10px 14px; border-radius: 4px 4px 0 0;
+}
+.two-col .col-body { background: #f8fafc; padding: 14px 18px; font-size: 14px; line-height: 1.6; }
+.two-col .col-body ul { padding-left: 18px; }
+.two-col .col-body li { margin-bottom: 6px; }
+.plan-visual-img { max-width: 100%; max-height: 240px; margin-bottom: 20px; border: 1px solid #e2e8f0; }
+.actions-owner { font-weight: 700; font-size: 13px; margin-top: 12px; margin-bottom: 4px; }
+
+/* Data tables (RAIDs, Casting) */
+table.data-table { width: 100%; border-collapse: collapse; margin-top: 16px; font-size: 13px; }
+table.data-table th {
+  background: var(--cf-table-purple); color: #fff; text-align: left;
+  padding: 10px 14px; font-weight: 700;
+}
+table.data-table td { padding: 10px 14px; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
+table.data-table tr:nth-child(even) td { background: #f8fafc; }
+
+/* Timeline */
+.timeline-track {
+  position: relative; height: 3px; background: var(--cf-purple-mid);
+  margin: 100px 40px 0 40px;
+}
+.timeline-dot {
+  position: absolute; top: 50%; transform: translate(-50%, -50%);
+  width: 18px; height: 18px; border-radius: 50%;
+  background: var(--cf-purple-mid); border: 3px solid var(--cf-purple-mid);
+}
+.timeline-dot.future { background: #fff; }
+.timeline-dot.today { background: var(--cf-lime); border-color: var(--cf-purple-mid); width: 22px; height: 22px; }
+.timeline-label {
+  position: absolute; top: 28px; transform: translateX(-50%);
+  width: 140px; text-align: center; font-size: 12px; background: #f1f5f9;
+  padding: 8px 10px; border-radius: 4px;
+}
+.timeline-label .date { display: block; font-size: 10px; color: #64748b; margin-top: 2px; }
+.timeline-label.today { background: var(--cf-lime); font-weight: 700; }
+
+@media print {
+  #nav { display: none; }
+  body { overflow: visible; height: auto; }
+  #deck { height: auto; }
+  .slide { display: block !important; page-break-after: always; height: 100vh; position: relative; }
+}
+</style>
+</head>
+<body>
+
+<div id="deck"></div>
+
+<div id="nav">
+  <button id="prevBtn" onclick="goTo(currentSlide - 1)">&larr; Prev</button>
+  <span class="counter" id="counter"></span>
+  <button id="nextBtn" onclick="goTo(currentSlide + 1)">Next &rarr;</button>
+</div>
+
+<script>
+/* ── DATA — replace this line when the report changes ─────────────────── */
+const REPORT = {
+  "engagement": "Northwind Team",
+  "period_start": "2026-08-05",
+  "period_end": "2026-08-12",
+  "team_leadership": "Amy Chen, Ben Osei",
+  "client_logo": null,
+  "overall": [
+    {
+      "dimension": "Overall",
+      "status": "Amber",
+      "detail": "Delivery is progressing but the team is carrying two open risks that need attention before next period."
+    },
+    {
+      "dimension": "Plan",
+      "status": "Green",
+      "detail": "Sprint plan for the rest of Q3 is agreed and the team is on track against it."
+    },
+    {
+      "dimension": "RAIDs",
+      "status": "Amber",
+      "detail": "Two RAIDs are actively creating friction for delivery; see Key RAIDs below."
+    },
+    {
+      "dimension": "Tech",
+      "status": "Amber",
+      "detail": "Known technical issue: payment gateway occasionally times out under peak load; root cause found, fix scheduled for deployment next period."
+    },
+    {
+      "dimension": "Team",
+      "status": "Green",
+      "detail": "Team morale is good and ways of working are effective."
+    },
+    {
+      "dimension": "Commercial",
+      "status": "Green",
+      "detail": "SOW is in place and invoices are being paid on time."
+    },
+    {
+      "dimension": "InfoSec & Compliance",
+      "status": "Green",
+      "detail": "No known issues."
+    }
+  ],
+  "key_points": {
+    "delivered": [
+      "Shipped the new checkout retry flow to 20% of traffic"
+    ],
+    "next": [
+      "Decide whether to roll the checkout retry flow out to 100% of traffic or hold for a longer soak period"
+    ]
+  },
+  "plan_visual": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAoAAAAFoCAIAAABIUN0GAAAEhUlEQVR42u3VMQ0AAAgEsfevBgWIQBHBBFOTKrjlUj0AwLNIAAAGDAAGDAAYMAAYMABgwABgwACAAQOAAQMABgwABgwABgwAGDAAGDAAYMAAYMAAgAEDgAEDAAYMAAYMAAYMABgwABgwAGDAAGDAAIABA4ABAwAGDAAGDAAGDAAYMAAYMABgwABgwACAAQOAAQMABgwABgwABgwAGDAAGDAAYMAAYMAAgAEDgAEDAAYMAAYMAAYMABgwABgwAGDAAGDAAIABA4ABAwAGDAAGDAAGDAAYMAAYMABgwABgwACAAQOAAQMABgwABgwABgwAGDAAGDAAYMAAYMAAgAEDgAEDAAYMAAYMAAYMABgwABgwAGDAAGDAAIABA4ABAwAGDAAGDAAGrAIAGDAAGDAAYMAAYMAAgAEDgAEDAAYMAAYMABgwABgwABgwAGDAAGDAAIABA4ABAwAGDAAGDAAYMAAYMAAYMABgwABgwACAAQOAAQMABgwABgwAGDAAGDAAGDAAYMAAYMAAgAEDgAEDAAYMAAYMABgwABgwABgwAGDAAGDAAIABA4ABAwAGDAAGDAAYMAAYMAAYMABgwABgwACAAQOAAQMABgwABgwAGDAAGDAAGDAAYMAAYMAAgAEDgAEDAAYMAAYMABgwABgwABgwAGDAAGDAAIABA4ABAwAGDAAGDAAYMAAYMAAYMABgwABgwACAAQOAAQMABgwABgwAGDAAGDAAGLAKAGDAAGDAAIABA4ABAwAGDAAGDAAYMAAYMABgwABgwABgwACAAQOAAQMABgwABgwAGDAAGDAAYMAAYMAAYMAAgAEDgAEDAAYMAAYMABgwABgwAGDAAGDAAGDAAIABA4ABAwAGDAAGDAAYMAAYMABgwABgwABgwACAAQOAAQMABgwABgwAGDAAGDAAYMAAYMAAYMAAgAEDgAEDAAYMAAYMABgwABgwAGDAAGDAAGDAAIABA4ABAwAGDAAGDAAYMAAYMABgwABgwABgwACAAQOAAQMABgwABgwAGDAAGDAAYMAAYMAAYMAAgAEDgAEDAAYMAAYMABgwABgwAGDAAGDAAGDAAIABA4ABAwAGDAAGDAAYMAAYMABgwABgwABgwBIAgAEDgAEDAAYMAAYMABgwABgwAGDAAGDAAIABA4ABA4ABAwAGDAAGDAAYMAAYMABgwABgwACAAQOAAQOAAQMABgwABgwAGDAAGDAAYMAAYMAAgAEDgAEDgAEDAAYMAAYMABgwABgwAGDAAGDAAIABA4ABA4ABAwAGDAAGDAAYMAAYMABgwABgwACAAQOAAQOAAQMABgwABgwAGDAAGDAAYMAAYMAAgAEDgAEDgAEDAAYMAAYMABgwABgwAGDAAGDAAIABA4ABA4ABAwAGDAAGDAAYMAAYMABgwABgwACAAQOAAQOAAQMABgwABgwAGDAAGDAAYMAAYMAAgAEDgAEDgAGrAAAGDAAGDAAYMAAYMABgwABgwACAAQOAAQMABgwABgwABgwAGDAAGDAAYMAAYMAAgAEDgAEDAGcBxwV2qGUtd2sAAAAASUVORK5CYII=",
+  "actions": [
+    {
+      "owner": "Amy Chen",
+      "items": [
+        "Present the checkout retry flow results to the Northwind product team",
+        "Draft the Q4 roadmap proposal for review"
+      ]
+    },
+    {
+      "owner": "Ben Osei",
+      "items": [
+        "Finish the payment-gateway timeout write-up and share with the platform team",
+        "Investigate the second open RAID (see Key RAIDs)"
+      ]
+    }
+  ],
+  "raids": [
+    {
+      "type": "Risk",
+      "category": "Tech",
+      "raised": "2026-08-06",
+      "detail": "Payment gateway occasionally times out under peak load, root cause found but fix not yet deployed",
+      "next_steps": "Fix scheduled for deployment next period"
+    },
+    {
+      "type": "Issue",
+      "category": "Team",
+      "raised": "2026-08-09",
+      "detail": "One engineer is off on extended leave, reducing capacity for the rest of Q3",
+      "next_steps": "Backfill options being discussed with account leadership"
+    }
+  ],
+  "casting": [
+    {
+      "who": "Amy Chen",
+      "role": "Tech Lead",
+      "grade": "Senior",
+      "start": "2026-03-01",
+      "end": "",
+      "notes": ""
+    },
+    {
+      "who": "Ben Osei",
+      "role": "Business Analyst",
+      "grade": "Senior",
+      "start": "2026-03-01",
+      "end": "",
+      "notes": ""
+    },
+    {
+      "who": "Priya Nair",
+      "role": "Software Engineer",
+      "grade": "Mid",
+      "start": "2026-04-15",
+      "end": "",
+      "notes": ""
+    },
+    {
+      "who": "Tom Baxter",
+      "role": "Software Engineer",
+      "grade": "Mid",
+      "start": "2026-04-15",
+      "end": "",
+      "notes": "Currently on extended leave"
+    }
+  ],
+  "timeline": [
+    {
+      "date": "2026-03-01",
+      "label": "Team onboarded"
+    },
+    {
+      "date": "2026-06-15",
+      "label": "Checkout v2 released"
+    },
+    {
+      "date": "2026-09-30",
+      "label": "Q3 close"
+    },
+    {
+      "date": "2026-11-01",
+      "label": "Planned Q4 kickoff"
+    }
+  ]
+};
+/* ── END DATA ───────────────────────────────────────────────────────── */
+
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, c => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+  }[c]));
+}
+
+function formatDate(iso) {
+  const d = new Date(iso + 'T00:00:00');
+  return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+}
+
+function slideCover() {
+  const logoImg = REPORT.client_logo
+    ? `<img class="client-logo" src="${escapeHtml(REPORT.client_logo)}" alt="Client logo">` : '';
+  return {
+    id: 'cover',
+    html: `
+      <div class="slide cover">
+        ${logoImg}
+        <div class="eyebrow">Engagement Report</div>
+        <h1>${escapeHtml(REPORT.engagement)}</h1>
+        <div class="subtitle">${formatDate(REPORT.period_start)} &ndash; ${formatDate(REPORT.period_end)}</div>
+        ${REPORT.team_leadership ? `<div class="subtitle">${escapeHtml(REPORT.team_leadership)}</div>` : ''}
+        <div class="logo">CreateFuture</div>
+      </div>`
+  };
+}
+
+function slideFeedback() {
+  return {
+    id: 'feedback',
+    html: `
+      <div class="slide feedback">
+        <h1>Feedback welcome</h1>
+        <div class="logo">CreateFuture</div>
+        <div class="strapline">Create Tomorrow, Together, Today</div>
+      </div>`
+  };
+}
+
+function normalizeStatus(status) {
+  const s = String(status);
+  return s.charAt(0).toUpperCase() + s.slice(1).toLowerCase();
+}
+
+function slideOverall(pageNum) {
+  if (!REPORT.overall || REPORT.overall.length === 0) return null;
+  const rows = REPORT.overall.map(r => `
+    <tr class="${escapeHtml(normalizeStatus(r.status))}">
+      <td class="dim">${escapeHtml(r.dimension)}<br>(${escapeHtml(normalizeStatus(r.status))})</td>
+      <td class="detail">${escapeHtml(r.detail)}</td>
+    </tr>`).join('');
+  return {
+    id: 'overall',
+    html: `
+      <div class="slide">
+        <h2 class="title">${escapeHtml(REPORT.engagement)} update</h2>
+        <table class="rag-table">${rows}</table>
+        ${contentChrome(pageNum)}
+      </div>`
+  };
+}
+
+function slideKeyPoints(pageNum) {
+  const hasKeyPoints = REPORT.key_points &&
+    ((REPORT.key_points.delivered || []).length || (REPORT.key_points.next || []).length);
+  const hasActions = REPORT.actions && REPORT.actions.length > 0;
+  if (!hasKeyPoints && !hasActions && !REPORT.plan_visual) return null;
+
+  const planImg = REPORT.plan_visual
+    ? `<img class="plan-visual-img" src="${escapeHtml(REPORT.plan_visual)}" alt="Plan visual">` : '';
+
+  const keyPointsHtml = hasKeyPoints ? `
+    <div class="two-col">
+      <div>
+        <div class="col-header">Key points and value delivered this period</div>
+        <div class="col-body"><ul>${(REPORT.key_points.delivered || [])
+          .map(i => `<li>${escapeHtml(i)}</li>`).join('')}</ul></div>
+      </div>
+      <div>
+        <div class="col-header">Key points and decisions for next period</div>
+        <div class="col-body"><ul>${(REPORT.key_points.next || [])
+          .map(i => `<li>${escapeHtml(i)}</li>`).join('')}</ul></div>
+      </div>
+    </div>` : '';
+
+  const actionsHtml = hasActions ? `
+    <div class="two-col" style="margin-top:20px;">
+      <div style="grid-column: 1 / -1;">
+        <div class="col-header">Actions</div>
+        <div class="col-body">${REPORT.actions.map(a => `
+          <div class="actions-owner">${escapeHtml(a.owner)}</div>
+          <ul>${a.items.map(i => `<li>${escapeHtml(i)}</li>`).join('')}</ul>
+        `).join('')}</div>
+      </div>
+    </div>` : '';
+
+  return {
+    id: 'key-points',
+    html: `
+      <div class="slide">
+        <h2 class="title">${escapeHtml(REPORT.engagement)} update</h2>
+        ${planImg}
+        ${keyPointsHtml}
+        ${actionsHtml}
+        ${contentChrome(pageNum)}
+      </div>`
+  };
+}
+
+function slideRaids(pageNum) {
+  if (!REPORT.raids || REPORT.raids.length === 0) return null;
+  const rows = REPORT.raids.map(r => `
+    <tr>
+      <td>${escapeHtml(r.type)}</td>
+      <td>${escapeHtml(r.category)}</td>
+      <td>${escapeHtml(r.raised)}</td>
+      <td>${escapeHtml(r.detail)}</td>
+      <td>${escapeHtml(r.next_steps)}</td>
+    </tr>`).join('');
+  return {
+    id: 'raids',
+    html: `
+      <div class="slide">
+        <h2 class="title">Key RAIDs</h2>
+        <table class="data-table">
+          <tr><th>Type</th><th>Category</th><th>Raised</th><th>Detail</th><th>Next steps</th></tr>
+          ${rows}
+        </table>
+        ${contentChrome(pageNum)}
+      </div>`
+  };
+}
+
+function slideCasting(pageNum) {
+  if (!REPORT.casting || REPORT.casting.length === 0) return null;
+  const rows = REPORT.casting.map(c => `
+    <tr>
+      <td>${escapeHtml(c.who)}</td>
+      <td>${escapeHtml(c.role)}</td>
+      <td>${escapeHtml(c.grade)}</td>
+      <td>${escapeHtml(c.start)}</td>
+      <td>${escapeHtml(c.end)}</td>
+      <td>${escapeHtml(c.notes)}</td>
+    </tr>`).join('');
+  return {
+    id: 'casting',
+    html: `
+      <div class="slide">
+        <h2 class="title">Casting</h2>
+        <table class="data-table">
+          <tr><th>Who</th><th>Role</th><th>Grade</th><th>Start date</th><th>End date</th><th>Notes</th></tr>
+          ${rows}
+        </table>
+        ${contentChrome(pageNum)}
+      </div>`
+  };
+}
+
+function slideTimeline(pageNum) {
+  if (!REPORT.timeline || REPORT.timeline.length === 0) return null;
+
+  const todayIso = REPORT.period_end;
+  const points = [...REPORT.timeline, { date: todayIso, label: 'Today', __today: true }]
+    .sort((a, b) => a.date.localeCompare(b.date));
+
+  const minTime = new Date(points[0].date).getTime();
+  const maxTime = new Date(points[points.length - 1].date).getTime();
+  const span = Math.max(maxTime - minTime, 1);
+
+  const dots = points.map(p => {
+    const pct = ((new Date(p.date).getTime() - minTime) / span) * 100;
+    const isToday = !!p.__today;
+    const isFuture = new Date(p.date).getTime() > new Date(todayIso).getTime();
+    return `
+      <div class="timeline-dot ${isToday ? 'today' : (isFuture ? 'future' : '')}" style="left:${pct}%"></div>
+      <div class="timeline-label ${isToday ? 'today' : ''}" style="left:${pct}%">
+        ${escapeHtml(p.label)}<span class="date">${formatDate(p.date)}</span>
+      </div>`;
+  }).join('');
+
+  return {
+    id: 'timeline',
+    html: `
+      <div class="slide">
+        <h2 class="title">Timeline</h2>
+        <div class="timeline-track">${dots}</div>
+        ${contentChrome(pageNum)}
+      </div>`
+  };
+}
+
+function contentChrome(pageNum) {
+  return `<div class="page-num">${pageNum}</div><div class="cf-footer">CreateFuture</div>`;
+}
+
+function buildSlides() {
+  let pageNum = 2; // page 1 is the cover, unnumbered
+  const middle = [slideOverall, slideKeyPoints, slideRaids, slideCasting, slideTimeline]
+    .map(fn => {
+      const s = fn(pageNum);
+      if (s) pageNum++;
+      return s;
+    })
+    .filter(Boolean);
+  return [slideCover(), ...middle, slideFeedback()];
+}
+
+let currentSlide = 0;
+let slides = [];
+
+function render() {
+  slides = buildSlides();
+  const deck = document.getElementById('deck');
+  deck.innerHTML = slides.map(s => s.html).join('');
+  goTo(0);
+}
+
+function goTo(index) {
+  if (index < 0 || index >= slides.length) return;
+  currentSlide = index;
+  document.querySelectorAll('.slide').forEach((el, i) => {
+    el.classList.toggle('active', i === index);
+  });
+  document.getElementById('counter').textContent = `${index + 1} / ${slides.length}`;
+  document.getElementById('prevBtn').disabled = index === 0;
+  document.getElementById('nextBtn').disabled = index === slides.length - 1;
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight') goTo(currentSlide + 1);
+  if (e.key === 'ArrowLeft') goTo(currentSlide - 1);
+});
+
+render();
+</script>
+</body>
+</html>

@@ -48,6 +48,14 @@
       "version": "1.0.0",
       "category": "knowledge",
       "tags": ["okf", "obsidian", "vault", "knowledge", "wiki", "notes"]
+    },
+    {
+      "name": "engagement-reporting",
+      "source": "./engagement-reporting",
+      "description": "Scaffold, draft, revise, and present weekly/fortnightly client engagement checkin reports, and manage the account-level repo that holds them across engagements",
+      "version": "1.0.0",
+      "category": "delivery",
+      "tags": ["engagement", "reporting", "checkin", "client", "delivery", "presentation"]
     }
   ]
 }
