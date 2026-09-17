@@ -56,6 +56,14 @@
       "version": "1.0.0",
       "category": "delivery",
       "tags": ["engagement", "reporting", "checkin", "client", "delivery", "presentation"]
+    },
+    {
+      "name": "kb-creation",
+      "source": "./kb-creation",
+      "description": "Scaffold, configure, onboard, capture into, harden, and close out an engagement knowledge-base vault — from a brand-new client project through to archiving it at the end",
+      "version": "1.0.0",
+      "category": "knowledge",
+      "tags": ["kb", "knowledge-base", "vault", "engagement", "onboarding", "delivery"]
     }
   ]
 }

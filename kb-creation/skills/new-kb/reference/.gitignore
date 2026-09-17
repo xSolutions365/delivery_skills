@@ -1,0 +1,17 @@
+.DS_Store
+.trash/
+users/
+00-inbox-local/
+CLAUDE.local.md
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+
+# --- agent and tool artefacts: never shared -------------------------------
+# Claude Code's memory directory holds notes about the *person* using it, not
+# engagement record. It appeared here once, auto-committed by the session-sync
+# hook, and carried per-person allocation detail that CLAUDE.md forbids.
+memory/
+.claude/memory/
+CLAUDE.local.md
+.DS_Store
+*.tmp

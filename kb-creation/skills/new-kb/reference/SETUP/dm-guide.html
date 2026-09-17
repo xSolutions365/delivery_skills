@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>New Engagement Setup — DM Guide</title>
+<style>
+:root{
+  --carbon:#0A0019; --midnight:#24004C; --white:#fff; --cloud:#F2F2F2;
+  --acid:#C4FF35; --form-purple:#2E0A5E;
+  --pink-dark:#7D2271; --pink-medium:#A04594; --pink-bright:#FE7AF6;
+  --green-dark:#007D8A; --amber:#FAB219; --red:#D03B3B;
+
+  --bg:var(--white); --surface:var(--cloud); --ink:var(--carbon);
+  --muted:#4A4458; --line:#D8D5DE; --accent:var(--pink-medium);
+  --code-bg:#EDEBF0; --shell:var(--carbon); --shell-ink:#E8E4F0;
+  --rule:var(--midnight); --ok-ink:#007D8A; --act-ink:#8A5E00; --stop-ink:#D03B3B;
+  --stepn-bg:var(--carbon); --stepn-fg:var(--acid);
+  --radius:0;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:var(--carbon); --surface:#160830; --ink:#F4F2F8;
+    --muted:#B8B0C4; --line:#332A47; --accent:var(--pink-bright);
+    --code-bg:#1E1236; --shell:#050010; --shell-ink:#E8E4F0;
+    --rule:var(--pink-bright); --ok-ink:#4FD8C7; --act-ink:#FAB219; --stop-ink:#FF8A8A;
+    --stepn-bg:var(--acid); --stepn-fg:var(--carbon);
+  }
+}
+:root[data-theme="light"]{
+  --bg:var(--white); --surface:var(--cloud); --ink:var(--carbon);
+  --muted:#4A4458; --line:#D8D5DE; --accent:var(--pink-medium);
+  --code-bg:#EDEBF0; --shell:var(--carbon); --shell-ink:#E8E4F0;
+  --rule:var(--midnight); --ok-ink:#007D8A; --act-ink:#8A5E00; --stop-ink:#D03B3B;
+  --stepn-bg:var(--carbon); --stepn-fg:var(--acid);
+}
+:root[data-theme="dark"]{
+  --bg:var(--carbon); --surface:#160830; --ink:#F4F2F8;
+  --muted:#B8B0C4; --line:#332A47; --accent:var(--pink-bright);
+  --code-bg:#1E1236; --shell:#050010; --shell-ink:#E8E4F0;
+  --rule:var(--pink-bright); --ok-ink:#4FD8C7; --act-ink:#FAB219; --stop-ink:#FF8A8A;
+  --stepn-bg:var(--acid); --stepn-fg:var(--carbon);
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth; scroll-padding-top:5rem}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:"Montserrat","Helvetica Neue",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  font-weight:400; line-height:1.65; font-size:16px;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4,.eyebrow,.display{
+  font-family:"Syne","Montserrat",system-ui,sans-serif; font-weight:700;
+  line-height:1.15; letter-spacing:-0.01em;
+}
+h2{font-size:1.6rem; margin:0 0 .3rem}
+h3{font-size:1.12rem; margin:1.6rem 0 .5rem}
+h4{font-size:.98rem; margin:1.2rem 0 .35rem}
+p{margin:.6rem 0}
+a{color:var(--accent); text-decoration:underline; text-underline-offset:2px}
+code,kbd{
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  background:var(--code-bg); padding:.12em .38em; font-size:.87em;
+  border:1px solid var(--line);
+}
+kbd{font-weight:600}
+
+/* ---------- eyebrow ---------- */
+.eyebrow{
+  display:flex; align-items:center; gap:.6rem; text-transform:uppercase;
+  font-size:.72rem; letter-spacing:.12em; line-height:1; color:var(--muted);
+  margin:0 0 .9rem;
+}
+.eyebrow::before{content:""; width:3px; height:1.05em; background:var(--acid); flex:none}
+
+/* ---------- header ---------- */
+header.hero{
+  background:var(--carbon); color:#F4F2F8; padding:3rem 1.5rem 2.4rem;
+  border-bottom:3px solid var(--acid);
+}
+.hero-in{max-width:52rem; margin:0 auto}
+.hero .eyebrow{color:rgba(244,242,248,.72)}
+header.hero h1{font-size:clamp(1.8rem,5vw,2.7rem); margin:0 0 .7rem}
+header.hero p{margin:0; max-width:38rem; color:rgba(244,242,248,.82); font-size:1.05rem}
+.badge{
+  display:inline-block; background:var(--acid); color:var(--carbon);
+  font-family:"Syne",system-ui,sans-serif; font-weight:700;
+  font-size:.68rem; letter-spacing:.1em; text-transform:uppercase;
+  padding:.28rem .6rem; margin-bottom:1rem;
+}
+
+/* ---------- nav ---------- */
+nav.toc{
+  position:sticky; top:0; z-index:40; background:var(--bg);
+  border-bottom:1px solid var(--line); padding:.55rem 1.2rem;
+}
+.toc-in{
+  max-width:52rem; margin:0 auto; display:flex; gap:.4rem;
+  overflow-x:auto; scrollbar-width:thin; align-items:center;
+}
+.toc-in a{
+  flex:none; font-size:.78rem; font-weight:600; text-decoration:none;
+  color:var(--muted); padding:.34rem .6rem; border:1px solid transparent;
+  white-space:nowrap;
+}
+.toc-in a:hover{color:var(--ink); border-color:var(--line); background:var(--surface)}
+#themeBtn{
+  flex:none; margin-left:auto; background:none; border:1px solid var(--line);
+  color:var(--muted); font:inherit; font-size:.78rem; font-weight:600;
+  padding:.34rem .6rem; cursor:pointer;
+}
+#themeBtn:hover{color:var(--ink); background:var(--surface)}
+
+main{max-width:52rem; margin:0 auto; padding:2rem 1.2rem 6rem}
+section{padding:2.2rem 0; border-bottom:1px solid var(--line)}
+section:last-of-type{border-bottom:0}
+.lede{font-size:1.05rem; color:var(--muted); margin:.2rem 0 1.2rem; max-width:40rem}
+
+/* ---------- steps ---------- */
+.step{
+  border:1px solid var(--line); border-left:3px solid var(--rule);
+  background:var(--surface); padding:1.1rem 1.2rem; margin:1rem 0;
+}
+.step-head{display:flex; gap:.7rem; align-items:baseline; flex-wrap:wrap}
+.step-n{
+  font-family:"Syne",system-ui,sans-serif; font-weight:700; font-size:.85rem;
+  background:var(--stepn-bg); color:var(--stepn-fg); padding:.1rem .48rem; flex:none;
+}
+.step-head h4{margin:0; font-size:1.02rem}
+.skillname{
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:.78rem;
+  font-weight:600; color:var(--muted); border:1px solid var(--line);
+  padding:.05rem .4rem; margin-left:auto;
+}
+.step p{margin:.5rem 0}
+.step ol,.step ul{margin:.5rem 0; padding-left:1.3rem}
+.step li{margin:.3rem 0}
+
+.know{
+  display:flex; gap:.6rem; margin-top:.85rem; padding:.65rem .8rem;
+  background:var(--bg); border:1px solid var(--line); border-left:3px solid var(--ok-ink);
+  font-size:.9rem;
+}
+.know::before{content:"✓"; color:var(--ok-ink); font-weight:700; flex:none}
+.know b{font-weight:600}
+
+.chk{display:flex; align-items:flex-start; gap:.55rem; margin-top:.85rem; font-size:.85rem}
+.chk input{margin-top:.28rem; accent-color:var(--pink-medium); width:1rem; height:1rem; flex:none}
+.chk label{color:var(--muted); cursor:pointer; user-select:none}
+.chk input:checked + label{color:var(--ok-ink); font-weight:600; text-decoration:line-through}
+
+#progWrap{
+  border:1px solid var(--line); background:var(--surface); padding:.9rem 1.1rem;
+  margin:1.2rem 0 0; display:flex; align-items:center; gap:1rem; flex-wrap:wrap;
+}
+#progBar{flex:1 1 12rem; height:8px; background:var(--line); position:relative; min-width:10rem}
+#progFill{position:absolute; inset:0 auto 0 0; width:0; background:var(--acid); transition:width .25s}
+#progTxt{font-size:.8rem; font-weight:600; color:var(--muted); font-variant-numeric:tabular-nums}
+#resetBtn{
+  background:none; border:1px solid var(--line); color:var(--muted); font:inherit;
+  font-size:.74rem; font-weight:600; padding:.28rem .55rem; cursor:pointer;
+}
+#resetBtn:hover{color:var(--ink)}
+
+/* ---------- callouts ---------- */
+.note,.warn,.stop{padding:.9rem 1.05rem; margin:1.1rem 0; border:1px solid var(--line); font-size:.93rem}
+.note{background:var(--surface); border-left:3px solid var(--rule)}
+.warn{background:var(--surface); border-left:3px solid var(--amber)}
+.stop{background:var(--surface); border-left:3px solid var(--red)}
+.note b,.warn b,.stop b{font-weight:700}
+.note p:first-child,.warn p:first-child,.stop p:first-child{margin-top:0}
+.note p:last-child,.warn p:last-child,.stop p:last-child{margin-bottom:0}
+
+/* ---------- figures / diagrams ---------- */
+figure.fig{
+  margin:1.2rem 0; border:1px solid var(--line); background:var(--surface);
+  padding:1rem 1rem .85rem; overflow-x:auto;
+}
+figure.fig svg{display:block; width:100%; min-width:33rem; height:auto}
+figure.fig figcaption{
+  margin-top:.8rem; padding-top:.7rem; border-top:1px solid var(--line);
+  font-size:.86rem; color:var(--muted);
+}
+figure.fig figcaption b{color:var(--ink); font-weight:600}
+
+/* shared SVG vocabulary */
+.fig .card{fill:none; stroke:var(--line); stroke-width:1}
+.fig .inner{fill:var(--bg); stroke:var(--line); stroke-width:1}
+.fig .chip{fill:var(--surface); stroke:var(--line); stroke-width:1}
+.fig .hero-box{fill:var(--bg); stroke:var(--rule); stroke-width:2}
+.fig .eb{
+  fill:var(--muted); font-family:"Syne","Montserrat",system-ui,sans-serif;
+  font-weight:700; font-size:9.5px; letter-spacing:.11em; text-transform:uppercase;
+}
+.fig .t{
+  fill:var(--ink); font-family:"Syne","Montserrat",system-ui,sans-serif;
+  font-weight:700; font-size:12.5px;
+}
+.fig .t-lg{font-size:15px}
+.fig .s{
+  fill:var(--muted); font-family:"Montserrat",system-ui,sans-serif;
+  font-weight:400; font-size:11px;
+}
+.fig .s-ink{fill:var(--ink)}
+.fig .mono{
+  fill:var(--muted); font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:10px;
+}
+.fig .num{
+  fill:var(--stepn-fg); font-family:"Syne",system-ui,sans-serif;
+  font-weight:700; font-size:11px;
+}
+.fig .numbg{fill:var(--stepn-bg)}
+.fig .flowline{stroke:var(--rule); stroke-width:2; fill:none}
+.fig .flow-f{fill:var(--rule)}
+.fig .dash{stroke:var(--line); stroke-width:1; stroke-dasharray:4 4}
+.fig .dot{fill:var(--rule)}
+.fig .muteline{stroke:var(--line); stroke-width:1}
+
+/* ---------- tables ---------- */
+.tw{overflow-x:auto; margin:1.1rem 0; border:1px solid var(--line)}
+table{border-collapse:collapse; width:100%; min-width:34rem; font-size:.89rem}
+th,td{text-align:left; padding:.6rem .75rem; border-bottom:1px solid var(--line); vertical-align:top}
+th{
+  background:var(--carbon); color:#F4F2F8; font-family:"Syne",system-ui,sans-serif;
+  font-weight:700; font-size:.76rem; text-transform:uppercase; letter-spacing:.07em;
+  position:sticky; top:0;
+}
+tbody tr:last-child td{border-bottom:0}
+tbody tr:nth-child(even){background:var(--surface)}
+td code{font-size:.84em}
+.pill{
+  display:inline-block; font-size:.7rem; font-weight:700; letter-spacing:.05em;
+  text-transform:uppercase; padding:.15rem .45rem; white-space:nowrap;
+}
+.pill.ok{background:rgba(0,125,138,.14); color:var(--ok-ink); border:1px solid var(--ok-ink)}
+.pill.act{background:rgba(250,178,25,.16); color:var(--act-ink); border:1px solid var(--act-ink)}
+.pill.stopp{background:rgba(208,59,59,.13); color:var(--stop-ink); border:1px solid var(--stop-ink)}
+
+/* ---------- shell / prompt blocks ---------- */
+pre.shell{
+  background:var(--shell); color:var(--shell-ink); padding:.85rem 1rem; margin:.7rem 0;
+  overflow-x:auto; font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:.85rem; line-height:1.5; border:1px solid var(--line);
+}
+pre.shell code{background:none; border:0; padding:0; color:inherit; font-size:1em}
+.say{
+  background:var(--surface); border:1px solid var(--line); border-left:3px solid var(--acid);
+  padding:.6rem .85rem; margin:.5rem 0; font-size:.93rem;
+}
+.say::before{
+  content:"You say"; display:block; font-family:"Syne",system-ui,sans-serif;
+  font-size:.66rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--muted); margin-bottom:.2rem;
+}
+.say em{font-style:normal; font-weight:600}
+
+/* ---------- symptom cards ---------- */
+.sym{border:1px solid var(--line); margin:.9rem 0; background:var(--surface)}
+.sym-h{
+  display:flex; gap:.7rem; align-items:center; padding:.7rem .9rem;
+  border-bottom:1px solid var(--line); flex-wrap:wrap;
+}
+.sym-h strong{font-family:"Syne",system-ui,sans-serif; font-size:.97rem; flex:1 1 14rem}
+.sym-b{padding:.75rem .9rem; font-size:.92rem}
+.sym-b p{margin:.4rem 0}
+.sym-b p:first-child{margin-top:0}
+.sym-b p:last-child{margin-bottom:0}
+
+/* ---------- flow ---------- */
+.flow{margin:1.2rem 0; border:1px solid var(--line); background:var(--surface); padding:1.1rem}
+.frow{display:flex; gap:.75rem; align-items:flex-start; padding:.5rem 0}
+.frow + .frow{border-top:1px dashed var(--line)}
+.fnum{
+  font-family:"Syne",system-ui,sans-serif; font-weight:700; font-size:.78rem;
+  color:var(--muted); flex:none; width:1.4rem; padding-top:.1rem;
+}
+.frow div{font-size:.92rem}
+.frow b{font-weight:600}
+
+/* ---------- tiles ---------- */
+.grid2{display:grid; gap:.8rem; grid-template-columns:repeat(auto-fit,minmax(13rem,1fr)); margin:1rem 0}
+.tile{border:1px solid var(--line); background:var(--surface); padding:.85rem .95rem}
+.tile b{font-family:"Syne",system-ui,sans-serif; display:block; margin-bottom:.2rem; font-size:.97rem}
+.tile span{font-size:.86rem; color:var(--muted)}
+
+dl.gloss{margin:1rem 0 0}
+dl.gloss dt{
+  font-family:"Syne",system-ui,sans-serif; font-weight:700; margin-top:1rem;
+  font-size:.97rem; padding-top:.6rem; border-top:1px solid var(--line);
+}
+dl.gloss dd{margin:.2rem 0 0; color:var(--muted); font-size:.93rem}
+
+footer{
+  background:var(--carbon); color:rgba(244,242,248,.75); padding:2rem 1.2rem;
+  border-top:3px solid var(--acid); font-size:.87rem;
+}
+.foot-in{max-width:52rem; margin:0 auto}
+footer b{color:#F4F2F8}
+@media print{
+  nav.toc,#themeBtn,#resetBtn,#progWrap{display:none}
+  body{font-size:11pt} header.hero{background:none; color:#000; border-bottom:2px solid #000}
+  header.hero h1,header.hero p{color:#000} .badge{background:none; border:1px solid #000}
+  section{page-break-inside:avoid}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-in">
+    <span class="badge">Delivery toolkit · v1.0</span>
+    <p class="eyebrow">For delivery managers · new engagement setup</p>
+    <h1>From empty folder to a working knowledge base</h1>
+    <p>Seven skills that take a copy of this template through to a vault your team can safely be onboarded onto — in order, each one checking the last one actually happened before it runs.</p>
+  </div>
+</header>
+
+<nav class="toc" aria-label="Guide sections">
+  <div class="toc-in">
+    <a href="#what">What it is</a>
+    <a href="#why">Why in this order</a>
+    <a href="#chain">The chain</a>
+    <a href="#steps">Run it</a>
+    <a href="#reference">Reference</a>
+    <a href="#rules">What it won't do</a>
+    <a href="#wrong">If something looks wrong</a>
+    <a href="#gloss">Glossary</a>
+    <button id="themeBtn" type="button" aria-label="Switch colour theme">Theme</button>
+  </div>
+</nav>
+
+<main>
+
+<!-- ============ WHAT IT IS ============ -->
+<section id="what">
+  <p class="eyebrow">Start here</p>
+  <h2>What this is</h2>
+  <p class="lede">A set of Claude Code skills, sitting in <code>.claude/skills/</code> of this template, that turn a fresh copy of it into a specific client's knowledge base — one an actual team can be onboarded onto without hitting a missing file or a stale reference to the last engagement.</p>
+
+  <div class="note">
+    <p><b>You are the audience for this guide, not your team.</b> Your team gets <a href="user-guide.html">the other guide</a> and two verbs, <code>capture</code> and <code>onboard</code>. This one is about the six-ish skills that run <em>before</em> either of those exist to be useful — the mobilisation work, done once per engagement, usually by you.</p>
+  </div>
+
+  <p>It's possible for a copy of this structure to end up doing double duty — a template folder that has also picked up real engagement content, because it was used to mobilise a client vault and then reused as the starting point for the next one without a clean copy in between. That is exactly the situation these skills are built to handle safely — several of them start by checking whether what they've been pointed at is a clean template or a populated vault, and refuse to run if the two have been mixed up.</p>
+
+  <h3>What changes if you skip this and configure a new vault by hand</h3>
+  <p>Nothing stops you copying the folder and editing <code>project-config.md</code> yourself. What you lose is the thing this chain actually buys you: every downstream skill — <code>onboard</code>, <code>capture</code>, the guard — reads from files this chain guarantees exist and are internally consistent. A hand-edited copy is exactly where the previous version of this template was found with a missing <code>schema/frontmatter.md</code> and a `roles/` folder still describing someone else's engagement.</p>
+</section>
+
+<!-- ============ WHY ============ -->
+<section id="why">
+  <p class="eyebrow">If this is new to you</p>
+  <h2>Why the order matters</h2>
+  <p class="lede">Every skill after the first two reads something an earlier one wrote. Run them out of order and the failure is quiet — a skill either invents a value it should have read, or silently has nothing to work from.</p>
+
+  <div class="warn">
+    <p><b>The one rule that holds the whole chain together.</b> <code>project-config.md</code> is the manifest every other skill reads first — the roster, the register owners, the path mapping, the launch contract. Nothing downstream of <code>configure-engagement</code> should be asked to run before it has.</p>
+  </div>
+
+  <h3>What each stage actually depends on</h3>
+  <div class="flow">
+    <div class="frow"><span class="fnum">1</span><div><b>new-kb</b> needs nothing but a destination. It produces a folder with no engagement facts in it at all.</div></div>
+    <div class="frow"><span class="fnum">2</span><div><b>configure-engagement</b> needs that folder to exist and be empty of real client data. It produces the roster, the launch contract, and the path mapping everything else reads.</div></div>
+    <div class="frow"><span class="fnum">3</span><div><b>define-roles</b> and <b>seed-references</b> both need the roster and path mapping from step 2. Neither needs the other — run them in either order, or in parallel.</div></div>
+    <div class="frow"><span class="fnum">4</span><div><b>harden-vault</b> needs the client sensitivities from step 2's conversation, and works best once <code>seed-references</code> has given it real files to test the guard against.</div></div>
+    <div class="frow"><span class="fnum">5</span><div><b>launch-checklist</b> needs every one of the above to have actually run — it is a check on the whole chain, not a step that does its own work.</div></div>
+  </div>
+</section>
+
+<!-- ============ THE CHAIN ============ -->
+<section id="chain">
+  <p class="eyebrow">The map</p>
+  <h2>The chain, end to end</h2>
+  <p class="lede">Six skills to mobilise, two that already existed and keep running for the life of the engagement, and one that runs once, right at the end.</p>
+
+  <figure class="fig">
+    <svg viewBox="0 0 780 330" role="img" aria-label="new-kb leads to configure-engagement, which leads to define-roles and seed-references in parallel, then harden-vault, then launch-checklist, then the engagement runs on onboard and capture until close-out-engagement at the very end.">
+      <defs>
+        <marker id="af" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="flow-f"/></marker>
+      </defs>
+
+      <text class="eb" x="10" y="20">Mobilise — once, before anyone is invited in</text>
+
+      <rect class="hero-box" x="10" y="32" width="118" height="62"/>
+      <circle class="numbg" cx="26" cy="48" r="9"/><text class="num" x="26" y="52" text-anchor="middle">1</text>
+      <text class="t" x="42" y="52">new-kb</text>
+      <text class="s" x="22" y="76">scaffold the</text>
+      <text class="s" x="22" y="88">clean folder</text>
+
+      <path class="flowline" d="M128,63 L156,63" marker-end="url(#af)"/>
+
+      <rect class="hero-box" x="160" y="32" width="150" height="62"/>
+      <circle class="numbg" cx="176" cy="48" r="9"/><text class="num" x="176" y="52" text-anchor="middle">2</text>
+      <text class="t" x="192" y="52">configure-</text>
+      <text class="t" x="192" y="66">engagement</text>
+      <text class="s" x="172" y="86">roster, launch contract</text>
+
+      <path class="flowline" d="M310,63 L338,63" marker-end="url(#af)"/>
+
+      <rect class="hero-box" x="342" y="14" width="150" height="46"/>
+      <circle class="numbg" cx="358" cy="30" r="9"/><text class="num" x="358" y="34" text-anchor="middle">3</text>
+      <text class="t" x="374" y="34">define-roles</text>
+      <text class="s" x="354" y="50">role bodies, per person</text>
+
+      <rect class="hero-box" x="342" y="70" width="150" height="46"/>
+      <circle class="numbg" cx="358" cy="86" r="9"/><text class="num" x="358" y="90" text-anchor="middle">3</text>
+      <text class="t" x="374" y="90">seed-references</text>
+      <text class="s" x="354" y="106">registers, glossary, schema</text>
+
+      <path class="flowline" d="M312,63 L342,37 M312,63 L342,93" />
+      <path class="flowline" d="M492,37 L520,63" marker-end="url(#af)"/>
+      <path class="flowline" d="M492,93 L520,63" marker-end="url(#af)"/>
+
+      <rect class="hero-box" x="524" y="32" width="120" height="62"/>
+      <circle class="numbg" cx="540" cy="48" r="9"/><text class="num" x="540" y="52" text-anchor="middle">4</text>
+      <text class="t" x="556" y="52">harden-</text>
+      <text class="t" x="556" y="66">vault</text>
+      <text class="s" x="536" y="86">guard, terms</text>
+
+      <path class="flowline" d="M644,63 L672,63" marker-end="url(#af)"/>
+
+      <rect class="hero-box" x="676" y="32" width="94" height="62"/>
+      <circle class="numbg" cx="692" cy="48" r="9"/><text class="num" x="692" y="52" text-anchor="middle">5</text>
+      <text class="t" x="706" y="52">launch-</text>
+      <text class="t" x="706" y="66">checklist</text>
+
+      <line class="muteline" x1="10" y1="128" x2="770" y2="128"/>
+
+      <text class="eb" x="10" y="150">Run — for the life of the engagement</text>
+      <rect class="chip" x="10" y="160" width="170" height="34"/><text class="s s-ink" x="22" y="181">onboard · once per person</text>
+      <rect class="chip" x="190" y="160" width="170" height="34"/><text class="s s-ink" x="202" y="181">capture · every day</text>
+      <path class="dash" d="M370,177 L520,177"/>
+      <text class="s" x="378" y="173">already existed —</text>
+      <text class="s" x="378" y="187">this chain doesn't touch them</text>
+
+      <line class="muteline" x1="10" y1="222" x2="770" y2="222"/>
+
+      <text class="eb" x="10" y="244">Wind down — once, at the very end</text>
+      <rect class="hero-box" x="10" y="254" width="220" height="56"/>
+      <text class="t" x="24" y="278">close-out-engagement</text>
+      <text class="s" x="24" y="296">value + lessons out, vault archived, nothing deleted</text>
+    </svg>
+    <figcaption><b>Five numbered skills, one gate, and the two you already know.</b> <code>onboard</code> and <code>capture</code> sit outside this chain entirely — they are what the vault is <em>for</em>, once mobilisation is done.</figcaption>
+  </figure>
+</section>
+
+<!-- ============ STEPS ============ -->
+<section id="steps">
+  <p class="eyebrow">Once per engagement · roughly half a day, most of it conversation</p>
+  <h2>Run the chain</h2>
+  <p class="lede">Six skills, in this order. Each one names what it needs from the last, and each ends with something you can check rather than take on faith.</p>
+
+  <div id="progWrap">
+    <div id="progBar"><div id="progFill"></div></div>
+    <span id="progTxt">0 of 6 done</span>
+    <button id="resetBtn" type="button">Reset</button>
+  </div>
+
+  <div class="warn">
+    <p><b>Before you start.</b> If you're pointing this at a folder that already has real client content in it — this repository itself, right now — <b>stop and copy it fresh first.</b> <code>new-kb</code> exists precisely to produce that clean copy; running the later skills against a populated vault is the one thing several of them are built to refuse.</p>
+  </div>
+
+  <div class="step">
+    <div class="step-head"><span class="step-n">1</span><h4>Scaffold the new vault</h4><span class="skillname">new-kb</span></div>
+    <p>Ships with its own bundled copy of the vault content it needs — <code>SETUP/</code>, roles, schema, templates, config, the empty folder skeleton — already genericised into placeholders. That's what makes it work in a completely empty folder: it never reads from whatever surrounds it, only from its own <code>reference/</code> directory. It does not bundle the skills themselves — <code>configure-engagement</code> and the rest are assumed already available wherever you run Claude Code, the same way <code>new-kb</code> is. Copy just this one skill folder into a fresh project to bootstrap in place, or run it from inside an existing vault to spin off a separate sibling.</p>
+    <div class="say"><em>new kb</em> — then say whether it's bootstrapping in place or needs a separate target folder, and whether to create the GitHub repo now</div>
+    <p>Creating or pushing to a GitHub repo is the one part of this step that needs your explicit yes, asked separately — a local, uncommitted copy is a perfectly good place to leave it if you're not ready.</p>
+    <div class="know"><span><b>You'll know it worked when</b> the folder has the full structure with every identifying field still a bracketed placeholder — nothing from any other engagement, nothing guessed.</span></div>
+    <div class="chk"><input type="checkbox" id="s0"><label for="s0">New folder scaffolded, confirmed clean</label></div>
+  </div>
+
+  <div class="step">
+    <div class="step-head"><span class="step-n">2</span><h4>Configure the engagement</h4><span class="skillname">configure-engagement</span></div>
+    <p>Interviews you for the facts every other skill reads: engagement and client name, dates and phases, the roster and their access, the register owners, and the launch contract — including the two governance calls that matter most, whether client material is allowed in at all, and whether AI-processing consent is decided or still open.</p>
+    <div class="say"><em>configure this engagement</em></div>
+    <p>Rewrites <code>project-config.md</code> end to end, and propagates the identifying details into <code>START-HERE.md</code> and the <code>SETUP/</code> files people actually read — so the front door names your engagement, not the last one.</p>
+    <div class="know"><span><b>You'll know it worked when</b> <code>project-config.md</code> reads correctly for this engagement with nothing left as the previous client's name, and open items (like AI-processing consent) are marked <code>[TBC]</code> rather than guessed.</span></div>
+    <div class="chk"><input type="checkbox" id="s1"><label for="s1">project-config.md and front-door files reflect this engagement</label></div>
+  </div>
+
+  <div class="step">
+    <div class="step-head"><span class="step-n">3</span><h4>Fill in the role profiles</h4><span class="skillname">define-roles</span></div>
+    <p>Rewrites each <code>roles/*.md</code> body — what that function cares about, its homes, what it owns, what done looks like — for this engagement's actual roster and focus, not the last one's. Creates a file for a function on your roster with none yet; leaves a function's file alone (and tells you) if nobody on this roster holds it.</p>
+    <div class="say"><em>define roles</em></div>
+    <div class="know"><span><b>You'll know it worked when</b> <code>onboard</code>, run later for a real person, ends on a briefing that is actually about their part of <em>this</em> engagement.</span></div>
+    <div class="chk"><input type="checkbox" id="s2"><label for="s2">Role profiles rewritten for this roster</label></div>
+  </div>
+
+  <div class="step">
+    <div class="step-head"><span class="step-n">4</span><h4>Seed the registers and reference files</h4><span class="skillname">seed-references</span></div>
+    <p>Creates every file <code>capture</code> assumes exists but a bare scaffold doesn't have yet: <code>schema/frontmatter.md</code>, the glossary, the stakeholder map, all four findings pillars, and every register under <code>04-delivery/</code>, <code>06-value-and-lessons/</code> and <code>07-governance/</code> — headers only, nothing invented as sample data.</p>
+    <div class="say"><em>seed the references</em></div>
+    <div class="know"><span><b>You'll know it worked when</b> every path in <code>project-config.md</code>'s mapping table resolves to a real file, and the AI-native checklist's consent status matches what you actually told <code>configure-engagement</code> — <code>NOT YET GRANTED</code> if it's genuinely still open.</span></div>
+    <div class="chk"><input type="checkbox" id="s3"><label for="s3">Registers and references exist, headers only</label></div>
+  </div>
+
+  <div class="step">
+    <div class="step-head"><span class="step-n">5</span><h4>Harden the vault</h4><span class="skillname">harden-vault</span></div>
+    <p>Installs the pre-commit guard, checks <code>users/</code> and <code>00-inbox-local/</code> are actually ignored, and — the one genuinely client-specific part — replaces the blocked-terms list with <em>this</em> client's sensitivities rather than the last engagement's. Writes or checks <code>CLAUDE.md</code>/<code>AGENTS.md</code>.</p>
+    <div class="say"><em>harden the vault</em></div>
+    <div class="know"><span><b>You'll know it worked when</b> a clean test file commits, an unclassified one is blocked with a plain-English reason, and a file containing one of the new blocked terms is also blocked. All three, not just one.</span></div>
+    <div class="chk"><input type="checkbox" id="s4"><label for="s4">Guard installed and tested both ways</label></div>
+  </div>
+
+  <div class="step">
+    <div class="step-head"><span class="step-n">6</span><h4>Walk the launch checklist</h4><span class="skillname">launch-checklist</span></div>
+    <p>Runs every automatable check from <code>SETUP/preflight-checklist.md</code> and gives you a plain verdict — pass, or a named list of blockers. It deliberately stops short of tagging a release, inviting your team, or announcing anything; those stay decisions you make, not steps it takes for you.</p>
+    <div class="say"><em>run the launch checklist</em></div>
+    <div class="know"><span><b>You'll know it worked when</b> you get a verdict you can act on — either "ready", or a specific list of what to fix before it is.</span></div>
+    <div class="chk"><input type="checkbox" id="s5"><label for="s5">Verdict received, blockers (if any) cleared</label></div>
+  </div>
+
+  <div class="note">
+    <p><b>Then, and only then, invite people in.</b> Tag the release, send the GitHub invites, and point each person at <a href="user-guide.html">the team guide</a> and <code>SETUP/setup-sheet.md</code>. The first thing each of them does is say <em>"onboard me"</em> — a skill this chain doesn't touch, because it already worked.</p>
+  </div>
+</section>
+
+<!-- ============ REFERENCE ============ -->
+<section id="reference">
+  <p class="eyebrow">The map, condensed</p>
+  <h2>Every skill, at a glance</h2>
+  <p class="lede">For when you already know what you need and just want the phrase and the file it touches.</p>
+
+  <div class="tw">
+    <table>
+      <thead><tr><th>Skill</th><th>Say</th><th>Mainly touches</th><th>When</th></tr></thead>
+      <tbody>
+        <tr><td>new-kb</td><td><code>new kb</code></td><td>a fresh target folder</td><td>first, once</td></tr>
+        <tr><td>configure-engagement</td><td><code>configure this engagement</code></td><td><code>project-config.md</code>, <code>START-HERE.md</code></td><td>right after new-kb</td></tr>
+        <tr><td>define-roles</td><td><code>define roles</code></td><td><code>roles/*.md</code></td><td>after configure-engagement</td></tr>
+        <tr><td>seed-references</td><td><code>seed the references</code></td><td>registers, glossary, schema</td><td>after configure-engagement, any order vs. define-roles</td></tr>
+        <tr><td>harden-vault</td><td><code>harden the vault</code></td><td>the guard, blocked-terms.txt</td><td>after configure-engagement, before inviting anyone</td></tr>
+        <tr><td>launch-checklist</td><td><code>run the launch checklist</code></td><td>nothing — verification only</td><td>last, before inviting anyone</td></tr>
+        <tr><td>onboard <span class="pill ok">existing</span></td><td><code>onboard me</code></td><td><code>users/&lt;name&gt;/</code>, <code>CLAUDE.local.md</code></td><td>once per person, after launch</td></tr>
+        <tr><td>capture <span class="pill ok">existing</span></td><td><code>capture this</code></td><td>wherever the material belongs</td><td>every day, for the life of the engagement</td></tr>
+        <tr><td>close-out-engagement</td><td><code>close out the engagement</code></td><td>value register, lessons, <code>project-config.md</code> status</td><td>once, at the very end</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ============ RULES ============ -->
+<section id="rules">
+  <p class="eyebrow">Guardrails, by design</p>
+  <h2>What this chain deliberately won't do for you</h2>
+  <p class="lede">These skills were written to stop at exactly the points a delivery manager, not an agent, should decide — matching the same instinct behind the guard and the recovery guide: pause and ask, rather than push through.</p>
+
+  <div class="grid2">
+    <div class="tile"><b>Never invents a value</b><span>An open field — content ownership, an undecided consent status — is written as <code>[TBC]</code> and flagged, never guessed into something that reads as settled.</span></div>
+    <div class="tile"><b>Never runs on a populated vault</b><span>configure-engagement, define-roles and seed-references all check first, and stop if they find real client content where a clean scaffold should be.</span></div>
+    <div class="tile"><b>Never creates or pushes a repo without a yes</b><span>new-kb will scaffold locally without asking; creating the GitHub repo and pushing to it are asked for separately, every time.</span></div>
+    <div class="tile"><b>Never tags, invites or announces</b><span>launch-checklist gives you a verdict. Tagging <code>launch-v1</code>, sending invites and posting the announcement stay yours.</span></div>
+    <div class="tile"><b>Never edits another skill's territory</b><span>new-kb won't touch role bodies; configure-engagement won't touch them either — that's define-roles' job, on purpose, so nobody's specific engagement knowledge gets overwritten by a generic pass.</span></div>
+    <div class="tile"><b>Never deletes, at close-out</b><span>close-out-engagement archives and extracts. The vault itself is never removed or repurposed for the next client — that's a fresh <code>new-kb</code> run instead, from its own bundled reference copy.</span></div>
+  </div>
+
+  <div class="warn">
+    <p><b>If a skill stops and asks you something,</b> that's it working as designed, in the same spirit as the guard blocking a file — the fix is to answer the question, not to find a way around it.</p>
+  </div>
+</section>
+
+<!-- ============ WRONG ============ -->
+<section id="wrong">
+  <p class="eyebrow">Troubleshooting</p>
+  <h2>If a skill stops or something looks off</h2>
+
+  <div class="sym">
+    <div class="sym-h"><strong>A skill says the vault "looks populated" and stops</strong><span class="pill ok">Safe — working as designed</span></div>
+    <div class="sym-b">
+      <p>configure-engagement, define-roles and seed-references all sanity-check for real content — dated interviews, filled registers, a stakeholder map with real names — before doing anything. If you're genuinely trying to reconfigure a vault that already has fieldwork in it, that's almost certainly the wrong move; if you meant to start clean, run <code>new-kb</code> first and point the chain at the fresh copy instead.</p>
+    </div>
+  </div>
+
+  <div class="sym">
+    <div class="sym-h"><strong>seed-references says a file "already existed" and left it alone</strong><span class="pill ok">Correct behaviour</span></div>
+    <div class="sym-b">
+      <p>It never overwrites a register that already has real rows in it — reported as found, not touched. If you expected a fresh header-only file and got this instead, the vault is further along than you thought; check what's actually in it before assuming something is broken.</p>
+    </div>
+  </div>
+
+  <div class="sym">
+    <div class="sym-h"><strong>launch-checklist comes back with blockers</strong><span class="pill act">Fix, don't force</span></div>
+    <div class="sym-b">
+      <p>Each blocker names exactly what failed and against which rule. Fix the underlying thing — a guard rule that isn't firing, a file that's diverged from its pair — and re-run the checklist. <b>Do not ask it to skip a blocker or work around the guard</b> to get to a pass; a checklist that can be argued past protects nobody.</p>
+    </div>
+  </div>
+
+  <div class="sym">
+    <div class="sym-h"><strong>A launch-contract field is still <code>[TBC]</code> after configure-engagement</strong><span class="pill act">A decision, not a bug</span></div>
+    <div class="sym-b">
+      <p>Almost always AI-processing consent or content ownership — genuine governance decisions that weren't yours to make up on the spot during the interview. Go get the actual answer from whoever owns it, then re-run <code>configure-engagement</code> (or edit the field directly) once you have it. <code>capture</code> will file-only and flag <code>consent-pending</code> until the consent field is resolved — that's the system working, not stuck.</p>
+    </div>
+  </div>
+
+  <div class="sym">
+    <div class="sym-h"><strong>Role or register files still reference the previous engagement</strong><span class="pill act">Run the missing step</span></div>
+    <div class="sym-b">
+      <p>configure-engagement only ever touches frontmatter <code>owner</code> fields on <code>roles/*.md</code>, deliberately leaving the body text to <code>define-roles</code>. If the substance still reads like the last client, that step hasn't run yet — not a fault in either skill.</p>
+    </div>
+  </div>
+
+  <div class="note">
+    <p><b>Anything else</b> that comes up while running this chain is worth the same treatment as anywhere else in this vault: don't work around it, say what you saw and where, and add it here once it's understood — this guide is meant to grow the same way the recovery guide does.</p>
+  </div>
+</section>
+
+<!-- ============ GLOSSARY ============ -->
+<section id="gloss">
+  <p class="eyebrow">Reference</p>
+  <h2>Glossary</h2>
+  <dl class="gloss">
+    <dt>Template vs. vault</dt><dd>The same folder shape, two different states. A template has no engagement facts in it; a vault is that same shape filled in for one real client. <code>new-kb</code> ships its own bundled copy of the template shape, so it never needs to read one back out of a live vault.</dd>
+    <dt>Reference bundle</dt><dd><code>.claude/skills/new-kb/reference/</code> — the self-contained copy of the whole scaffold that <code>new-kb</code> stamps out. Keeping it in sync with the actual skills and setup files is a maintenance job in its own right, noted in the skill itself.</dd>
+    <dt>Manifest</dt><dd><code>project-config.md</code> — the one file every skill in this chain, and both <code>onboard</code> and <code>capture</code>, reads first.</dd>
+    <dt>Launch contract</dt><dd>The governance section of <code>project-config.md</code>: whether client material is allowed, whether AI-processing consent is granted, format and size limits, which modules are enabled, the QBL focus.</dd>
+    <dt>Path mapping</dt><dd>The lookup table in <code>project-config.md</code> resolving a logical name (like <code>raid_tracker</code>) to a real file path. Every downstream skill trusts this table rather than hardcoding paths.</dd>
+    <dt>Register owners</dt><dd>Who may write to which shared list — RAID, decisions and actions are restricted to named owners; findings and quick-wins are team-append, DM-curates.</dd>
+    <dt>Consent gate</dt><dd>The rule, recorded in <code>07-governance/ai-native-checklist.md</code>, that filing a client document is always fine but analysing it needs a recorded yes, per type. <code>seed-references</code> creates this file; <code>configure-engagement</code> is where the actual decision gets recorded.</dd>
+    <dt>The guard</dt><dd>The pre-commit check <code>harden-vault</code> installs and tunes — blocks unclassified shared files, stray private files, oversized files, and this engagement's specific sensitive terms.</dd>
+    <dt>QBL</dt><dd>Quicker, Better, Leaner — the value dimensions tracked in <code>06-value-and-lessons/value-register.md</code>, extracted at close-out into a portfolio-level summary.</dd>
+    <dt>[TBC]</dt><dd>The honest placeholder every skill in this chain uses for a value it wasn't told and won't guess. Seeing it means a decision is still owed, not that something is broken.</dd>
+  </dl>
+</section>
+
+</main>
+
+<footer>
+  <div class="foot-in">
+    <p><b>Something in this chain needs adding or correcting?</b> Same rule as everywhere else in this vault: say what you saw, don't work around it, and it gets folded back into the skill or this guide for whoever runs it next.</p>
+    <p style="margin-top:.9rem">Delivery toolkit · new-engagement setup · internal · v1.0<br>
+    <span style="opacity:.8">Covers: new-kb, configure-engagement, define-roles, seed-references, harden-vault, launch-checklist, close-out-engagement. See <a href="user-guide.html">user-guide.html</a> for the team-facing guide to onboard and capture.</span></p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var KEY = "dmkit-guide-setup-v1", THEME = "dmkit-guide-theme";
+
+  /* ---- theme toggle ---- */
+  var root = document.documentElement, btn = document.getElementById("themeBtn");
+  function sysDark(){ return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches; }
+  try { var t = localStorage.getItem(THEME); if (t) root.setAttribute("data-theme", t); } catch(e){}
+  function label(){
+    var cur = root.getAttribute("data-theme") || (sysDark() ? "dark" : "light");
+    btn.textContent = cur === "dark" ? "Light" : "Dark";
+  }
+  label();
+  btn.addEventListener("click", function(){
+    var cur = root.getAttribute("data-theme") || (sysDark() ? "dark" : "light");
+    var next = cur === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem(THEME, next); } catch(e){}
+    label();
+  });
+
+  /* ---- chain progress ---- */
+  var boxes = Array.prototype.slice.call(document.querySelectorAll('.chk input[type="checkbox"]'));
+  var fill = document.getElementById("progFill");
+  var txt  = document.getElementById("progTxt");
+  var reset= document.getElementById("resetBtn");
+
+  function load(){
+    var saved = {};
+    try { saved = JSON.parse(localStorage.getItem(KEY) || "{}"); } catch(e){ saved = {}; }
+    boxes.forEach(function(b){ if (saved[b.id]) b.checked = true; });
+  }
+  function save(){
+    var out = {};
+    boxes.forEach(function(b){ if (b.checked) out[b.id] = 1; });
+    try { localStorage.setItem(KEY, JSON.stringify(out)); } catch(e){}
+  }
+  function paint(){
+    var done = boxes.filter(function(b){ return b.checked; }).length;
+    var pct = boxes.length ? Math.round(done / boxes.length * 100) : 0;
+    fill.style.width = pct + "%";
+    txt.textContent = done === boxes.length && boxes.length
+      ? "All " + boxes.length + " done — ready for launch-checklist's verdict"
+      : done + " of " + boxes.length + " done";
+  }
+  boxes.forEach(function(b){ b.addEventListener("change", function(){ save(); paint(); }); });
+  reset.addEventListener("click", function(){
+    boxes.forEach(function(b){ b.checked = false; });
+    save(); paint();
+  });
+  load(); paint();
+})();
+</script>
+
+</body>
+</html>

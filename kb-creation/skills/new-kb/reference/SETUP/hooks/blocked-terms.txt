@@ -1,0 +1,28 @@
+# Phrases that must never reach the shared vault.
+#
+# One per line. Case-insensitive, matched as whole words (not substrings), so
+# "margin" would NOT fire on "margins" and short terms cannot fire inside
+# longer words. Lines starting with # are comments. The DM owns this file —
+# edit freely.
+#
+# Keep terms SPECIFIC. A generic word like "margin" or "cost" fires on CSS,
+# ordinary prose and quoted client language, and a guard that cries wolf gets
+# switched off. If you need a broad concept caught, use the specific phrase
+# people actually type.
+#
+# The files that define and test these rules are exempt from this check —
+# see rule4_exempt() in check-rules.sh. Everything else is subject to it.
+#
+# This is the fresh, engagement-agnostic starting list. `harden-vault` is
+# where this gets tailored: this client's named-sensitive terms added, and
+# anything genuinely not relevant here removed. Don't let it just accumulate
+# across engagements — prune as well as add.
+
+# --- confidentiality markers ---
+OFF-RECORD
+DM-ONLY
+
+# --- commercial (uncomment or add specifics if this engagement needs them) ---
+# day rate
+# rate card
+# profit margin

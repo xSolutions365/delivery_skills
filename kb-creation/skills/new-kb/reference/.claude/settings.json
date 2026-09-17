@@ -1,0 +1,49 @@
+{
+  "$comment": [
+    "Committed so every clone inherits it.",
+    "",
+    "These two hooks are what make Obsidian OPTIONAL. With Obsidian open, its Git",
+    "plugin handles syncing continuously. Without it, these hooks give you the",
+    "same guarantee at the two moments that matter: you start with everyone's",
+    "latest, and your work is never left sitting only on your laptop.",
+    "",
+    "SessionStart: pull before you read anything. --autostash protects any",
+    "uncommitted work across the rebase.",
+    "",
+    "Stop: fires when Claude finishes responding. Commits and pushes only if",
+    "something actually changed, and only tracked/shared paths. The pre-commit",
+    "guard still runs, so an unsafe change is blocked here exactly as it would be",
+    "anywhere else. Quiet on success; speaks up only on failure or a block.",
+    "",
+    "Deliberately NOT --no-verify. If the guard blocks, the work stays local and",
+    "the message explains why. That is the control working, not a fault.",
+    "",
+    "Stop guards its own existence before running: a vault mid-scaffold (new-kb",
+    "still copying, or this file present before SETUP/hooks/ is) must not surface",
+    "a scary 'No such file or directory' for something that isn't a fault."
+  ],
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "git pull --rebase --autostash --quiet 2>&1 || echo 'Vault sync: could not pull. Your work is safe — post a screenshot in the project Slack channel if this repeats.'",
+            "timeout": 30
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "test -f SETUP/hooks/session-sync.sh && bash SETUP/hooks/session-sync.sh || exit 0",
+            "timeout": 60
+          }
+        ]
+      }
+    ]
+  }
+}

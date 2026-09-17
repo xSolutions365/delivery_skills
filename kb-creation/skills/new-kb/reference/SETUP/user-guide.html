@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>[Engagement name] Team Vault — Guide</title>
+<style>
+:root{
+  --carbon:#0A0019; --midnight:#24004C; --white:#fff; --cloud:#F2F2F2;
+  --acid:#C4FF35; --form-purple:#2E0A5E;
+  --pink-dark:#7D2271; --pink-medium:#A04594; --pink-bright:#FE7AF6;
+  --green-dark:#007D8A; --amber:#FAB219; --red:#D03B3B;
+
+  --bg:var(--white); --surface:var(--cloud); --ink:var(--carbon);
+  --muted:#4A4458; --line:#D8D5DE; --accent:var(--pink-medium);
+  --code-bg:#EDEBF0; --shell:var(--carbon); --shell-ink:#E8E4F0;
+  --rule:var(--midnight); --ok-ink:#007D8A; --act-ink:#8A5E00; --stop-ink:#D03B3B;
+  --stepn-bg:var(--carbon); --stepn-fg:var(--acid);
+  --radius:0;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:var(--carbon); --surface:#160830; --ink:#F4F2F8;
+    --muted:#B8B0C4; --line:#332A47; --accent:var(--pink-bright);
+    --code-bg:#1E1236; --shell:#050010; --shell-ink:#E8E4F0;
+    --rule:var(--pink-bright); --ok-ink:#4FD8C7; --act-ink:#FAB219; --stop-ink:#FF8A8A;
+    --stepn-bg:var(--acid); --stepn-fg:var(--carbon);
+  }
+}
+:root[data-theme="light"]{
+  --bg:var(--white); --surface:var(--cloud); --ink:var(--carbon);
+  --muted:#4A4458; --line:#D8D5DE; --accent:var(--pink-medium);
+  --code-bg:#EDEBF0; --shell:var(--carbon); --shell-ink:#E8E4F0;
+  --rule:var(--midnight); --ok-ink:#007D8A; --act-ink:#8A5E00; --stop-ink:#D03B3B;
+  --stepn-bg:var(--carbon); --stepn-fg:var(--acid);
+}
+:root[data-theme="dark"]{
+  --bg:var(--carbon); --surface:#160830; --ink:#F4F2F8;
+  --muted:#B8B0C4; --line:#332A47; --accent:var(--pink-bright);
+  --code-bg:#1E1236; --shell:#050010; --shell-ink:#E8E4F0;
+  --rule:var(--pink-bright); --ok-ink:#4FD8C7; --act-ink:#FAB219; --stop-ink:#FF8A8A;
+  --stepn-bg:var(--acid); --stepn-fg:var(--carbon);
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth; scroll-padding-top:5rem}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:"Montserrat","Helvetica Neue",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  font-weight:400; line-height:1.65; font-size:16px;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4,.eyebrow,.display{
+  font-family:"Syne","Montserrat",system-ui,sans-serif; font-weight:700;
+  line-height:1.15; letter-spacing:-0.01em;
+}
+h2{font-size:1.6rem; margin:0 0 .3rem}
+h3{font-size:1.12rem; margin:1.6rem 0 .5rem}
+h4{font-size:.98rem; margin:1.2rem 0 .35rem}
+p{margin:.6rem 0}
+a{color:var(--accent); text-decoration:underline; text-underline-offset:2px}
+code,kbd{
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  background:var(--code-bg); padding:.12em .38em; font-size:.87em;
+  border:1px solid var(--line);
+}
+kbd{font-weight:600}
+
+/* ---------- eyebrow ---------- */
+.eyebrow{
+  display:flex; align-items:center; gap:.6rem; text-transform:uppercase;
+  font-size:.72rem; letter-spacing:.12em; line-height:1; color:var(--muted);
+  margin:0 0 .9rem;
+}
+.eyebrow::before{content:""; width:3px; height:1.05em; background:var(--acid); flex:none}
+
+/* ---------- header ---------- */
+header.hero{
+  background:var(--carbon); color:#F4F2F8; padding:3rem 1.5rem 2.4rem;
+  border-bottom:3px solid var(--acid);
+}
+.hero-in{max-width:52rem; margin:0 auto}
+.hero .eyebrow{color:rgba(244,242,248,.72)}
+header.hero h1{font-size:clamp(1.8rem,5vw,2.7rem); margin:0 0 .7rem}
+header.hero p{margin:0; max-width:38rem; color:rgba(244,242,248,.82); font-size:1.05rem}
+.badge{
+  display:inline-block; background:var(--acid); color:var(--carbon);
+  font-family:"Syne",system-ui,sans-serif; font-weight:700;
+  font-size:.68rem; letter-spacing:.1em; text-transform:uppercase;
+  padding:.28rem .6rem; margin-bottom:1rem;
+}
+
+/* ---------- nav ---------- */
+nav.toc{
+  position:sticky; top:0; z-index:40; background:var(--bg);
+  border-bottom:1px solid var(--line); padding:.55rem 1.2rem;
+}
+.toc-in{
+  max-width:52rem; margin:0 auto; display:flex; gap:.4rem;
+  overflow-x:auto; scrollbar-width:thin; align-items:center;
+}
+.toc-in a{
+  flex:none; font-size:.78rem; font-weight:600; text-decoration:none;
+  color:var(--muted); padding:.34rem .6rem; border:1px solid transparent;
+  white-space:nowrap;
+}
+.toc-in a:hover{color:var(--ink); border-color:var(--line); background:var(--surface)}
+#themeBtn{
+  flex:none; margin-left:auto; background:none; border:1px solid var(--line);
+  color:var(--muted); font:inherit; font-size:.78rem; font-weight:600;
+  padding:.34rem .6rem; cursor:pointer;
+}
+#themeBtn:hover{color:var(--ink); background:var(--surface)}
+
+main{max-width:52rem; margin:0 auto; padding:2rem 1.2rem 6rem}
+section{padding:2.2rem 0; border-bottom:1px solid var(--line)}
+section:last-of-type{border-bottom:0}
+.lede{font-size:1.05rem; color:var(--muted); margin:.2rem 0 1.2rem; max-width:40rem}
+
+/* ---------- route picker ---------- */
+.routes{display:grid; gap:.9rem; grid-template-columns:repeat(auto-fit,minmax(15rem,1fr)); margin:1.4rem 0 0}
+.route{
+  border:1px solid var(--line); background:var(--surface);
+  padding:1.1rem 1.2rem; text-decoration:none; color:var(--ink); display:block;
+  transition:border-color .12s, transform .12s;
+}
+.route:hover{border-color:var(--accent); transform:translateY(-2px)}
+.route strong{
+  font-family:"Syne",system-ui,sans-serif; font-size:1.02rem; display:block;
+  margin-bottom:.25rem;
+}
+.route span{font-size:.87rem; color:var(--muted); display:block}
+.route .go{
+  display:inline-block; margin-top:.7rem; font-size:.75rem; font-weight:700;
+  letter-spacing:.08em; text-transform:uppercase; color:var(--accent);
+}
+
+/* ---------- steps ---------- */
+.step{
+  border:1px solid var(--line); border-left:3px solid var(--rule);
+  background:var(--surface); padding:1.1rem 1.2rem; margin:1rem 0;
+}
+.step-head{display:flex; gap:.7rem; align-items:baseline}
+.step-n{
+  font-family:"Syne",system-ui,sans-serif; font-weight:700; font-size:.85rem;
+  background:var(--stepn-bg); color:var(--stepn-fg); padding:.1rem .48rem; flex:none;
+}
+.step-head h4{margin:0; font-size:1.02rem}
+.step p{margin:.5rem 0}
+.step ol,.step ul{margin:.5rem 0; padding-left:1.3rem}
+.step li{margin:.3rem 0}
+
+.know{
+  display:flex; gap:.6rem; margin-top:.85rem; padding:.65rem .8rem;
+  background:var(--bg); border:1px solid var(--line); border-left:3px solid var(--ok-ink);
+  font-size:.9rem;
+}
+.know::before{content:"✓"; color:var(--ok-ink); font-weight:700; flex:none}
+.know b{font-weight:600}
+
+.chk{display:flex; align-items:flex-start; gap:.55rem; margin-top:.85rem; font-size:.85rem}
+.chk input{margin-top:.28rem; accent-color:var(--pink-medium); width:1rem; height:1rem; flex:none}
+.chk label{color:var(--muted); cursor:pointer; user-select:none}
+.chk input:checked + label{color:var(--ok-ink); font-weight:600; text-decoration:line-through}
+
+#progWrap{
+  border:1px solid var(--line); background:var(--surface); padding:.9rem 1.1rem;
+  margin:1.2rem 0 0; display:flex; align-items:center; gap:1rem; flex-wrap:wrap;
+}
+#progBar{flex:1 1 12rem; height:8px; background:var(--line); position:relative; min-width:10rem}
+#progFill{position:absolute; inset:0 auto 0 0; width:0; background:var(--acid); transition:width .25s}
+#progTxt{font-size:.8rem; font-weight:600; color:var(--muted); font-variant-numeric:tabular-nums}
+#resetBtn{
+  background:none; border:1px solid var(--line); color:var(--muted); font:inherit;
+  font-size:.74rem; font-weight:600; padding:.28rem .55rem; cursor:pointer;
+}
+#resetBtn:hover{color:var(--ink)}
+
+/* ---------- callouts ---------- */
+.note,.warn,.stop{padding:.9rem 1.05rem; margin:1.1rem 0; border:1px solid var(--line); font-size:.93rem}
+.note{background:var(--surface); border-left:3px solid var(--rule)}
+.warn{background:var(--surface); border-left:3px solid var(--amber)}
+.stop{background:var(--surface); border-left:3px solid var(--red)}
+.note b,.warn b,.stop b{font-weight:700}
+.note p:first-child,.warn p:first-child,.stop p:first-child{margin-top:0}
+.note p:last-child,.warn p:last-child,.stop p:last-child{margin-bottom:0}
+
+/* ---------- figures / diagrams ---------- */
+figure.fig{
+  margin:1.2rem 0; border:1px solid var(--line); background:var(--surface);
+  padding:1rem 1rem .85rem; overflow-x:auto;
+}
+figure.fig svg{display:block; width:100%; min-width:33rem; height:auto}
+figure.fig figcaption{
+  margin-top:.8rem; padding-top:.7rem; border-top:1px solid var(--line);
+  font-size:.86rem; color:var(--muted);
+}
+figure.fig figcaption b{color:var(--ink); font-weight:600}
+
+/* shared SVG vocabulary */
+.fig .card{fill:none; stroke:var(--line); stroke-width:1}
+.fig .inner{fill:var(--bg); stroke:var(--line); stroke-width:1}
+.fig .chip{fill:var(--surface); stroke:var(--line); stroke-width:1}
+.fig .hero-box{fill:var(--bg); stroke:var(--rule); stroke-width:2}
+.fig .eb{
+  fill:var(--muted); font-family:"Syne","Montserrat",system-ui,sans-serif;
+  font-weight:700; font-size:9.5px; letter-spacing:.11em; text-transform:uppercase;
+}
+.fig .t{
+  fill:var(--ink); font-family:"Syne","Montserrat",system-ui,sans-serif;
+  font-weight:700; font-size:12.5px;
+}
+.fig .t-lg{font-size:15px}
+.fig .s{
+  fill:var(--muted); font-family:"Montserrat",system-ui,sans-serif;
+  font-weight:400; font-size:11px;
+}
+.fig .s-ink{fill:var(--ink)}
+.fig .mono{
+  fill:var(--muted); font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:10px;
+}
+.fig .num{
+  fill:var(--stepn-fg); font-family:"Syne",system-ui,sans-serif;
+  font-weight:700; font-size:11px;
+}
+.fig .numbg{fill:var(--stepn-bg)}
+.fig .up{stroke:var(--accent); stroke-width:2; fill:none}
+.fig .up-f{fill:var(--accent)}
+.fig .down{stroke:var(--ok-ink); stroke-width:2; fill:none}
+.fig .down-f{fill:var(--ok-ink)}
+.fig .flowline{stroke:var(--rule); stroke-width:2; fill:none}
+.fig .flow-f{fill:var(--rule)}
+.fig .dash{stroke:var(--line); stroke-width:1; stroke-dasharray:4 4}
+.fig .dot{fill:var(--rule)}
+.fig .muteline{stroke:var(--line); stroke-width:1}
+
+/* ---------- tables ---------- */
+.tw{overflow-x:auto; margin:1.1rem 0; border:1px solid var(--line)}
+table{border-collapse:collapse; width:100%; min-width:34rem; font-size:.89rem}
+th,td{text-align:left; padding:.6rem .75rem; border-bottom:1px solid var(--line); vertical-align:top}
+th{
+  background:var(--carbon); color:#F4F2F8; font-family:"Syne",system-ui,sans-serif;
+  font-weight:700; font-size:.76rem; text-transform:uppercase; letter-spacing:.07em;
+  position:sticky; top:0;
+}
+tbody tr:last-child td{border-bottom:0}
+tbody tr:nth-child(even){background:var(--surface)}
+td code{font-size:.84em}
+.pill{
+  display:inline-block; font-size:.7rem; font-weight:700; letter-spacing:.05em;
+  text-transform:uppercase; padding:.15rem .45rem; white-space:nowrap;
+}
+.pill.ok{background:rgba(0,125,138,.14); color:var(--ok-ink); border:1px solid var(--ok-ink)}
+.pill.act{background:rgba(250,178,25,.16); color:var(--act-ink); border:1px solid var(--act-ink)}
+.pill.stopp{background:rgba(208,59,59,.13); color:var(--stop-ink); border:1px solid var(--stop-ink)}
+
+/* ---------- shell / prompt blocks ---------- */
+pre.shell{
+  background:var(--shell); color:var(--shell-ink); padding:.85rem 1rem; margin:.7rem 0;
+  overflow-x:auto; font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:.85rem; line-height:1.5; border:1px solid var(--line);
+}
+pre.shell code{background:none; border:0; padding:0; color:inherit; font-size:1em}
+.say{
+  background:var(--surface); border:1px solid var(--line); border-left:3px solid var(--acid);
+  padding:.6rem .85rem; margin:.5rem 0; font-size:.93rem;
+}
+.say::before{
+  content:"You say"; display:block; font-family:"Syne",system-ui,sans-serif;
+  font-size:.66rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--muted); margin-bottom:.2rem;
+}
+.say em{font-style:normal; font-weight:600}
+
+/* ---------- symptom cards ---------- */
+.sym{border:1px solid var(--line); margin:.9rem 0; background:var(--surface)}
+.sym-h{
+  display:flex; gap:.7rem; align-items:center; padding:.7rem .9rem;
+  border-bottom:1px solid var(--line); flex-wrap:wrap;
+}
+.sym-h strong{font-family:"Syne",system-ui,sans-serif; font-size:.97rem; flex:1 1 14rem}
+.sym-b{padding:.75rem .9rem; font-size:.92rem}
+.sym-b p{margin:.4rem 0}
+.sym-b p:first-child{margin-top:0}
+.sym-b p:last-child{margin-bottom:0}
+
+/* ---------- flow ---------- */
+.flow{margin:1.2rem 0; border:1px solid var(--line); background:var(--surface); padding:1.1rem}
+.frow{display:flex; gap:.75rem; align-items:flex-start; padding:.5rem 0}
+.frow + .frow{border-top:1px dashed var(--line)}
+.fnum{
+  font-family:"Syne",system-ui,sans-serif; font-weight:700; font-size:.78rem;
+  color:var(--muted); flex:none; width:1.4rem; padding-top:.1rem;
+}
+.frow div{font-size:.92rem}
+.frow b{font-weight:600}
+
+/* ---------- tiles ---------- */
+.grid2{display:grid; gap:.8rem; grid-template-columns:repeat(auto-fit,minmax(13rem,1fr)); margin:1rem 0}
+.tile{border:1px solid var(--line); background:var(--surface); padding:.85rem .95rem}
+.tile b{font-family:"Syne",system-ui,sans-serif; display:block; margin-bottom:.2rem; font-size:.97rem}
+.tile span{font-size:.86rem; color:var(--muted)}
+
+/* ---------- tour ---------- */
+.tour{border:1px solid var(--line); border-left:3px solid var(--rule); margin:1.1rem 0; background:var(--surface)}
+.tour-h{padding:.75rem .95rem; border-bottom:1px solid var(--line)}
+.tour-h code{
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:.95rem;
+  font-weight:600; background:none; border:0; padding:0; color:var(--ink);
+}
+.tour-h .who{
+  display:inline-block; margin-left:.5rem; font-size:.68rem; font-weight:700;
+  letter-spacing:.06em; text-transform:uppercase; color:var(--muted);
+  border:1px solid var(--line); padding:.1rem .4rem; vertical-align:.1em;
+}
+.tour-h p{margin:.3rem 0 0; font-size:.9rem; color:var(--muted)}
+.tour-b{padding:.2rem .95rem .8rem}
+.tour-b dl{margin:0}
+.tour-b dt{
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:.84rem;
+  font-weight:600; margin-top:.7rem; color:var(--ink);
+}
+.tour-b dd{margin:.1rem 0 0; font-size:.88rem; color:var(--muted)}
+.tour-b dd b{color:var(--ink); font-weight:600}
+
+dl.gloss{margin:1rem 0 0}
+dl.gloss dt{
+  font-family:"Syne",system-ui,sans-serif; font-weight:700; margin-top:1rem;
+  font-size:.97rem; padding-top:.6rem; border-top:1px solid var(--line);
+}
+dl.gloss dd{margin:.2rem 0 0; color:var(--muted); font-size:.93rem}
+
+footer{
+  background:var(--carbon); color:rgba(244,242,248,.75); padding:2rem 1.2rem;
+  border-top:3px solid var(--acid); font-size:.87rem;
+}
+.foot-in{max-width:52rem; margin:0 auto}
+footer b{color:#F4F2F8}
+@media print{
+  nav.toc,#themeBtn,#resetBtn,#progWrap{display:none}
+  body{font-size:11pt} header.hero{background:none; color:#000; border-bottom:2px solid #000}
+  header.hero h1,header.hero p{color:#000} .badge{background:none; border:1px solid #000}
+  section{page-break-inside:avoid}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-in">
+    <span class="badge">[Engagement name] · v1.0</span>
+    <p class="eyebrow">[Engagement name]</p>
+    <h1>The team vault, explained</h1>
+    <p>One shared place for everything we learn on this engagement. Get set up in half an hour, then come back to this when something looks odd. Nothing here assumes you know Git.</p>
+  </div>
+</header>
+
+<nav class="toc" aria-label="Guide sections">
+  <div class="toc-in">
+    <a href="#what">What it is</a>
+    <a href="#why">Why</a>
+    <a href="#setup">Setup</a>
+    <a href="#tour">Tour</a>
+    <a href="#capture">Capture</a>
+    <a href="#asking">Asking</a>
+    <a href="#rules">What goes in</a>
+    <a href="#wrong">If it looks wrong</a>
+    <a href="#gloss">Glossary</a>
+    <button id="themeBtn" type="button" aria-label="Switch colour theme">Theme</button>
+  </div>
+</nav>
+
+<main>
+
+<!-- ============ WHAT IT IS ============ -->
+<section id="what">
+  <p class="eyebrow">Start here</p>
+  <h2>What this is</h2>
+  <p class="lede">A folder of notes on your laptop that keeps itself identical to everyone else's copy. You read and write it like any other folder. You never press sync and never type a command.</p>
+
+  <div class="note">
+    <p><b>The whole thing in three instructions.</b> Keep Obsidian open beside Claude Code. Say <em>"capture this"</em> when you have anything worth keeping. Ask questions in plain English. Everything below is detail you can look up later.</p>
+  </div>
+
+  <figure class="fig">
+    <svg viewBox="0 0 780 350" role="img" aria-label="Your laptop holds one folder opened by two apps. It syncs both ways through GitHub in the middle, which the other five laptops also sync through.">
+      <defs>
+        <marker id="a-up" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="up-f"/></marker>
+        <marker id="a-down" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="down-f"/></marker>
+      </defs>
+
+      <rect class="card" x="10" y="54" width="230" height="196"/>
+      <text class="eb" x="26" y="76">Your laptop</text>
+      <rect class="inner" x="26" y="88" width="198" height="150"/>
+      <text class="t" x="38" y="110">One folder</text>
+      <text class="mono" x="38" y="126">deliveryKB-[engagement]</text>
+      <rect class="chip" x="38" y="138" width="174" height="34"/>
+      <text class="s s-ink" x="48" y="153">Obsidian</text>
+      <text class="s" x="48" y="166">read and write it</text>
+      <rect class="chip" x="38" y="180" width="174" height="34"/>
+      <text class="s s-ink" x="48" y="195">Claude Code</text>
+      <text class="s" x="48" y="208">does the tedious part</text>
+      <text class="s" x="38" y="228">Two apps, one folder.</text>
+
+      <rect class="hero-box" x="300" y="54" width="180" height="196"/>
+      <text class="eb" x="316" y="76">GitHub</text>
+      <text class="t t-lg" x="390" y="132" text-anchor="middle">The copy</text>
+      <text class="t t-lg" x="390" y="150" text-anchor="middle">in the middle</text>
+      <text class="s" x="390" y="180" text-anchor="middle">Everyone syncs</text>
+      <text class="s" x="390" y="195" text-anchor="middle">through it. You will</text>
+      <text class="s" x="390" y="210" text-anchor="middle">rarely ever visit it.</text>
+
+      <rect class="card" x="540" y="54" width="230" height="196"/>
+      <text class="eb" x="556" y="76">Everyone else's laptops</text>
+      <rect class="chip" x="556" y="90" width="198" height="26"/><text class="s" x="568" y="107">BA · the same folder</text>
+      <rect class="chip" x="556" y="122" width="198" height="26"/><text class="s" x="568" y="139">UX · the same folder</text>
+      <rect class="chip" x="556" y="154" width="198" height="26"/><text class="s" x="568" y="171">Tech Lead · the same folder</text>
+      <rect class="chip" x="556" y="186" width="198" height="26"/><text class="s" x="568" y="203">Strategist · the same folder</text>
+      <rect class="chip" x="556" y="218" width="198" height="26"/><text class="s" x="568" y="235">Design Principal · the same folder</text>
+
+      <text class="eb" x="270" y="112" text-anchor="middle">push</text>
+      <path class="up" d="M246,124 L292,124" marker-end="url(#a-up)"/>
+      <text class="eb" x="270" y="182" text-anchor="middle">pull</text>
+      <path class="down" d="M292,194 L246,194" marker-end="url(#a-down)"/>
+      <path class="up" d="M534,124 L488,124" marker-end="url(#a-up)"/>
+      <path class="down" d="M488,194 L534,194" marker-end="url(#a-down)"/>
+
+      <line class="muteline" x1="10" y1="272" x2="770" y2="272"/>
+      <path class="up" d="M14,292 L44,292" marker-end="url(#a-up)"/>
+      <text class="s s-ink" x="58" y="296">Push · your changes go up on their own, about 2 minutes after you stop typing.</text>
+      <path class="down" d="M44,320 L14,320" marker-end="url(#a-down)"/>
+      <text class="s s-ink" x="58" y="324">Pull · everyone else's come down when you open Obsidian, then every 5 minutes.</text>
+    </svg>
+    <figcaption><b>The only two words worth knowing.</b> Push is your work going up, pull is everyone else's coming down. Both happen automatically, which is why nobody on this team types a Git command.</figcaption>
+  </figure>
+
+  <h3>The four words you will see in the plugin's own buttons</h3>
+  <div class="grid2">
+    <div class="tile"><b>Repository (repo)</b><span>The vault as a project with a history. One copy on GitHub, one on each laptop.</span></div>
+    <div class="tile"><b>Commit</b><span>A saved snapshot of your changes. Automatic, ~2 minutes after you stop typing.</span></div>
+    <div class="tile"><b>Pull</b><span>Everyone else's changes coming down. Automatic on open, then every 5 minutes.</span></div>
+    <div class="tile"><b>Push</b><span>Your snapshots going up so others can pull them. Also automatic.</span></div>
+  </div>
+
+  <p>Think of it as a shared folder with a memory. Like Dropbox, changes flow both ways without you asking. Unlike Dropbox, it keeps <em>every</em> version of every file forever, and records who changed what and when.</p>
+
+  <div class="note">
+    <p><b>Two consequences, both worth knowing.</b> You cannot lose work by using this normally — anything saved is recoverable even if you delete it. And anything you share is remembered, which is why <a href="#rules">what goes in the shared layer</a> is worth two minutes of your attention.</p>
+  </div>
+
+  <h3>What it is not</h3>
+  <p><b>Not live co-editing.</b> Two people typing in the same note at the same second is the one thing this handles badly — which is why we work in separate files (one note per interview, per audit strand) and add rows to the bottom of shared lists rather than rewriting them. Changes take two to five minutes to reach everyone.</p>
+  <p><b>Not a monitoring tool.</b> No dashboards of who contributed what, and there won't be. <b>Not a replacement</b> for Slack or Drive.</p>
+
+  <h3>Do I have to use Obsidian?</h3>
+  <p><b>No.</b> Claude Code covers you on its own: it pulls the latest when a session starts and pushes your changes when it finishes. What you give up is continuous background syncing while you work, so a colleague's mid-session addition won't appear until your next session. Nothing is ever lost either way, and the safety check runs regardless.</p>
+</section>
+
+<!-- ============ WHY ============ -->
+<section id="why">
+  <p class="eyebrow">If this is new to you</p>
+  <h2>Why we're doing this</h2>
+  <p class="lede">A handful of people, several weeks, a run of stakeholder interviews plus a multi-strand technical audit, a governance mapping exercise and a UX and content assessment — mostly in separate conversations. Then someone has to sit down and write what we collectively found.</p>
+
+  <p>On most engagements, by that point the material lives in some Google Docs, a Miro board, Slack threads that have scrolled away, a notebook, and a surprising amount in one person's head. Synthesis turns into archaeology.</p>
+  <p><b>That is the problem. Not tidiness — <em>evidence</em>.</b> A recommendation we can't trace back to who heard it and when falls over the first time the client pushes on it.</p>
+
+  <h3>What changes</h3>
+  <div class="flow">
+    <div class="frow"><span class="fnum">1</span><div><b>Everything lands as it happens.</b> Finish an interview, say "capture this", and it is filed, structured and attributed in about a minute. No end-of-week write-up session that never happens.</div></div>
+    <div class="frow"><span class="fnum">2</span><div><b>You can ask across everyone's work.</b> The technical audit, the interviews and the content review stop being three separate piles.</div></div>
+    <div class="frow"><span class="fnum">3</span><div><b>Every finding carries its source</b> — which is what makes it defensible in the room.</div></div>
+    <div class="frow"><span class="fnum">4</span><div><b>Synthesis starts already sorted</b> into the four pillars (People, Process, Product, Platform), the same structure the playback and roadmap use.</div></div>
+  </div>
+
+  <figure class="fig">
+    <svg viewBox="0 0 780 340" role="img" aria-label="Six people's parallel fieldwork converges into one record sorted into four pillars, which then produces the playback deck, the roadmap and the governance charter.">
+      <defs>
+        <marker id="a-in" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="flow-f"/></marker>
+      </defs>
+
+      <text class="eb" x="10" y="24">Several people, in parallel</text>
+      <rect class="chip" x="10" y="34" width="170" height="30"/><text class="s" x="24" y="53">BA · interviews</text>
+      <rect class="chip" x="10" y="72" width="170" height="30"/><text class="s" x="24" y="91">Tech Lead · technical audit</text>
+      <rect class="chip" x="10" y="110" width="170" height="30"/><text class="s" x="24" y="129">UX · UX and content</text>
+      <rect class="chip" x="10" y="148" width="170" height="30"/><text class="s" x="24" y="167">Strategist · strategy</text>
+      <rect class="chip" x="10" y="186" width="170" height="30"/><text class="s" x="24" y="205">Design Principal · design direction</text>
+      <rect class="chip" x="10" y="224" width="170" height="30"/><text class="s" x="24" y="243">DM · delivery</text>
+
+      <path class="muteline" d="M180,49 L206,49 M180,87 L206,87 M180,125 L206,125 M180,163 L206,163 M180,201 L206,201 M180,239 L206,239"/>
+      <line class="flowline" x1="206" y1="49" x2="206" y2="239"/>
+      <path class="flowline" d="M206,144 L242,144" marker-end="url(#a-in)"/>
+
+      <rect class="hero-box" x="248" y="56" width="200" height="176"/>
+      <text class="eb" x="264" y="78">The vault</text>
+      <text class="t t-lg" x="264" y="100">One shared record</text>
+      <rect class="chip" x="264" y="112" width="82" height="30"/><text class="s" x="274" y="131">People</text>
+      <rect class="chip" x="352" y="112" width="82" height="30"/><text class="s" x="362" y="131">Process</text>
+      <rect class="chip" x="264" y="150" width="82" height="30"/><text class="s" x="274" y="169">Product</text>
+      <rect class="chip" x="352" y="150" width="82" height="30"/><text class="s" x="362" y="169">Platform</text>
+      <text class="s" x="264" y="202">Four pillars. Every row</text>
+      <text class="s" x="264" y="218">names its evidence.</text>
+
+      <path class="flowline" d="M454,144 L486,144" marker-end="url(#a-in)"/>
+
+      <text class="eb" x="492" y="24">What it has to produce</text>
+      <rect class="inner" x="492" y="34" width="278" height="66"/>
+      <text class="t" x="506" y="58">Playback · weeks 6 to 8</text>
+      <text class="s" x="506" y="78">What we found, and why it holds up</text>
+      <rect class="inner" x="492" y="112" width="278" height="66"/>
+      <text class="t" x="506" y="136">Roadmap · weeks 9 to 10</text>
+      <text class="s" x="506" y="156">What to do, in what order, with what</text>
+      <rect class="inner" x="492" y="190" width="278" height="66"/>
+      <text class="t" x="506" y="214">Charter and governance</text>
+      <text class="s" x="506" y="234">How the engagement gets run afterwards</text>
+
+      <line class="muteline" x1="10" y1="282" x2="770" y2="282"/>
+      <text class="s s-ink" x="10" y="304">This is not extra admin. It is the same fieldwork you were going to do anyway, written down once,</text>
+      <text class="s s-ink" x="10" y="322">in a place that can answer a question across all of it instead of only holding documents.</text>
+    </svg>
+    <figcaption><b>The difference from Drive and Slack, in one line.</b> Drive stores documents and Slack stores conversations, but neither can answer "what has this team learned about agency governance?" That question is the whole point of the middle box.</figcaption>
+  </figure>
+
+  <h3>On an ordinary Tuesday</h3>
+  <div class="tw">
+    <table>
+      <thead><tr><th>You want to…</th><th>You do this</th></tr></thead>
+      <tbody>
+        <tr><td>Get an interview out of your head before the next one</td><td>"capture this" and point at the transcript</td></tr>
+        <tr><td>Find out whether anyone else hit the thing you just hit</td><td>Ask: <em>"has anyone else heard about content approval delays?"</em></td></tr>
+        <tr><td>Catch up after three days elsewhere</td><td>Ask: <em>"what's changed since Monday?"</em></td></tr>
+        <tr><td>Check we're not recommending something the client already has in flight</td><td>Open <code>02-discovery/inflight-dedup.md</code></td></tr>
+        <tr><td>Get context on the engagement without months of history</td><td><code>01-engagement/programme-primer.md</code> — a twenty-minute read</td></tr>
+        <tr><td>Ask a colleague to look at something</td><td>Add a row to <code>04-delivery/review-queue.md</code></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>What's in it for you specifically</h3>
+  <div class="grid2">
+    <div class="tile"><b>BA</b><span>Interviews and process maps stop being a write-up backlog. Your governance evidence is what the charter gets built from.</span></div>
+    <div class="tile"><b>UX</b><span>Your gap analysis needs what the interviews surfaced about content and audience fit. Ask rather than chase.</span></div>
+    <div class="tile"><b>Tech Lead</b><span>Several audit strands, one of you. Compiled tables come back structured with a line for your own verification.</span></div>
+    <div class="tile"><b>Strategist</b><span>Everyone's fieldwork pre-sorted into the four pillars, every row citing its source.</span></div>
+    <div class="tile"><b>Design Principal</b><span>A handful of billed days across the engagement. Ask what changed, get a straight answer with sources.</span></div>
+    <div class="tile"><b>DM</b><span>Coverage, overdue actions and open questions visible without asking everyone how they're getting on.</span></div>
+  </div>
+
+  <h3>The honest cost</h3>
+  <p>Half an hour of setup, once. Then one new habit: <b>say "capture this" instead of leaving it in your notes.</b> That is the whole ask. If you would rather not use it at all, send things to your DM the way you do now and they'll file them — nobody is a gate on anything.</p>
+  <p><b>And on the AI:</b> it does the filing, structuring, tagging and cross-referencing. It does not do the thinking, and its output is a draft a human checks. Any table it compiles carries a line recording who verified it and how much they checked.</p>
+</section>
+
+<!-- ============ SETUP ============ -->
+<section id="setup">
+  <p class="eyebrow">One time only · about 30 minutes</p>
+  <h2>Get set up</h2>
+  <p class="lede">Nine steps, in this order. Each one ends with how to tell it worked. If a step does not do what it says, stop and post a screenshot in the project Slack channel — do not skip ahead.</p>
+
+  <div id="progWrap">
+    <div id="progBar"><div id="progFill"></div></div>
+    <span id="progTxt">0 of 9 done</span>
+    <button id="resetBtn" type="button">Reset</button>
+  </div>
+
+  <div class="warn">
+    <p><b>Why the order matters.</b> Steps 1 and 5 are the two that actually stop people — a Claude account on the wrong plan, and a Git sign-in that has never been set up. Step 7 installs the safety check and step 8 turns on syncing: the check goes in <em>before</em> the automation, so nothing can sync before something is watching it.</p>
+  </div>
+
+  <div class="step">
+    <div class="step-head"><span class="step-n">1</span><h4>Check your Claude account is on the CreateFuture team</h4></div>
+    <p>Open Claude Code (or <a href="https://claude.ai">claude.ai</a>) and look at the account switcher. You need to see <b>CreateFuture</b>. If it only says <b>Personal</b>, the vault's shared skills and settings are not available to you — request to be added, and tell your DM in Slack so they can chase it. Steps 2 to 8 work while you wait, but <b>do not attempt step 9 until CreateFuture appears</b>.</p>
+    <div class="know"><span><b>You'll know it worked when</b> the switcher shows <b>CreateFuture</b>.</span></div>
+    <div class="chk"><input type="checkbox" id="s0"><label for="s0">Claude account shows CreateFuture</label></div>
+  </div>
+
+  <div class="step">
+    <div class="step-head"><span class="step-n">2</span><h4>Accept the GitHub invite</h4></div>
+    <p>Your DM invites you to <code>xSolutions365</code> (CreateFuture's registered company name) for the repository <code>deliveryKB-[engagement]</code>. Accept from the email or the notifications bell on <a href="https://github.com">github.com</a>. You may be asked for CreateFuture single sign-on, and for two-factor authentication if you have not set it up.</p>
+    <div class="know"><span><b>You'll know it worked when</b> the repository page shows folders (<code>01-engagement</code> and so on), not a 404.</span></div>
+    <div class="chk"><input type="checkbox" id="s1"><label for="s1">Invite accepted, I can see the repository</label></div>
+  </div>
+
+  <div class="step">
+    <div class="step-head"><span class="step-n">3</span><h4>Install GitHub Desktop and sign in</h4></div>
+    <p><a href="https://desktop.github.com">desktop.github.com</a>, signed in with the account that accepted the invite. You will use it twice ever: now, and if something needs rescuing.</p>
+    <div class="know"><span><b>You'll know it worked when</b> your name appears in <em>File → Options → Accounts</em>.</span></div>
+    <div class="chk"><input type="checkbox" id="s2"><label for="s2">GitHub Desktop installed and signed in</label></div>
+  </div>
+
+  <div class="step">
+    <div class="step-head"><span class="step-n">4</span><h4>Clone the vault to your laptop</h4></div>
+    <p>Cloning just means downloading your own working copy. In GitHub Desktop: <em>File → Clone repository</em> → <code>xSolutions365/deliveryKB-[engagement]</code>. Put it somewhere like <code>~/Documents/GitHub/deliveryKB-[engagement]</code>. <b>Not</b> inside iCloud Drive, Dropbox or OneDrive — two sync systems fighting over one folder causes exactly the confusion this setup avoids.</p>
+    <div class="know"><span><b>You'll know it worked when</b> the folder opens in Finder showing the same folder names you saw on GitHub, plus <code>START-HERE.md</code>.</span></div>
+    <div class="chk"><input type="checkbox" id="s3"><label for="s3">Vault cloned, I can see the folder on my laptop</label></div>
+  </div>
+
+  <div class="step">
+    <div class="step-head"><span class="step-n">5</span><h4>Give Git a saved sign-in (do not skip this)</h4></div>
+    <p><b>This is the step that has stopped everyone so far.</b> Cloning works, then everything afterwards keeps asking you to log in. Five minutes here and it never asks again.</p>
+    <p>The reason: GitHub Desktop's sign-in does not cover the <em>terminal</em> or the <em>Obsidian Git plugin</em>. They need their own saved credential — and GitHub stopped accepting account passwords years ago, so you use a token instead. A token is just a long password that only works for repositories.</p>
+
+    <h4 style="margin-top:1rem">5a · Create the token</h4>
+    <ol>
+      <li>On <a href="https://github.com/settings/tokens">github.com → Settings → Developer settings → Personal access tokens</a>, choose <b>Tokens (classic)</b> → <b>Generate new token (classic)</b>. It must be <em>classic</em>, not fine-grained.</li>
+      <li>Name it something like <code>[Engagement] vault</code>. 90 days' expiry is fine — it will ask you to make a new one when it lapses.</li>
+      <li>Tick the whole top-level <b>repo</b> box. Nothing else.</li>
+      <li>Generate, then <b>copy it immediately</b>. GitHub shows it exactly once.</li>
+    </ol>
+
+    <h4 style="margin-top:1rem">5b · Save it into your keychain</h4>
+    <p>In Terminal, paste this as one block. Change the path if your vault is elsewhere, and use your own GitHub username on the third line (no brackets).</p>
+    <pre class="shell"><code>cd ~/Documents/GitHub/deliveryKB-[engagement]
+git remote set-url origin https://github.com/xSolutions365/deliveryKB-[engagement].git
+git config --local credential.username your-github-username
+git fetch origin</code></pre>
+    <p>That last line triggers the prompt. When it asks for a <b>password</b>, paste your <em>token</em> — not your account password. Nothing appears as you paste; that is normal. Press Enter, and macOS stores it in your keychain for every future sync.</p>
+
+    <div class="warn">
+      <p><b>If you use an SSH key,</b> this matters even more: an SSH key with a passphrase means Obsidian Git asks you to unlock it several times an hour, and the tempting fix is to turn the plugin off — which silently stops your work reaching anyone. The lines above switch this one repository to HTTPS with a saved token. Your SSH key is untouched and keeps working everywhere else.</p>
+    </div>
+
+    <div class="know"><span><b>You'll know it worked when</b> <code>git fetch origin</code> finishes with no error, and running it again asks you for nothing.</span></div>
+    <div class="chk"><input type="checkbox" id="s4a"><label for="s4a">Token created and saved, fetch runs without asking</label></div>
+  </div>
+
+  <div class="step">
+    <div class="step-head"><span class="step-n">6</span><h4>Open the folder as an Obsidian vault</h4></div>
+    <p>Install <b>Obsidian</b> from <a href="https://obsidian.md">obsidian.md</a>, then <em>Open folder as vault</em> and pick the folder you cloned. It will ask whether you trust the author and want community plugins — say <b>yes</b>. It is a private CreateFuture repository, and the plugin in question is the one that does your syncing.</p>
+    <div class="know"><span><b>You'll know it worked when</b> the left-hand file list shows the vault's folders and <code>START-HERE.md</code> opens as readable text.</span></div>
+    <div class="chk"><input type="checkbox" id="s4"><label for="s4">Vault open in Obsidian, plugins trusted</label></div>
+  </div>
+
+  <div class="step">
+    <div class="step-head"><span class="step-n">7</span><h4>Install the safety check</h4></div>
+    <p>In Terminal (adjust the path if needed):</p>
+    <pre class="shell"><code>cd ~/Documents/GitHub/deliveryKB-[engagement]
+bash SETUP/hooks/install-guard.sh</code></pre>
+    <p>This runs automatically before anything is shared, and blocks four things: a note with no audience set, anything marked private that has strayed out of your private folder, files over 50&nbsp;MB, and a short list of sensitive phrases. When it blocks something it names the file, the reason, and the one thing to change.</p>
+    <div class="know"><span><b>You'll know it worked when</b> the command prints a confirmation line, with no red error text.</span></div>
+    <div class="chk"><input type="checkbox" id="s5"><label for="s5">Safety check installed</label></div>
+  </div>
+
+  <div class="step">
+    <div class="step-head"><span class="step-n">8</span><h4>Turn on automatic syncing</h4></div>
+    <p>In Obsidian: <em>Settings → Community plugins</em> → make sure <b>Obsidian Git</b> is on. Its settings arrive already configured: pull on open and every 5 minutes, push about 2 minutes after you stop typing, and a small status indicator in the bottom bar.</p>
+    <p>Two commands worth knowing, both from <kbd>Cmd</kbd>+<kbd>P</kbd>: <b>Sync now</b> to go immediately, and <b>Commit-and-sync and close</b> when shutting the laptop.</p>
+    <div class="stop">
+      <p><b>If Obsidian starts asking for a password, passphrase or SSH key,</b> do not turn the plugin off — that looks like a fix and actually stops your work reaching anyone. Go back and do <a href="#setup">step 5</a> properly. If you have already done it and it still asks, screenshot into Slack.</p>
+    </div>
+    <div class="know"><span><b>You'll know it worked when</b> a sync indicator appears in the bottom status bar and settles without prompting you. <a href="#status">What each state means →</a></span></div>
+    <div class="chk"><input type="checkbox" id="s6"><label for="s6">Obsidian Git on, indicator visible, no login prompts</label></div>
+  </div>
+
+  <div class="step">
+    <div class="step-head"><span class="step-n">9</span><h4>Open the same folder in Claude Code and onboard</h4></div>
+    <p>Point <b>Claude Code</b> at the <em>same folder</em> — two apps on one folder is what makes everything else work. Check the switcher says <b>CreateFuture</b> first (<a href="#setup">step 1</a>), then type:</p>
+    <div class="say"><em>onboard me</em></div>
+    <p>It asks your name and role, creates your private folder, checks the safety check is in place, writes your personal settings file, and finishes with a briefing on your part of the engagement. Two or three minutes.</p>
+    <div class="know"><span><b>You'll know it worked when</b> <code>SETUP/sync-tests/&lt;your-name&gt;.md</code> appears, and a few minutes later you can see that same file on GitHub in the browser. That round trip proves syncing works both ways.</span></div>
+    <div class="chk"><input type="checkbox" id="s7"><label for="s7">Onboarded, sync test file visible on GitHub</label></div>
+  </div>
+
+  <div class="note">
+    <p><b>Done — and from here you never type a Git command again.</b> Want a hand with any of it? Ask your DM for fifteen minutes on a screen share. Normal request, not an admission of anything.</p>
+  </div>
+</section>
+
+<!-- ============ TOUR ============ -->
+<section id="tour">
+  <p class="eyebrow">The map</p>
+  <h2>A tour of the vault</h2>
+  <p class="lede">Numbered folders, roughly in the order work flows through them: raw material in at <code>00</code>, governance out at <code>07</code>. You do not need to memorise any of this — <code>capture</code> chooses the folder for you. It is here for when you want to go and read something directly.</p>
+
+  <div class="note">
+    <p><b>Every file is a <code>.md</code> file.</b> Markdown: plain text where a few marks make formatting (<code>#</code> for a heading, <code>**bold**</code>, <code>-</code> for a bullet). In Obsidian you never see the marks. We use it because the vault can show exactly what changed between two versions of a note, which it cannot do with a Word file or a Google Doc.</p>
+  </div>
+
+  <h3>The two files at the top level</h3>
+  <div class="tour">
+    <div class="tour-b"><dl>
+      <dt>START-HERE.md</dt>
+      <dd>The front door. Where to go first, and what to do this week.</dd>
+      <dt>project-config.md</dt>
+      <dd>The manifest every skill reads first: roster, register owners, folder ownership, and the path mapping that resolves where everything lives.</dd>
+      <dt>CLAUDE.md · AGENTS.md · CLAUDE.local.md</dt>
+      <dd>Instructions for the assistant, not for you. Safe to ignore.</dd>
+    </dl></div>
+  </div>
+
+  <h3>The numbered folders</h3>
+
+  <div class="tour">
+    <div class="tour-h">
+      <code>00-source-documents/</code><span class="who">whoever captured it</span>
+      <p>Raw records, exactly as they arrived, plus the instruments we used to gather them. <b>Never edited as canonical</b> — synthesis happens elsewhere and links back here.</p>
+    </div>
+    <div class="tour-b"><dl>
+      <dt>call-notes/</dt>
+      <dd>Meeting and interview transcripts, dated. The single biggest folder, and the raw material for most findings.</dd>
+      <dt>client-docs/</dt>
+      <dd>What the client gave us: the task order, their own interview plan, their standard operating procedures.</dd>
+      <dt>discussion-guides/</dt>
+      <dd>The guides we take into interviews, one per session.</dd>
+      <dt>workshops/</dt>
+      <dd>Workshop transcripts and board exports.</dd>
+      <dt>email-log/ · slack-log/</dt>
+      <dd>Dated digests of project email and Slack, when we pull them in.</dd>
+    </dl></div>
+  </div>
+
+  <div class="tour">
+    <div class="tour-h">
+      <code>01-engagement/</code><span class="who">DM</span>
+      <p>The reference shelf. Read once at the start, then come back for a fact. This is where to send anyone who asks "what is this engagement?"</p>
+    </div>
+    <div class="tour-b"><dl>
+      <dt>programme-primer.md</dt>
+      <dd><b>Start here for context.</b> The programme behind the engagement, in about twenty minutes.</dd>
+      <dt>launch-context.md</dt>
+      <dd>Why the assessment exists and what happened before we arrived.</dd>
+      <dt>programme-metrics.md</dt>
+      <dd>The baseline numbers and KPIs we are measuring against.</dd>
+      <dt>ways-of-working-with-the-client.md</dt>
+      <dd>Client-side governance, cadence and comms expectations.</dd>
+      <dt>glossary.md</dt>
+      <dd>Client and programme terminology. Different from the glossary at the end of this guide, which covers the vault itself.</dd>
+      <dt>[deliverable]-briefing.md (+ .html, .pdf)</dt>
+      <dd>The briefing for a key deliverable, in whichever formats it is shared in.</dd>
+    </dl></div>
+  </div>
+
+  <div class="tour">
+    <div class="tour-h">
+      <code>02-discovery/</code><span class="who">shared, see below</span>
+      <p><b>The engine.</b> Where raw material becomes findings. Most of what you capture ends up somewhere in here.</p>
+    </div>
+    <div class="tour-b"><dl>
+      <dt>findings/people.md · process.md · product.md · platform.md</dt>
+      <dd><b>The four pillars — the heart of the vault.</b> Anyone may add a row; nobody edits anyone else's. Each row carries date, author, lens, basis, the finding, an evidence path that resolves, and severity. The DM curates: merging duplicates, adjusting severity, linking across pillars. Rows are never renumbered.</dd>
+      <dt>quick-wins.md</dt>
+      <dd>Things the client could start <em>before</em> the programme mobilises. Team-append. A row has to clear three tests: deliverable before mobilisation, no dependency on the platform decision, and ownable by someone who exists today.</dd>
+      <dt>loop-back-questions.md</dt>
+      <dd>What we still need to ask, while people are still bookable. Better here than discovered during synthesis.</dd>
+      <dt>interview-coverage.md</dt>
+      <dd>The tracker for every interview group: booked, held, synthesised, what is still outstanding.</dd>
+      <dt>inflight-dedup.md</dt>
+      <dd>Things the client is already building. Check it before writing a recommendation — it protects our credibility.</dd>
+      <dt>interviews/</dt>
+      <dd><span class="who" style="margin:0">BA</span> One synthesis note per interview, linking back to its transcript in <code>00-source-documents/</code>.</dd>
+      <dt>audit/</dt>
+      <dd><span class="who" style="margin:0">Tech Lead</span> The technical audit strands, plus the starting technical landscape summary.</dd>
+      <dt>process-maps/</dt>
+      <dd><span class="who" style="margin:0">BA</span> How work actually flows today — content requests, approvals, publishing.</dd>
+      <dt>workshops/</dt>
+      <dd>Synthesis of each workshop, paired with the transcript in <code>00-source-documents/workshops/</code>.</dd>
+      <dt>[baseline files, e.g. design-governance.md]</dt>
+      <dd>Standing baselines to assess against: things like the component library and design governance position, and what the client's own SOP says.</dd>
+    </dl></div>
+  </div>
+
+  <div class="tour">
+    <div class="tour-h">
+      <code>03-deliverables/</code><span class="who">the named lead</span>
+      <p>One folder per major deliverable, each carrying a <code>status</code> and a <code>rag</code>. The internal source — approved client versions live in the agreed client platform, with the authoritative link held here.</p>
+    </div>
+    <div class="tour-b"><dl>
+      <dt>roadmap/roadmap-candidates.md</dt>
+      <dd><span class="who" style="margin:0">Strategist + Design Principal</span> Candidate roadmap moves as they emerge, ahead of the roadmap phase.</dd>
+    </dl></div>
+  </div>
+
+  <div class="tour">
+    <div class="tour-h">
+      <code>04-delivery/</code><span class="who">DM</span>
+      <p>How the engagement is run. <b>These registers are not team-append</b> — they carry ID sequences with a never-renumber rule, so a second writer cannot be merged away. Spotted a risk or decision? Draft it into the review queue instead.</p>
+    </div>
+    <div class="tour-b"><dl>
+      <dt>raid-tracker.md</dt>
+      <dd>Risks, Assumptions, Issues, Dependencies — <b>CreateFuture delivery risk only</b>. The client's own organisational risks are findings, not RAID rows.</dd>
+      <dt>decisions.md</dt>
+      <dd>What was decided, when, by whom, and what it closed off.</dd>
+      <dt>actions-log.md</dt>
+      <dd>Who owes what by when. The BA is deputy on this one.</dd>
+      <dt>phase-tracker.md</dt>
+      <dd>The phases against the delivery plan, e.g. Mobilise, Assess, Synthesise, Roadmap, Enable. A checklist, not a sprint board.</dd>
+      <dt>review-queue.md</dt>
+      <dd><b>Anyone may add a row.</b> If you need a colleague to look at something, put it here with the file path rather than relying on them noticing a Slack message. A shared list fails loudly — you can see something has sat for four days — where a personal inbox fails silently.</dd>
+    </dl></div>
+  </div>
+
+  <div class="tour">
+    <div class="tour-h">
+      <code>05-stakeholders/</code><span class="who">DM</span>
+      <p>Who is who on the client side.</p>
+    </div>
+    <div class="tour-b"><dl>
+      <dt>stakeholder-map.md</dt>
+      <dd><b>Factual fields and neutral working guidance only.</b> Roles, reporting lines, interview status. Never candid characterisations — when the team needs relationship guidance, the useful implication gets rewritten in neutral terms.</dd>
+    </dl></div>
+  </div>
+
+  <div class="tour">
+    <div class="tour-h">
+      <code>06-value-and-lessons/</code><span class="who">open to everyone</span>
+      <p>What we are proving and what we are learning. Both team-append.</p>
+    </div>
+    <div class="tour-b"><dl>
+      <dt>value-register.md</dt>
+      <dd>QBL evidence — Quicker, Better, Leaner. Proof points as they happen, not reconstructed at the end.</dd>
+      <dt>lessons-learned.md</dt>
+      <dd>What we would do differently. Add it while it still stings.</dd>
+    </dl></div>
+  </div>
+
+  <div class="tour">
+    <div class="tour-h">
+      <code>07-governance/</code><span class="who">DM</span>
+      <p>The operational controls that run the engagement.</p>
+    </div>
+    <div class="tour-b"><dl>
+      <dt>ai-native-checklist.md</dt>
+      <dd><b>The consent register — the most important file in here.</b> It records, per use case, whether the client has agreed we may AI-process their material: interview transcripts, platform data, and client-supplied documents. <code>capture</code> reads it before analysing anything of theirs.</dd>
+      <dt>ai-native-evidence-log.md</dt>
+      <dd>An honest record of where AI-assisted working made this engagement quicker or better — and where it did not.</dd>
+      <dt>changelog.md</dt>
+      <dd>What changed in the vault, when, and by whom.</dd>
+    </dl></div>
+  </div>
+
+  <h3>The supporting folders</h3>
+  <div class="tour">
+    <div class="tour-b"><dl>
+      <dt>roles/</dt>
+      <dd>One profile per role — what that person cares about and is accountable for. Claude Code loads yours so its answers are aimed at your job rather than the average one.</dd>
+      <dt>templates/</dt>
+      <dd>The shapes a new note takes: <code>interview-note.md</code>, <code>audit-note.md</code>, <code>source-summary.md</code>. <code>capture</code> uses these for you.</dd>
+      <dt>schema/frontmatter.md</dt>
+      <dd>The labels at the top of every shared note — owner, type, audience. You do not need to learn them; capture writes them.</dd>
+      <dt>SETUP/</dt>
+      <dd>This guide, the setup sheet, the preflight checklist, the recovery guide, and <code>hooks/</code> — the safety check itself, plus the session-sync script that commits and pushes when you finish in Claude Code.</dd>
+    </dl></div>
+  </div>
+
+  <h3>The two private folders</h3>
+  <div class="tour">
+    <div class="tour-h">
+      <code>users/</code> and <code>00-inbox-local/</code><span class="who">yours alone</span>
+      <p><b>Gitignored — never synced, never seen by anyone, and not backed up.</b></p>
+    </div>
+    <div class="tour-b"><dl>
+      <dt>users/&lt;your-name&gt;/</dt>
+      <dd>Your private space. Be as messy and half-formed as you like — that is what it is for. Share when you are ready, not before.</dd>
+      <dt>00-inbox-local/</dt>
+      <dd>Somewhere to drop things you have not classified yet.</dd>
+    </dl></div>
+  </div>
+  <div class="warn">
+    <p><b>The one catch.</b> Because these are never synced, they have no history to recover from. Never keep the only copy of something that matters here.</p>
+  </div>
+</section>
+
+<!-- ============ CAPTURE ============ -->
+<section id="capture">
+  <p class="eyebrow">The one thing to learn</p>
+  <h2><code>capture</code> — the only verb you need</h2>
+  <p class="lede">One phrase covers everything you might put into the vault. You never pick a folder, never write anything technical, and never think about where a finding should live.</p>
+
+  <div class="say"><em>capture this</em> — then point at whatever it is</div>
+
+  <p>It asks <b>one</b> question, as two buttons rather than a sentence to type: <b>Project team</b> (the shared folders — the delivery team, not the client) or <b>Just me</b> (your private folder, never synced). Answer "project team" and it does the whole job in one pass:</p>
+
+  <div class="flow">
+    <div class="frow"><span class="fnum">1</span><div><b>Files the original</b> in the right folder, labelled, under your name.</div></div>
+    <div class="frow"><span class="fnum">2</span><div><b>Works out what we learned</b> — sorted by the four pillars, and by lens (external, internal or business).</div></div>
+    <div class="frow"><span class="fnum">3</span><div><b>Adds the findings rows</b>, each carrying your name and a link back to the source so anyone can check it.</div></div>
+    <div class="frow"><span class="fnum">4</span><div><b>Logs new open questions</b> to the loop-back list, and shortlists any <b>quick win</b> candidates.</div></div>
+    <div class="frow"><span class="fnum">5</span><div><b>Updates interview coverage</b>, if that is what you gave it.</div></div>
+    <div class="frow"><span class="fnum">6</span><div><b>Tells you what it did</b> in about three lines. Then stops.</div></div>
+  </div>
+
+  <h3>Things worth saying</h3>
+  <div class="say"><em>capture this</em> — with a transcript from this morning's client call</div>
+  <div class="say"><em>capture this crawl export, it's the mobile audit output</em></div>
+  <div class="say"><em>capture my notes from the discovery session — keep this one private for now</em></div>
+  <div class="say"><em>capture this photo of the workshop whiteboard</em></div>
+  <div class="say"><em>capture this Google Doc I exported — it's the client's in-flight roadmap</em></div>
+
+  <div class="note">
+    <p><b>You cannot get the filing wrong.</b> Working out where something goes is the job of the thing you are asking, not yours. If it files something somewhere odd, say so and it moves it — then mention it in Slack, because that is a setup problem rather than a you problem.</p>
+    <p style="margin-top:.6rem"><b>Word documents, PDFs, spreadsheets and images</b> capture directly, no conversion. For a Google Doc, <em>File → Download → Markdown (.md)</em> first gives a notably cleaner result.</p>
+  </div>
+
+  <h3 id="pending">Two promises, and why capture sometimes stops</h3>
+  <p><b>Nothing shared changes without you saying yes.</b> One question, an obvious "keep it private" option, and if several files are involved you see the list and can approve some and not others. It will never write to a shared folder without an explicit yes, move something out of your private folder on its own, send anything to the client, or send an email or Slack message as you.</p>
+  <p><b>And separately: no AI analysis of the client's material until the client has said yes, per type.</b> Occasionally <code>capture</code> will file something, tell you it is <b>waiting on client consent</b>, and stop without producing findings. That is deliberate. Consent is recorded separately for interview transcripts, for platform data like analytics exports, and for documents they share with us. Public web pages are different — crawling pages anyone can visit needs no permission, and capture will say which basis it used.</p>
+  <p>Nothing is lost while it waits. Once consent is recorded, the analysis runs over everything already filed.</p>
+</section>
+
+<!-- ============ ASKING ============ -->
+<section id="asking">
+  <p class="eyebrow">The half nobody expects</p>
+  <h2>Just ask it things</h2>
+  <p class="lede">No skill, no command, no syntax. Because everyone's fieldwork is in one place, you can ask questions that span all of it and get answers that cite where they came from.</p>
+
+  <div class="say"><em>What have we heard about content ownership so far?</em></div>
+  <div class="say"><em>Which of the known issues have we found evidence for in interviews?</em></div>
+  <div class="say"><em>What's still outstanding on the stakeholder interviews?</em></div>
+  <div class="say"><em>Summarise the platform findings for someone who's been on holiday</em></div>
+  <div class="say"><em>What contradicts what the client told us in the kickoff?</em></div>
+  <div class="say"><em>What questions are still open that I could ask in tomorrow's session?</em></div>
+
+  <p>This gets better every time anyone captures anything, which is why capturing promptly is worth the ten seconds. A finding in your notebook helps you; the same finding in the vault helps the Strategist write the synthesis and the Tech Lead avoid re-auditing something we already understand.</p>
+
+  <div class="note">
+    <p><b>Always check what matters.</b> Answers cite their sources — follow the citation when something is going in front of the client. Treat it as a very well-read colleague with a good memory: excellent for "what do we know about X", not a substitute for your judgement on what it means.</p>
+  </div>
+</section>
+
+<!-- ============ RULES ============ -->
+<section id="rules">
+  <p class="eyebrow">How we work in here</p>
+  <h2>What goes in, and what stays where it is</h2>
+
+  <div class="warn"><p><b>The test that settles most cases.</b> Would you be comfortable reading this aloud in a room with the whole team in it? Yes → project team. Hesitation → just me. And for anything about a colleague: would <em>they</em> be comfortable reading it about themselves, knowing you wrote it?</p></div>
+
+  <div class="tw">
+    <table>
+      <thead><tr><th>Bring these in</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td>Call and meeting transcripts</td><td>The raw material for findings. The highest-value thing you can capture.</td></tr>
+        <tr><td>Your interview notes, even rough</td><td>What you noticed is often not in the transcript.</td></tr>
+        <tr><td>Workshop outputs, whiteboard photos</td><td>Photos are fine — capture reads them.</td></tr>
+        <tr><td>Audit and crawl exports, analytics extracts</td><td>Come back as a table with a verification line for you to sign.</td></tr>
+        <tr><td>Client-shared documents</td><td>Filed and linked. Analysis waits for consent — <a href="#pending">see above</a>.</td></tr>
+        <tr><td>Draft deliverable sections</td><td>So the team sees the shape forming rather than waiting for a finished thing.</td></tr>
+        <tr><td>Anything that changed your mind</td><td>A contradicted assumption is worth more than a confirmed one.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="tw">
+    <table>
+      <thead><tr><th>Leave these out</th><th>What to do instead</th></tr></thead>
+      <tbody>
+        <tr><td>Big video and audio files</td><td>Leave in Drive or Teams. Capture the transcript plus a link. Nothing over 50&nbsp;MB.</td></tr>
+        <tr><td>Approved client deliverables</td><td>They live in the agreed client platform. The vault holds the internal source and the link.</td></tr>
+        <tr><td>Budgets, rates, margins, PO values, per-person allocation</td><td>Never in the shared vault. It stays in the systems that already hold it.</td></tr>
+        <tr><td>Personnel commentary, performance, availability</td><td>Not in the shared layer at all.</td></tr>
+        <tr><td>Off-record client context, political dynamics, candid views on named individuals</td><td>Tell your DM directly, or keep it in your private folder.</td></tr>
+        <tr><td>Anything you are unsure about</td><td>Capture it as <b>Just me</b>. You can always share it later; you cannot unshare it.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Two norms, and one evidence rule</h3>
+  <div class="grid2">
+    <div class="tile"><b>Start uncertain things locally</b><span>Your folder under <code>users/</code> is never synced and never seen. Be messy — that is what it is for.</span></div>
+    <div class="tile"><b>If syncing looks wrong, raise it</b><span>Screenshot into Slack. Nobody debugs this alone, and an attempted fix is harder to unpick than the original problem.</span></div>
+    <div class="tile"><b>No orphan findings</b><span>Every findings row carries an evidence path that resolves. If it cannot be traced, it is not a finding yet.</span></div>
+    <div class="tile"><b>Tables need a human signature</b><span>Any AI-compiled table carries a verification line: who checked what proportion, when, and what they found. Target sample 10%. <b>Agents never fill it in</b> — an unverified table is not finished work.</span></div>
+  </div>
+
+  <div class="note"><p><b>What about "ready for client review"?</b> That classification exists and the guard accepts it, but it is not offered at capture. Promoting a file to a client review candidate is a separate, deliberate act taken later — keeping it off the button stops it being ticked in passing on a first draft.</p></div>
+</section>
+
+<!-- ============ WRONG ============ -->
+<section id="wrong">
+  <p class="eyebrow">Troubleshooting</p>
+  <h2>If something looks wrong</h2>
+
+  <div class="stop">
+    <p><b>The one rule: do not fix it — post a screenshot in the project Slack channel.</b> Nobody is expected to debug this alone, and an unhelpful attempted fix is genuinely harder to unpick than the original problem. Stopping costs nothing; your work stays on your laptop either way.</p>
+  </div>
+
+  <div class="sym" id="blocked">
+    <div class="sym-h"><strong>"Blocked" — a message naming one of my files</strong><span class="pill ok">Safe — the system working</span></div>
+    <div class="sym-b">
+      <p>The safety check found something it will not share and stopped before it went anywhere. Most common message you will see, and not a fault.</p>
+      <p><b>Do:</b> read it — it names the file, the reason and the one thing to change. Usually a note with no audience set, in which case say <em>"capture this"</em> and let it file the note properly.</p>
+      <p><b>Don't:</b> look for a way to force it through. If the reason genuinely does not apply, say so in Slack and the DM adjusts the rule. Rules are adjustable; a leak is not.</p>
+    </div>
+  </div>
+
+  <div class="sym" id="keeps-asking">
+    <div class="sym-h"><strong>It keeps asking me to log in, over and over</strong><span class="pill act">Five minutes to fix</span></div>
+    <div class="sym-b">
+      <p>The terminal and the Obsidian Git plugin have no saved GitHub sign-in of their own. GitHub Desktop does not cover them, and GitHub no longer accepts your account password here. <b>The single most common setup problem.</b></p>
+      <p><b>Do:</b> <a href="#setup">setup step 5</a> — a classic token with the whole <b>repo</b> box ticked, then the four terminal lines, pasting the token when it asks for a password.</p>
+      <p><b>Don't:</b> re-clone, or keep dismissing the prompt hoping it settles. It will not.</p>
+    </div>
+  </div>
+
+  <div class="sym" id="ssh">
+    <div class="sym-h"><strong>Obsidian keeps asking for my SSH key or passphrase</strong><span class="pill act">Same fix</span></div>
+    <div class="sym-b">
+      <p>Your GitHub account uses an SSH key and the plugin has to unlock it on every sync — so you get asked constantly.</p>
+      <p><b>The trap:</b> switching the Git plugin off. The prompts stop, but so does your syncing, silently. Your work then sits on your laptop with no reason to suspect anything is wrong.</p>
+      <p><b>Do:</b> <a href="#setup">setup step 5</a>. It points this one repository at HTTPS with a saved token, so your key is never asked for and keeps working everywhere else.</p>
+    </div>
+  </div>
+
+  <div class="sym" id="personal-account">
+    <div class="sym-h"><strong>Claude only shows "Personal", not CreateFuture</strong><span class="pill stopp">Blocks the last step</span></div>
+    <div class="sym-b">
+      <p>Your Claude account is not on the CreateFuture team yet, so the vault's shared skills are not available and <em>onboard me</em> has nothing to run. A prerequisite rather than a fault — nothing local works around it.</p>
+      <p><b>Do:</b> request to be added, say so in Slack so the DM can chase. Steps 2 to 8 all work meanwhile.</p>
+    </div>
+  </div>
+
+  <div class="sym">
+    <div class="sym-h"><strong>"Conflict", or strange <code>&lt;&lt;&lt;&lt;</code> markers in a file</strong><span class="pill stopp">Stop — get help</span></div>
+    <div class="sym-b">
+      <p>You and someone else changed the same part of the same file at about the same time.</p>
+      <p><b>Do:</b> stop editing that file, screenshot, post in Slack. Both versions still exist and nothing is lost — a couple of minutes with someone who has done it before.</p>
+      <p><b>Why it is rare:</b> we work in separate files and append to the bottom of shared lists precisely so this almost never happens. Twice in the same file is a signal to change how we are working, so mention it.</p>
+    </div>
+  </div>
+
+  <div class="sym">
+    <div class="sym-h"><strong>A warning triangle, or red sync error text</strong><span class="pill act">Screenshot it</span></div>
+    <div class="sym-b">
+      <p>Usually an expired token, a dropped network, or single sign-on wanting reauthorisation. If the wording mentions authentication, credentials or permission denied, it is almost certainly the token — <a href="#keeps-asking">see above</a>, and note tokens lapse on whatever expiry you chose.</p>
+      <p><b>Do:</b> screenshot the exact wording and post it. The exact wording is what makes it a two-minute fix rather than twenty.</p>
+      <p><b>Meanwhile:</b> keep working. Your changes queue locally and go when the connection returns.</p>
+    </div>
+  </div>
+
+  <div class="sym">
+    <div class="sym-h"><strong>Nothing is syncing and there is no indicator</strong><span class="pill act">Two quick checks</span></div>
+    <div class="sym-b">
+      <p><b>One:</b> <em>Settings → Community plugins</em> — is <b>Obsidian Git</b> actually toggled on? Usually this.</p>
+      <p><b>Two:</b> did you use <em>Open folder as vault</em>? Opening it another way can leave the plugin unable to see the repository.</p>
+      <p><b>If both look right:</b> screenshot and post. Do not reinstall or re-clone.</p>
+    </div>
+  </div>
+
+  <div class="sym">
+    <div class="sym-h"><strong>I think I deleted something, or something has vanished</strong><span class="pill ok">Recoverable</span></div>
+    <div class="sym-b">
+      <p>If it was ever synced it still exists in the vault's history. Deleting removes a file from view, not from the record.</p>
+      <p><b>Do:</b> say what went missing in Slack and roughly when you last saw it. Do not recreate it from memory yet.</p>
+      <p><b>The exception:</b> files in your private folder are never synced, so they have no history to recover from. That is the trade for privacy.</p>
+    </div>
+  </div>
+
+  <div class="sym">
+    <div class="sym-h"><strong>Someone else's version replaced mine</strong><span class="pill ok">Both exist</span></div>
+    <div class="sym-b">
+      <p>You both edited around the same time and one sync landed after the other. The earlier version is still in the history.</p>
+      <p><b>Do:</b> say so in Slack rather than retyping. On a shared list, add your content as a new row at the bottom instead of editing existing rows — the habit that prevents it entirely.</p>
+    </div>
+  </div>
+
+  <div class="note">
+    <p><b>Something not listed?</b> Same rule: screenshot, post, do not fix. Anything genuinely new is worth adding to this guide, so raising it helps whoever hits it next.</p>
+  </div>
+</section>
+
+<!-- ============ GLOSSARY ============ -->
+<section id="gloss">
+  <p class="eyebrow">Reference</p>
+  <h2>Glossary</h2>
+  <dl class="gloss">
+    <dt>Vault / KB</dt><dd>The same thing: the folder holding everything we know about this engagement. "Vault" is Obsidian's word; "KB" is delivery-speak.</dd>
+    <dt>Capture</dt><dd>The one verb. Say "capture this", point at something, answer one question about audience.</dd>
+    <dt>Findings</dt><dd>What we have learned, as rows in four lists — one per pillar. Each carries who found it and a link to the evidence.</dd>
+    <dt>The four pillars (4P)</dt><dd>People, Process, Product, Platform. Everything sorts into one, and the playback and roadmap are built the same way.</dd>
+    <dt>Lens</dt><dd>Whose problem a finding is: <b>Ext</b> external or customer-facing, <b>Int</b> internal or operational, <b>Biz</b> commercial. A column on every finding.</dd>
+    <dt>Loop-back questions</dt><dd>Things we still need to ask, kept in one list so we catch them while people are still bookable.</dd>
+    <dt>Quick win</dt><dd>Something the client could start before the programme mobilises, with no dependency on the platform decision.</dd>
+    <dt>Verification line</dt><dd>The line at the top of any AI-compiled table recording which human checked how much of it, when, and what they found. An unverified table is not finished work.</dd>
+    <dt>RAID</dt><dd>Risks, Assumptions, Issues, Dependencies — CreateFuture delivery risk, in <code>04-delivery/</code>. The client's own organisational risks are findings, not RAID rows.</dd>
+    <dt>Classification</dt><dd>The audience label. Capture offers <b>Project team</b> or <b>Just me</b>. A third value, <b>client</b>, flags a file as a client review candidate — applied later, deliberately, never at capture.</dd>
+    <dt>Frontmatter</dt><dd>The few lines of labels at the top of a note — owner, type, audience. Capture writes them; you can ignore them.</dd>
+    <dt>Consent register</dt><dd><code>07-governance/ai-native-checklist.md</code> — what the client has agreed we may AI-analyse, by type. Capture reads it before analysing anything of theirs.</dd>
+    <dt>The guard</dt><dd>The safety check from setup step 7. Blocks anything shared without an audience, anything private that has strayed, oversized files, and a short list of sensitive phrases.</dd>
+    <dt>Commit · pull · push · repository</dt><dd>A saved snapshot · receiving others' changes · sending yours · the vault as a project with a full history. All automatic.</dd>
+    <dt>Personal access token (PAT)</dt><dd>A long password from GitHub that stands in for your account password when a tool needs a repository. Created in step 5, saved once, then never typed again until it expires. The <em>classic</em> kind with <code>repo</code> ticked.</dd>
+    <dt>SSH key vs HTTPS</dt><dd>Two ways to prove who you are to GitHub. SSH keys make Obsidian ask for a passphrase every few minutes, so this vault uses HTTPS with a saved token. Switching this one repository does not affect your key elsewhere.</dd>
+    <dt>Conflict</dt><dd>Two people changed the same part of the same file. Rare, recoverable, and the one thing to stop and ask about.</dd>
+  </dl>
+</section>
+
+</main>
+
+<footer>
+  <div class="foot-in">
+    <p><b>Stuck, unsure, or something looks odd?</b> Screenshot it into the project Slack channel. Or ask your DM for fifteen minutes on a screen share — a completely normal request.</p>
+    <p style="margin-top:.9rem">[Engagement name] · CreateFuture · internal · v1.0, [date]<br>
+    Team: [DM name] (Delivery) · [BA name] (BA) · [UX name] (UX) · [Strategist name] (Strategy) · [Design Principal name] (Design Principal) · [Tech Lead name] (Tech Lead)</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var KEY = "kb-guide-setup-v1", THEME = "kb-guide-theme";
+
+  /* ---- theme toggle ---- */
+  var root = document.documentElement, btn = document.getElementById("themeBtn");
+  function sysDark(){ return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches; }
+  try { var t = localStorage.getItem(THEME); if (t) root.setAttribute("data-theme", t); } catch(e){}
+  function label(){
+    var cur = root.getAttribute("data-theme") || (sysDark() ? "dark" : "light");
+    btn.textContent = cur === "dark" ? "Light" : "Dark";
+  }
+  label();
+  btn.addEventListener("click", function(){
+    var cur = root.getAttribute("data-theme") || (sysDark() ? "dark" : "light");
+    var next = cur === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem(THEME, next); } catch(e){}
+    label();
+  });
+
+  /* ---- setup progress ---- */
+  var boxes = Array.prototype.slice.call(document.querySelectorAll('.chk input[type="checkbox"]'));
+  var fill = document.getElementById("progFill");
+  var txt  = document.getElementById("progTxt");
+  var reset= document.getElementById("resetBtn");
+
+  function load(){
+    var saved = {};
+    try { saved = JSON.parse(localStorage.getItem(KEY) || "{}"); } catch(e){ saved = {}; }
+    boxes.forEach(function(b){ if (saved[b.id]) b.checked = true; });
+  }
+  function save(){
+    var out = {};
+    boxes.forEach(function(b){ if (b.checked) out[b.id] = 1; });
+    try { localStorage.setItem(KEY, JSON.stringify(out)); } catch(e){}
+  }
+  function paint(){
+    var done = boxes.filter(function(b){ return b.checked; }).length;
+    var pct = boxes.length ? Math.round(done / boxes.length * 100) : 0;
+    fill.style.width = pct + "%";
+    txt.textContent = done === boxes.length && boxes.length
+      ? "All " + boxes.length + " done — you're set up"
+      : done + " of " + boxes.length + " done";
+  }
+  boxes.forEach(function(b){ b.addEventListener("change", function(){ save(); paint(); }); });
+  reset.addEventListener("click", function(){
+    boxes.forEach(function(b){ b.checked = false; });
+    save(); paint();
+  });
+  load(); paint();
+})();
+</script>
+
+</body>
+</html>

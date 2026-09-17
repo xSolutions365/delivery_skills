@@ -1,0 +1,32 @@
+name: Safety check
+
+# Server-side enforcement of the same four rules the local pre-commit hook
+# runs. Deliberately calls the exact same script — see the header comment in
+# SETUP/hooks/check-rules.sh. Two callers, one implementation; never fork
+# the rules themselves into this file.
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  guard:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Run the vault safety check against changed files
+        run: |
+          set -uo pipefail
+          BASE="${{ github.event.pull_request.base.sha }}"
+          HEAD="${{ github.event.pull_request.head.sha }}"
+          FILES=$(git diff --name-only --diff-filter=ACM "$BASE" "$HEAD" || true)
+          if [ -z "$FILES" ]; then
+            echo "No changed files to check."
+            exit 0
+          fi
+          chmod +x SETUP/hooks/check-rules.sh
+          # shellcheck disable=SC2086
+          bash SETUP/hooks/check-rules.sh $FILES

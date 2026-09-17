@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+# Local pre-commit guard. A thin wrapper — the rules live in check-rules.sh,
+# which the GitHub Actions workflow also calls. One implementation, two callers.
+#
+# Deliberately bash-3.2 compatible: macOS ships bash 3.2, which has no
+# `mapfile`. Using it here made the hook crash and return exit 1, blocking
+# EVERY commit including clean ones, while still looking like a working guard.
+# Keep this portable — do not reintroduce mapfile or other bash-4 builtins.
+set -uo pipefail
+
+ROOT="$(git rev-parse --show-toplevel)"
+RULES="$ROOT/SETUP/hooks/check-rules.sh"
+
+if [ ! -x "$RULES" ]; then
+  echo "Safety check missing at $RULES — run: bash SETUP/hooks/install-guard.sh"
+  exit 1
+fi
+
+# Collect staged files (added/copied/modified) into the positional list.
+# No mapfile, no empty-array pitfalls under `set -u`.
+set --
+while IFS= read -r line; do
+  [ -n "$line" ] && set -- "$@" "$line"
+done < <(git diff --cached --name-only --diff-filter=ACM)
+
+# Nothing staged, nothing to check.
+[ "$#" -eq 0 ] && exit 0
+
+exec "$RULES" "$@"
