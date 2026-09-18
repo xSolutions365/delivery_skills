@@ -25,7 +25,6 @@ Open Claude Code in any project and type:
 ```
 /plugin install delivery-tooling@createfuture-delivery-marketplace
 /plugin install governance-tools@createfuture-delivery-marketplace
-/plugin install sow-tools@createfuture-delivery-marketplace
 /plugin install agent-setup@createfuture-delivery-marketplace
 /plugin install OKF-commands@createfuture-delivery-marketplace
 /plugin install kb-creation@createfuture-delivery-marketplace
@@ -52,13 +51,6 @@ Governance and compliance tools.
 | ----- | ------------ |
 | `iso-compliance-check` | Audit a delivery KB against the seven CreateFuture ISO requirements — produces a RAG status report per requirement, cross-reference checks, and prioritised remediation steps |
 | `delivery-risk-scanner` | Build a self-contained "Agentic Delivery Risk Scanner" HTML page — scores an engagement against 21 standard delivery risk factors, plots them on an impact/probability matrix, and produces an exec summary, quadrant playbook, ranked register and risk glossary |
-
-### sow-tools
-
-Statement of Work analysis tools.
-
-| Skill | What It Does |
-| ----- | ------------ |
 | `sow-risk-analyzer` | Analyse SOWs from the supplier's perspective — produces a summary card, an interactive 5×5 risk radar, and a prioritised risk and redline recommendations table |
 
 ### agent-setup

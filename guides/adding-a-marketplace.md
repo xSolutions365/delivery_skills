@@ -10,7 +10,7 @@ You "add" a marketplace once, and after that you can install whichever add-ons f
 
 ## What is a plugin?
 
-A **plugin** is one add-on from a marketplace — a bundle of ready-made tools for a specific area of work. For example, the `sow-tools` plugin bundles together everything needed to analyse Statements of Work. Each plugin can be installed separately, so you only add what you actually need.
+A **plugin** is one add-on from a marketplace — a bundle of ready-made tools for a specific area of work. For example, the `governance-tools` plugin bundles together everything needed for ISO compliance, delivery risk scanning, and SOW analysis. Each plugin can be installed separately, so you only add what you actually need.
 
 ## Skills vs. commands — what's the difference?
 
@@ -49,7 +49,7 @@ Once the marketplace has been added, install plugins through the desktop app's G
 1. Open the **Claude Code desktop app**.
 2. Click your username in the bottom-left corner.
 3. Go to **Settings → Plugins → Discover**.
-4. Open the **Filter** dropdown, choose **Source**, and select the CreateFuture marketplace. This narrows the list down to just the CreateFuture plugins (`delivery-tooling`, `governance-tools`, `sow-tools`, `agent-setup`, `OKF-commands`).
+4. Open the **Filter** dropdown, choose **Source**, and select the CreateFuture marketplace. This narrows the list down to just the CreateFuture plugins (`delivery-tooling`, `governance-tools`, `agent-setup`, `OKF-commands`, `engagement-reporting`, `kb-creation`).
 5. For each plugin you want, click **Add** and pick an install option (see below).
 6. **Check it worked.** Open a project and type `/` on its own in the chat box — you should see the new commands (like `/new-project-kb`) alongside Claude Code's built-in ones.
 

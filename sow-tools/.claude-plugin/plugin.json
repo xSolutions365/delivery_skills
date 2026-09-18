@@ -1,8 +1,0 @@
-{
-  "name": "sow-tools",
-  "description": "Statement of Work tools — supplier-side risk analysis, redline recommendations, and negotiation briefs",
-  "version": "1.0.0",
-  "author": { "name": "CreateFuture" },
-  "license": "MIT",
-  "keywords": ["sow", "contract", "risk", "supplier", "negotiation", "delivery"]
-}
