@@ -28,6 +28,7 @@ Open Claude Code in any project and type:
 /plugin install sow-tools@createfuture-delivery-marketplace
 /plugin install agent-setup@createfuture-delivery-marketplace
 /plugin install OKF-commands@createfuture-delivery-marketplace
+/plugin install kb-creation@createfuture-delivery-marketplace
 ```
 
 Your commands and skills are now available in every Claude Code session. Type `/` to see them.
@@ -77,6 +78,22 @@ Open Knowledge Format vault management commands for running an Obsidian vault as
 | `/lint-vault` | Full vault health check — broken links, orphans, missing frontmatter, index drift, and knowledge gaps |
 | `/ask [question]` | Answer a question from the vault with citations; optionally file the answer back as a new note |
 | `/validate-links` | Fast scan for broken `[[wiki links]]` only |
+
+### kb-creation
+
+Engagement knowledge-base vault lifecycle — scaffold, configure, onboard, capture into, harden, and close out a shared team vault.
+
+| Skill | What It Does |
+| ----- | ------------ |
+| `new-kb` | Scaffold a brand-new engagement vault from this skill's own bundled reference copy |
+| `configure-engagement` | Turn a freshly scaffolded, generic knowledge base into one specific engagement |
+| `define-roles` | Fill in the role profiles for a newly configured engagement |
+| `seed-references` | Create the registry and reference files that `capture` and `onboard` assume already exist |
+| `harden-vault` | Install and tailor the vault's safety net (pre-commit guard, blocked-terms list, `CLAUDE.md`/`AGENTS.md`) for this engagement |
+| `onboard` | First run for a new person on the project's vault |
+| `capture` | The one verb for putting anything into the vault — files it, synthesises findings, logs risks/actions/decisions/lessons |
+| `launch-checklist` | Walk the preflight checklist before inviting the team into a new vault |
+| `close-out-engagement` | Wind down a vault at the end of an engagement |
 
 > The `demo` plugin (example skills for learning how Claude Code skills work) has moved to its own marketplace: [xSolutions365/demoMarketplace](https://github.com/xSolutions365/demoMarketplace).
 
