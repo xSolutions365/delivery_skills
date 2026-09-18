@@ -51,6 +51,7 @@ Governance and compliance tools.
 | Skill | What It Does |
 | ----- | ------------ |
 | `iso-compliance-check` | Audit a delivery KB against the seven CreateFuture ISO requirements — produces a RAG status report per requirement, cross-reference checks, and prioritised remediation steps |
+| `delivery-risk-scanner` | Build a self-contained "Agentic Delivery Risk Scanner" HTML page — scores an engagement against 21 standard delivery risk factors, plots them on an impact/probability matrix, and produces an exec summary, quadrant playbook, ranked register and risk glossary |
 
 ### sow-tools
 

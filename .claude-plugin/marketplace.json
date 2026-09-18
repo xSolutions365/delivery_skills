@@ -20,10 +20,10 @@
     {
       "name": "governance-tools",
       "source": "./governance-tools",
-      "description": "Governance and compliance tools — ISO delivery requirements audit, RAG status reporting, and remediation guidance",
-      "version": "1.0.0",
+      "description": "Governance and compliance tools — ISO delivery requirements audit, delivery risk scanning, RAG status reporting, and remediation guidance",
+      "version": "1.1.0",
       "category": "governance",
-      "tags": ["governance", "iso", "compliance", "audit", "rag"]
+      "tags": ["governance", "iso", "compliance", "audit", "rag", "risk"]
     },
     {
       "name": "sow-tools",
