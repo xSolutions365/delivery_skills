@@ -29,6 +29,7 @@ Open Claude Code in any project and type:
 /plugin install agent-setup@createfuture-delivery-marketplace
 /plugin install OKF-commands@createfuture-delivery-marketplace
 /plugin install kb-creation@createfuture-delivery-marketplace
+/plugin install engagement-reporting@createfuture-delivery-marketplace
 ```
 
 Your commands and skills are now available in every Claude Code session. Type `/` to see them.
@@ -94,6 +95,14 @@ Engagement knowledge-base vault lifecycle — scaffold, configure, onboard, capt
 | `capture` | The one verb for putting anything into the vault — files it, synthesises findings, logs risks/actions/decisions/lessons |
 | `launch-checklist` | Walk the preflight checklist before inviting the team into a new vault |
 | `close-out-engagement` | Wind down a vault at the end of an engagement |
+
+### engagement-reporting
+
+Client engagement checkin reporting.
+
+| Skill | What It Does |
+| ----- | ------------ |
+| `engagement-report` | Scaffold, draft, revise, and present weekly/fortnightly client engagement checkin reports, and manage the account-level repo that holds them across engagements |
 
 > The `demo` plugin (example skills for learning how Claude Code skills work) has moved to its own marketplace: [xSolutions365/demoMarketplace](https://github.com/xSolutions365/demoMarketplace).
 
