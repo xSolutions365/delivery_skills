@@ -56,6 +56,14 @@
       "version": "1.0.0",
       "category": "knowledge",
       "tags": ["kb", "knowledge-base", "vault", "engagement", "onboarding", "delivery"]
+    },
+    {
+      "name": "example-skills",
+      "source": "./example-skills",
+      "description": "Example skills for learning how Claude Code skills work",
+      "version": "1.0.0",
+      "category": "demo",
+      "tags": ["example", "demo", "learning"]
     }
   ]
 }

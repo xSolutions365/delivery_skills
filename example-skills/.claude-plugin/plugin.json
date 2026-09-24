@@ -1,0 +1,8 @@
+{
+  "name": "example-skills",
+  "description": "Example skills for learning how Claude Code skills work",
+  "version": "1.0.0",
+  "author": { "name": "CreateFuture" },
+  "license": "MIT",
+  "keywords": ["example", "demo", "learning"]
+}

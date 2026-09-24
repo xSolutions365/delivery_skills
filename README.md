@@ -29,6 +29,7 @@ Open Claude Code in any project and type:
 /plugin install OKF-commands@createfuture-delivery-marketplace
 /plugin install kb-creation@createfuture-delivery-marketplace
 /plugin install engagement-reporting@createfuture-delivery-marketplace
+/plugin install example-skills@createfuture-delivery-marketplace
 ```
 
 Your commands and skills are now available in every Claude Code session. Type `/` to see them.
@@ -97,7 +98,13 @@ Client engagement checkin reporting.
 | ----- | ------------ |
 | `engagement-report` | Scaffold, draft, revise, and present weekly/fortnightly client engagement checkin reports, and manage the account-level repo that holds them across engagements |
 
-> The `demo` plugin (example skills for learning how Claude Code skills work) has moved to its own marketplace: [xSolutions365/demoMarketplace](https://github.com/xSolutions365/demoMarketplace).
+### example-skills
+
+Example skills for learning how Claude Code skills work.
+
+| Skill | What It Does |
+| ----- | ------------ |
+| `tell-a-joke` | Tells a short, light-hearted joke |
 
 ## Authenticating with GitHub
 
