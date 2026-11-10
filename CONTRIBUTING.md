@@ -13,6 +13,10 @@ purpose fits: governance, reporting, engagement KBs, delivery-template setup,
 OKF vaults, agent personalisation, or learning examples. New plugin names use
 lowercase letters, numbers, and hyphens.
 
+Still trying an idea out? Put it in [drafts](drafts/README.md) first. Drafts are
+not installable, so nothing reaches anyone's Claude until it moves into a
+plugin.
+
 ## Add a skill or command
 
 A skill lives in `plugins/<plugin>/skills/<skill-name>/SKILL.md`:
@@ -64,7 +68,9 @@ Update README navigation if plugin names or task categories change.
    each changed plugin.
 2. Exercise the workflow on a representative fictional example in the intended
    app. Describe the input and result in the PR.
-3. Check changed links, examples, and installation identifiers.
+3. Run `python3 scripts/check_repo.py`. It confirms that every skill and command
+   is in the catalogue, the marketplace matches the plugin folders, and links
+   resolve.
 4. For changed plugin behavior or bundled files, increase the version in its
    `plugin.json`. This repo also declares versions in marketplace entries, so
    keep the matching entry equal; the plugin manifest takes precedence.
