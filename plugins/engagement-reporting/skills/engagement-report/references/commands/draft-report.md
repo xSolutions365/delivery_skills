@@ -54,7 +54,7 @@ Run once at the start of each period.
        dates (everything else in frontmatter — `engagement`, `team_leadership`,
        `client_logo` — carries forward unchanged, since those describe the
        engagement itself, not the period).
-     - Do not interpret, summarize, or otherwise change the copied content —
+     - Do not interpret, summarise, or otherwise change the copied content —
        only copy and tag. Turning notes into new or updated content is
        `revise-report`'s job, run next.
    - **If no previous period folder was found** (brand new engagement, or this

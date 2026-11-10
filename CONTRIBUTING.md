@@ -1,6 +1,6 @@
 # Contribute a delivery skill
 
-[Home](README.md) · [Catalogue](CATALOG.md) · [Help](guides/troubleshooting.md)
+[Home](README.md) · [Catalogue](CATALOGUE.md) · [Help](guides/troubleshooting.md)
 
 [Open an issue](https://github.com/xSolutions365/delivery_skills/issues) with an
 idea or feedback; you do not need to write a skill to contribute. For file
@@ -8,7 +8,7 @@ changes, create a branch (or fork) and open a small pull request.
 
 ## Choose where it belongs
 
-Check the [catalogue](CATALOG.md) for overlap. Use an existing plugin when its
+Check the [catalogue](CATALOGUE.md) for overlap. Use an existing plugin when its
 purpose fits: governance, reporting, engagement KBs, delivery-template setup,
 OKF vaults, agent personalisation, or learning examples. New plugin names use
 lowercase letters, numbers, and hyphens.
@@ -50,7 +50,7 @@ commands, and resources outside `.claude-plugin/`, which holds the manifest.
 
 ## Keep the catalogue useful
 
-Update [CATALOG.md](CATALOG.md) in the same PR as a new or changed tool:
+Update [CATALOGUE.md](CATALOGUE.md) in the same PR as a new or changed tool:
 
 - Explain the task and expected output in plain language.
 - Link the source and name the containing plugin.
@@ -71,7 +71,7 @@ Update README navigation if plugin names or task categories change.
 3. Run `python3 scripts/check_repo.py`. It confirms that every skill and command
    is in the catalogue, the marketplace matches the plugin folders, and links
    resolve.
-4. For changed plugin behavior or bundled files, increase the version in its
+4. For changed plugin behaviour or bundled files, increase the version in its
    `plugin.json`. This repo also declares versions in marketplace entries, so
    keep the matching entry equal; the plugin manifest takes precedence.
    Root README/guide-only changes do not need a plugin version bump.
@@ -85,4 +85,4 @@ rename a plugin incidentally as part of another change.
 
 A version bump signals a release; it does not enable users' automatic updates.
 Follow [the update guidance](guides/adding-a-marketplace.md#keep-up-to-date)
-or the organization's publishing process.
+or the organisation's publishing process.

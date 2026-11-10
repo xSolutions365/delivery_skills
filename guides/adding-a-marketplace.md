@@ -1,6 +1,6 @@
 # Install delivery skills
 
-[Home](../README.md) · [Catalogue](../CATALOG.md) · [Help](troubleshooting.md)
+[Home](../README.md) · [Catalogue](../CATALOGUE.md) · [Help](troubleshooting.md)
 
 One setup covers Cowork, chat and Claude Code. You do not need a GitHub account,
 and there is nothing to download.
@@ -17,11 +17,11 @@ and there is nothing to download.
 
 3. Open **Discover**. The delivery plugins are marked "by delivery_skills".
    Names appear without hyphens, so `governance-tools` in the
-   [catalogue](../CATALOG.md) shows as **Governance tools**.
+   [catalogue](../CATALOGUE.md) shows as **Governance tools**.
 4. Select **Add** next to the plugin you want. Add more at any time.
 
 You only add the marketplace once. If Claude refuses the repository, your
-organization restricts sources; ask in **#ITSD** on Slack.
+organisation restricts sources; ask in **#ITSD** on Slack.
 
 ## Use a skill
 
@@ -31,7 +31,7 @@ the tool by name:
 > Use sow-risk-analyzer to review this SOW from our perspective as the supplier.
 
 You can also type `/` and pick the skill from the list. The
-[catalogue](../CATALOG.md) gives a request to try for every tool and lists what
+[catalogue](../CATALOGUE.md) gives a request to try for every tool and lists what
 each one needs. For a practice run with no files, add **Example skills** and ask
 for a joke.
 

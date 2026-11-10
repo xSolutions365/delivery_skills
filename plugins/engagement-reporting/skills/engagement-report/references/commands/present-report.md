@@ -27,7 +27,7 @@ engagement name.
    - `Overall` → `overall: [{ dimension, status, detail }, ...]`, one entry per
      table row, in the order the rows appear. `status` must be exactly `Red`,
      `Amber`, or `Green` — if a row's status word doesn't match one of these
-     three (case-insensitive is fine, normalize to title case), ask the user
+     three (case-insensitive is fine, normalise to title case), ask the user
      rather than guessing which colour was intended.
    - `Key points` → `key_points: { delivered: [...], next: [...] }` from the
      "Value delivered this period" / "Decisions for next period" lists. If the

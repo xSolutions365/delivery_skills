@@ -1,6 +1,6 @@
 # Help with delivery skills
 
-[Home](../README.md) · [Catalogue](../CATALOG.md) ·
+[Home](../README.md) · [Catalogue](../CATALOGUE.md) ·
 [Install](adding-a-marketplace.md)
 
 ## I cannot find the marketplace or plugin
@@ -8,14 +8,14 @@
 Follow the [install steps](adding-a-marketplace.md#install). The marketplace is
 listed as `delivery_skills`, and its plugins are under **Discover**. Adding the
 marketplace only makes the list available; you still select **Add** on a plugin.
-If Claude refuses the repository, your organization restricts sources; ask in
+If Claude refuses the repository, your organisation restricts sources; ask in
 **#ITSD**.
 
 ## The skill does not appear or Claude does not use it
 
 Start a new task/session and check that the containing plugin is installed and
 enabled. Type `/` and find the plugin prefix, or name the skill in your request.
-Provide the files/folder listed in the [catalogue](../CATALOG.md).
+Provide the files/folder listed in the [catalogue](../CATALOGUE.md).
 
 ## I see the same skill twice
 
@@ -82,13 +82,13 @@ as not cached, run this once:
 /plugin install okf-commands@createfuture-delivery-marketplace
 ```
 
-## Organization marketplace setup
+## Organisation marketplace setup
 
-Adding your own marketplace and setting up an organization's GitHub-synced
-marketplace are different routes. The organization-sync route currently requires
+Adding your own marketplace and setting up an organisation's GitHub-synced
+marketplace are different routes. The organisation-sync route currently requires
 a private/internal repo on github.com; this repo is public. An Owner should
-choose the appropriate route rather than assuming organization sync is set up.
-See [Anthropic's organization guide](https://support.claude.com/en/articles/13837433-manage-plugins-for-your-organization).
+choose the appropriate route rather than assuming organisation sync is set up.
+See [Anthropic's organisation guide](https://support.claude.com/en/articles/13837433-manage-plugins-for-your-organization).
 
 ## Ask for help or report a problem
 

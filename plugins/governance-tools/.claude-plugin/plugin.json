@@ -1,7 +1,7 @@
 {
   "name": "governance-tools",
   "description": "Governance and compliance tools — ISO delivery requirements audit, delivery risk scanning, SOW supplier-risk analysis, RAG status reporting, and remediation guidance",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "author": { "name": "CreateFuture" },
   "license": "MIT",
   "keywords": ["governance", "iso", "compliance", "audit", "delivery", "rag", "risk", "sow", "contract"]

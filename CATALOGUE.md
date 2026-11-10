@@ -114,12 +114,12 @@ and approved use of the supplied material.
 
 Copies `exampleProject` from the separate delivery KB template repository into a
 client/project folder, then offers to create or update a private
-`deliveryKB-<client>` repo in the xSolutions365 GitHub organization.
+`deliveryKB-<client>` repo in the xSolutions365 GitHub organisation.
 
 **Bring:** client and project names, a destination, Git with your name and email
 configured, authenticated GitHub CLI (`gh`), and membership of the xSolutions365
-GitHub organization. The [delivery KB template](https://github.com/xSolutions365/delivery-kb-template)
-is private, and the new repo is created in that organization.
+GitHub organisation. The [delivery KB template](https://github.com/xSolutions365/delivery-kb-template)
+is private, and the new repo is created in that organisation.
 The command checks for `gh` before copying, even if you later choose not to
 publish. Use Code for this workflow.
 

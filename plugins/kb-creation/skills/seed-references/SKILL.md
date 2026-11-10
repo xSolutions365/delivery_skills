@@ -189,7 +189,7 @@ already there and left alone:
   next person who reads the file.
 - **Never overwrite a file that already has real content.** Check first;
   report it as found, not touched.
-- **Never guess a consent status toward "granted".** Missing information
+- **Never guess a consent status towards "granted".** Missing information
   writes as `NOT YET GRANTED`, full stop.
 - **Never invent path locations.** Use `project-config.md`'s mapping; if a
   logical file has no entry there, that is a gap to flag, not one to

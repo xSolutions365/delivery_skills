@@ -21,7 +21,7 @@ account-repo structure, but the actual git commit/push stays manual.
    carried-over item clearly marked and needing a human check (is this still
    accurate? did it happen?). If no previous report exists, creates a blank
    report from the template.
-3. **Synthesize** — run `revise-report` against the notes captured so far,
+3. **Synthesise** — run `revise-report` against the notes captured so far,
    typically once before the checkin to get a solid draft in front of
    stakeholders. Merges the notes into the existing draft — proposing a RAG
    status per dimension with its reasoning, and populating Key points/Actions/

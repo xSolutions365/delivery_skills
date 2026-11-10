@@ -21,7 +21,7 @@
       "name": "governance-tools",
       "source": "./plugins/governance-tools",
       "description": "Governance and compliance tools — ISO delivery requirements audit, delivery risk scanning, SOW supplier-risk analysis, RAG status reporting, and remediation guidance",
-      "version": "1.2.0",
+      "version": "1.2.1",
       "category": "governance",
       "tags": ["governance", "iso", "compliance", "audit", "rag", "risk", "sow", "contract"]
     },
@@ -45,7 +45,7 @@
       "name": "engagement-reporting",
       "source": "./plugins/engagement-reporting",
       "description": "Scaffold, draft, revise, and present weekly/fortnightly client engagement checkin reports, and manage the account-level repo that holds them across engagements",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "category": "delivery",
       "tags": ["engagement", "reporting", "checkin", "client", "delivery", "presentation"]
     },
@@ -53,7 +53,7 @@
       "name": "kb-creation",
       "source": "./plugins/kb-creation",
       "description": "Scaffold, configure, onboard, capture into, harden, and close out an engagement knowledge-base vault — from a brand-new client project through to archiving it at the end",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "category": "knowledge",
       "tags": ["kb", "knowledge-base", "vault", "engagement", "onboarding", "delivery"]
     },
