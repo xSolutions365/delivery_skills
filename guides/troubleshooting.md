@@ -44,16 +44,17 @@ This repo is public, but workflows may use other repos/services. For example,
 `new-project-kb` needs Git, authenticated GitHub CLI, and access to the delivery
 KB template. Check the catalogue requirements; ask **#ITSD** if setup blocks you.
 
-## OKF-commands and account sync
+## okf-commands was renamed
 
-The existing `OKF-commands` name contains uppercase letters. Code accepts it,
-but its validator warns that Claude.ai marketplace sync requires lowercase
-plugin names. Cowork/account import is unverified; an importer may reject the
-marketplace because of that name.
+This plugin was called `OKF-commands`. Claude's account sync requires lowercase
+plugin names, so it is now `okf-commands` and its commands are
+`/okf-commands:<command>`. The marketplace records the rename, so Claude Code
+moves an existing installation to the new name. If Code then reports the plugin
+as not cached, run this once:
 
-Maintainers should plan a lowercase-name migration before relying on account
-sync for this bundle. A rename affects existing install identifiers, so the
-documentation cleanup preserves the current name.
+```text
+/plugin install okf-commands@createfuture-delivery-marketplace
+```
 
 ## Organization marketplace setup
 

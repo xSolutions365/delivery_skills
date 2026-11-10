@@ -72,9 +72,10 @@ Update README navigation if plugin names or task categories change.
 5. Open a PR explaining the problem, result, and validation. After merging a
    plugin release, verify the relevant marketplace sync or installed Code update.
 
-The current `OKF-commands` identifier causes a Claude.ai sync warning. See
-[the migration note](guides/troubleshooting.md#okf-commands-and-account-sync);
-do not rename it incidentally as part of another change.
+A plugin's name is its install identifier. If one must change, add the old
+name to `renames` in the marketplace manifest, as was done for
+[`okf-commands`](guides/troubleshooting.md#okf-commands-was-renamed); do not
+rename a plugin incidentally as part of another change.
 
 A version bump signals a release; it does not enable users' automatic updates.
 Follow [Code update guidance](guides/claude-code.md#keep-a-direct-installation-up-to-date)

@@ -131,14 +131,17 @@ from the delivery KB template.”
 | --- | --- |
 | Create a vault and follow its configuration, onboarding, capture, and close-out process | `kb-creation`, starting with `new-kb` |
 | Specifically use `exampleProject` from the separate delivery KB template repo | `delivery-tooling:new-project-kb` |
-| Maintain notes in an existing Open Knowledge Format vault | `OKF-commands` |
+| Maintain a developer's notes in an existing Open Knowledge Format vault | `okf-commands` |
 
 The scaffolding workflows use different templates. Check your engagement's
 structure before mixing their follow-on tools.
 
 ## Work with an Open Knowledge Format vault
 
-**Install:** `OKF-commands` · [Source](OKF-commands/commands/)
+**Install:** `okf-commands` · [Source](OKF-commands/commands/)
+
+These commands were written for a developer's personal notes vault (notes with
+code examples), not for an engagement knowledge base.
 
 **Bring:** an existing Open Knowledge Format (OKF) vault with its schema and
 instructions in `CLAUDE.md`. These tools use Obsidian-style links and indexes;
@@ -146,15 +149,15 @@ they do not create a new engagement vault.
 
 | Command | What you get | Example invocation |
 | --- | --- | --- |
-| [new-note](OKF-commands/commands/new-note.md) | A note with frontmatter and index/log updates | `/OKF-commands:new-note "01 - Programming/CSharp" "Pattern Matching"` |
-| [summarise-section](OKF-commands/commands/summarise-section.md) | A refreshed folder index | `/OKF-commands:summarise-section "01 - Programming/CSharp"` |
-| [lint-vault](OKF-commands/commands/lint-vault.md) | A health report on links, frontmatter, indexes, and gaps | `/OKF-commands:lint-vault` |
-| [ask](OKF-commands/commands/ask.md) | An answer grounded in the vault, with citations | `/OKF-commands:ask What have we learned about onboarding?` |
-| [validate-links](OKF-commands/commands/validate-links.md) | A report of broken wiki links | `/OKF-commands:validate-links` |
+| [new-note](OKF-commands/commands/new-note.md) | A note with frontmatter and index/log updates | `/okf-commands:new-note "01 - Programming/CSharp" "Pattern Matching"` |
+| [summarise-section](OKF-commands/commands/summarise-section.md) | A refreshed folder index | `/okf-commands:summarise-section "01 - Programming/CSharp"` |
+| [lint-vault](OKF-commands/commands/lint-vault.md) | A health report on links, frontmatter, indexes, and gaps | `/okf-commands:lint-vault` |
+| [ask](OKF-commands/commands/ask.md) | An answer grounded in the vault, with citations | `/okf-commands:ask How do we handle pattern matching in C#?` |
+| [validate-links](OKF-commands/commands/validate-links.md) | A report of broken wiki links | `/okf-commands:validate-links` |
 
-Replace the example folders with yours. The uppercase identifier matches
-existing installations. See [the known sync limitation](guides/troubleshooting.md#okf-commands-and-account-sync)
-before trying this plugin through Cowork or organization distribution.
+Replace the example folders with yours. This plugin was previously named
+`OKF-commands`; see [the rename note](guides/troubleshooting.md#okf-commands-was-renamed)
+if you installed it under that name.
 
 ## Personalise your project agent
 
