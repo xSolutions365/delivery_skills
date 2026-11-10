@@ -1,7 +1,7 @@
 {
   "name": "delivery-tooling",
-  "description": "Set up a new client project knowledge base from the delivery KB template, with an optional GitHub repo",
-  "version": "1.0.2",
+  "description": "Create a new client project folder from the delivery KB template, with an optional GitHub repo. Needs Claude Code and xSolutions365 GitHub access.",
+  "version": "1.0.3",
   "author": { "name": "CreateFuture" },
   "license": "MIT",
   "keywords": ["delivery", "project", "kb", "setup", "onboarding"]
