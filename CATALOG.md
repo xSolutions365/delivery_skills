@@ -1,7 +1,7 @@
 # Delivery skill catalogue
 
-[Home](README.md) · [Cowork setup](guides/cowork.md) ·
-[Code setup](guides/claude-code.md) · [Help](guides/troubleshooting.md)
+[Home](README.md) · [Install](guides/adding-a-marketplace.md) ·
+[Help](guides/troubleshooting.md)
 
 Choose a task below. Each section names the **plugin to install**, what you need,
 and a request to try. Use normal language, or type `/` to select a tool explicitly.
@@ -18,8 +18,9 @@ and a request to try. Use normal language, or type `/` to select a tool explicit
 
 ## Where can I use these?
 
-Plugins can be added in Cowork or Claude Code. Share the relevant folder with
-Cowork, or open it as the project in Code. Each workflow also needs the files,
+[Install once](guides/adding-a-marketplace.md) and the plugins are available in
+Cowork and Claude Code. Share the relevant folder with Cowork, or open it as
+the project in Code. Each workflow also needs the files,
 local tools, and access listed below.
 
 **Compatibility status:** these entries describe the source workflows.

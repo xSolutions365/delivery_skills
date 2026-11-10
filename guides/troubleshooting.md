@@ -1,16 +1,15 @@
 # Help with delivery skills
 
 [Home](../README.md) · [Catalogue](../CATALOG.md) ·
-[Cowork setup](cowork.md) · [Code setup](claude-code.md)
+[Install](adding-a-marketplace.md)
 
 ## I cannot find the marketplace or plugin
 
-- **Cowork:** [add the marketplace](cowork.md#3-add-the-marketplace-if-it-is-missing).
-  It is listed as `delivery_skills`. Your organization may restrict sources or
-  plugins.
-- **Code:** run `/plugin` and check Marketplaces and Installed. The marketplace
-  name is `createfuture-delivery-marketplace`.
-- Adding a marketplace makes its list available; you still install the plugin.
+Follow the [install steps](adding-a-marketplace.md#install). The marketplace is
+listed as `delivery_skills`, and its plugins are under **Discover**. Adding the
+marketplace only makes the list available; you still select **Add** on a plugin.
+If Claude refuses the repository, your organization restricts sources; ask in
+**#ITSD**.
 
 ## The skill does not appear or Claude does not use it
 
@@ -27,17 +26,43 @@ the marketplace plugin, whose entries carry the plugin prefix (for example
 `governance-tools:sow-risk-analyzer`), and remove or turn off the others so you
 are not running an out-of-date copy.
 
-## It works in Code but does not appear in Cowork
+## The plugin does not appear in Claude Code
 
-A direct Code installation is local to Code. Follow [Cowork setup](cowork.md)
-to add it there. Account sync goes from Claude to Code, not the other way around.
+Plugins added in Customize reach Claude Code only when all of these are true:
+
+- You are signed in to Claude Code with your Claude account, not an API key or
+  a cloud provider.
+- Claude Code is version 2.1.273 or later (`claude --version`).
+- You started a new session, or ran `/reload-plugins`, after adding the plugin.
+
+If one of those cannot be met, install directly instead. Enter these one at a
+time in a Claude Code session, replacing `governance-tools` with the plugin you
+want, and choose **Install for you** when asked:
+
+```text
+/plugin marketplace add xSolutions365/delivery_skills
+/plugin install governance-tools@createfuture-delivery-marketplace
+```
+
+A direct install stays on that machine and does not appear in Cowork. To keep
+it current, open `/plugin`, go to **Marketplaces**, select
+`createfuture-delivery-marketplace` and choose **Enable auto-update**. To update
+one plugin now, run this in your terminal:
+
+```bash
+claude plugin update governance-tools@createfuture-delivery-marketplace
+```
+
+## It works in Claude Code but not in Cowork
+
+You installed it directly in Claude Code, which stays on that machine. Follow
+the [install steps](adding-a-marketplace.md#install) to add it to your account.
 
 ## An update has not appeared
 
-For direct Code installations, check auto-update and follow
-[the manual update steps](claude-code.md#keep-a-direct-installation-up-to-date).
-For organization plugins, ask the maintainer whether the version was published
-or successfully synced. Refresh the session before checking the result.
+Follow [keep up to date](adding-a-marketplace.md#keep-up-to-date), then start a
+new task. For a direct Claude Code install, use the update command above. If
+the change is still missing, ask the maintainer whether it has been merged.
 
 ## GitHub access or a local program is missing
 
