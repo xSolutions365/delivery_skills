@@ -9,7 +9,7 @@ This skill helps the user update the CLAUDE.md file that configures the agent fo
 
 ## When to Use
 
-- First time setup after cloning the repository
+- First time setup in a project
 - When starting a new project or client engagement
 - When the user's role or preferences change
 
@@ -17,7 +17,9 @@ This skill helps the user update the CLAUDE.md file that configures the agent fo
 
 ### Step 1: Read Current State
 
-Read the current CLAUDE.md file. Show the user a brief summary of what's currently configured, noting which sections are filled in and which still have placeholders.
+Read the CLAUDE.md file in the current project. Show the user a brief summary of what's currently configured, noting which sections are filled in and which still have placeholders.
+
+If the project has no CLAUDE.md, or it lacks the sections listed in Step 2, use the template bundled with this skill at `assets/CLAUDE.template.md`. With the user's agreement, create CLAUDE.md from the template, or add only the missing sections to the existing file. Never overwrite or remove content that is already there.
 
 ### Step 2: Offer Updates
 

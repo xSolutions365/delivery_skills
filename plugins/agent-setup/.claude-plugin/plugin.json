@@ -1,7 +1,7 @@
 {
   "name": "agent-setup",
   "description": "Interactive setup wizard for personalising your Claude Code agent for delivery work",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": { "name": "CreateFuture" },
   "license": "MIT",
   "keywords": ["setup", "onboarding", "agent"]

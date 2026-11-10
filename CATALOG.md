@@ -169,9 +169,9 @@ if you installed it under that name.
 An interactive walkthrough to update a project's `CLAUDE.md` with your role,
 project context, and communication preferences.
 
-**Bring:** a project `CLAUDE.md` based on [this repository's template](CLAUDE.md).
-The skill fills that template's bracketed sections; if your project's file does
-not have them, copy the template in first. Start in Code with that project open.
+**Bring:** a project open in Code. If it has no `CLAUDE.md`, or the file lacks
+the sections this skill fills, the skill offers to add them from its
+[bundled template](plugins/agent-setup/skills/customise-agent/assets/CLAUDE.template.md).
 This changes a project file, not your Claude account preferences.
 
 **Try:** “Use customise-agent to update this project's instructions for my role.”

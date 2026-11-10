@@ -29,7 +29,7 @@
       "name": "agent-setup",
       "source": "./plugins/agent-setup",
       "description": "Interactive setup wizard for personalising your Claude Code agent",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "category": "setup",
       "tags": ["setup", "onboarding"]
     },
