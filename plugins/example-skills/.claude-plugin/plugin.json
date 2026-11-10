@@ -1,7 +1,7 @@
 {
   "name": "example-skills",
-  "description": "Example skills for learning how Claude Code skills work",
-  "version": "1.0.0",
+  "description": "A practice skill that tells a joke. Use it to check that your install works.",
+  "version": "1.0.1",
   "author": { "name": "CreateFuture" },
   "license": "MIT",
   "keywords": ["example", "demo", "learning"]

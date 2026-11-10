@@ -35,7 +35,7 @@ configuration, or hooks, start with Code.
 | Tool | What you get | Example request |
 | --- | --- | --- |
 | [SOW risk analysis](plugins/governance-tools/skills/sow-risk-analyzer/SKILL.md) (`sow-risk-analyzer`) | A supplier-side summary, interactive risk radar, and prioritised recommendations with suggested redlines | “Use sow-risk-analyzer to review this SOW from our perspective as the supplier.” |
-| [Delivery risk scanner](plugins/governance-tools/skills/delivery-risk-scanner/SKILL.md) (`delivery-risk-scanner`) | An HTML assessment of 21 delivery risk factors, with a risk matrix and prioritised risks | “Use delivery-risk-scanner to assess this engagement using these mobilisation notes.” |
+| [Delivery risk scanner](plugins/governance-tools/skills/delivery-risk-scanner/SKILL.md) (`delivery-risk-scanner`) | A single HTML file scoring 21 delivery risk factors, with a risk matrix, the top three risks, and a weekly update tab for Operations | “Use delivery-risk-scanner to assess this engagement using these mobilisation notes.” |
 | [ISO compliance check](plugins/governance-tools/skills/iso-compliance-check/SKILL.md) (`iso-compliance-check`) | A RAG assessment against seven CreateFuture delivery ISO requirements, with gaps and remediation steps | “Use iso-compliance-check to review this project's knowledge base.” |
 
 **Bring:** the SOW and annexes for contract analysis; engagement context and your

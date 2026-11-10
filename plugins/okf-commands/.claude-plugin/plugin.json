@@ -1,7 +1,7 @@
 {
   "name": "okf-commands",
-  "description": "Open Knowledge Format vault commands — create notes, summarise sections, lint the vault, query with citations, and validate links",
-  "version": "1.0.0",
+  "description": "For developers. Commands for a personal notes vault in Open Knowledge Format: add notes, summarise folders, check links and ask questions with citations.",
+  "version": "1.0.1",
   "author": { "name": "CreateFuture" },
   "license": "MIT",
   "keywords": ["okf", "obsidian", "vault", "knowledge", "wiki", "notes"]

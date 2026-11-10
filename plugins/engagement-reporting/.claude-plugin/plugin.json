@@ -1,7 +1,7 @@
 {
   "name": "engagement-reporting",
-  "description": "Scaffold, draft, revise, and present weekly/fortnightly client engagement checkin reports, and manage the account-level repo that holds them across engagements",
-  "version": "1.0.1",
+  "description": "Turn your notes into the weekly or fortnightly client check-in report and a branded presentation. No notes? It can interview you instead.",
+  "version": "1.0.2",
   "author": { "name": "CreateFuture" },
   "license": "Internal-CreateFuture-Only",
   "keywords": ["engagement", "reporting", "checkin", "client", "delivery", "presentation"]

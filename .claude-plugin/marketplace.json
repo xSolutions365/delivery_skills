@@ -12,56 +12,56 @@
     {
       "name": "delivery-tooling",
       "source": "./plugins/delivery-tooling",
-      "description": "Set up a new client project knowledge base from the delivery KB template, with an optional GitHub repo",
-      "version": "1.0.2",
+      "description": "Create a new client project folder from the delivery KB template, with an optional GitHub repo. Needs Claude Code and xSolutions365 GitHub access.",
+      "version": "1.0.3",
       "category": "delivery",
       "tags": ["delivery", "project", "kb", "onboarding"]
     },
     {
       "name": "governance-tools",
       "source": "./plugins/governance-tools",
-      "description": "Governance and compliance tools — ISO delivery requirements audit, delivery risk scanning, SOW supplier-risk analysis, RAG status reporting, and remediation guidance",
-      "version": "1.2.1",
+      "description": "Start here. Review a Statement of Work for supplier risk, score an engagement's delivery risks, or check a project knowledge base against CreateFuture's ISO delivery requirements.",
+      "version": "1.3.0",
       "category": "governance",
       "tags": ["governance", "iso", "compliance", "audit", "rag", "risk", "sow", "contract"]
     },
     {
       "name": "agent-setup",
       "source": "./plugins/agent-setup",
-      "description": "Interactive setup wizard for personalising your Claude Code agent",
-      "version": "1.0.1",
+      "description": "Tell Claude about your role, your project and how you like to work. It asks a few questions and saves the answers to your project's CLAUDE.md.",
+      "version": "1.0.2",
       "category": "setup",
       "tags": ["setup", "onboarding"]
     },
     {
       "name": "okf-commands",
       "source": "./plugins/okf-commands",
-      "description": "Open Knowledge Format vault commands — create notes, summarise sections, lint the vault, query with citations, and validate links",
-      "version": "1.0.0",
+      "description": "For developers. Commands for a personal notes vault in Open Knowledge Format: add notes, summarise folders, check links and ask questions with citations.",
+      "version": "1.0.1",
       "category": "knowledge",
       "tags": ["okf", "obsidian", "vault", "knowledge", "wiki", "notes"]
     },
     {
       "name": "engagement-reporting",
       "source": "./plugins/engagement-reporting",
-      "description": "Scaffold, draft, revise, and present weekly/fortnightly client engagement checkin reports, and manage the account-level repo that holds them across engagements",
-      "version": "1.0.1",
+      "description": "Turn your notes into the weekly or fortnightly client check-in report and a branded presentation. No notes? It can interview you instead.",
+      "version": "1.0.2",
       "category": "delivery",
       "tags": ["engagement", "reporting", "checkin", "client", "delivery", "presentation"]
     },
     {
       "name": "kb-creation",
       "source": "./plugins/kb-creation",
-      "description": "Scaffold, configure, onboard, capture into, harden, and close out an engagement knowledge-base vault — from a brand-new client project through to archiving it at the end",
-      "version": "1.0.1",
+      "description": "Set up and run an engagement knowledge base, step by step: create it, configure it for the client, onboard the team, capture meeting notes and documents, and archive it at the end. Setup needs Claude Code.",
+      "version": "1.0.2",
       "category": "knowledge",
       "tags": ["kb", "knowledge-base", "vault", "engagement", "onboarding", "delivery"]
     },
     {
       "name": "example-skills",
       "source": "./plugins/example-skills",
-      "description": "Example skills for learning how Claude Code skills work",
-      "version": "1.0.0",
+      "description": "A practice skill that tells a joke. Use it to check that your install works.",
+      "version": "1.0.1",
       "category": "demo",
       "tags": ["example", "demo", "learning"]
     }
