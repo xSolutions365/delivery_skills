@@ -7,18 +7,30 @@ base.
 **Choose a task, install its plugin, and try the example request.** A plugin is
 a bundle of related skills; you can install just the bundles you need.
 
-## Start here
+## Install in two minutes
 
-| I want to… | Go to |
-| --- | --- |
-| Find a tool for my work | [Browse the skill catalogue](CATALOG.md) |
-| Use these tools in Cowork | [Set up Cowork](guides/cowork.md) |
-| Use these tools in Claude Code | [Set up Claude Code](guides/claude-code.md) |
-| Understand skills, plugins, and marketplaces | [Read the quick introduction](guides/adding-a-marketplace.md) |
-| Fix an installation or update problem | [Get help](guides/troubleshooting.md) |
-| Add or improve a skill | [Contribute](CONTRIBUTING.md) |
+You do this once. It works for Cowork, chat and Claude Code, and you do not need
+a GitHub account or any downloads.
 
-## Find a useful starting point
+1. Open Claude (the desktop app or claude.ai) and select **Customize**, then
+   the **Plugins** tab.
+2. Select **Add → Add marketplace → Add from a repository** and paste:
+
+   ```text
+   https://github.com/xSolutions365/delivery_skills
+   ```
+
+3. Open **Discover**. The delivery plugins are marked "by delivery_skills".
+   Select **Add** next to the one you want. Not sure? Start with
+   **Governance tools**.
+4. Start a task and ask for the tool by name, for example:
+
+   > Use sow-risk-analyzer to review this SOW from our perspective as the supplier.
+
+The [install guide](guides/adding-a-marketplace.md) covers updates and Claude
+Code. If a step does not match what you see, go to [Help](guides/troubleshooting.md).
+
+## Pick a tool
 
 | Your task | What to use | Plugin to install |
 | --- | --- | --- |
@@ -32,39 +44,14 @@ a bundle of related skills; you can install just the bundles you need.
 Not sure which knowledge-base tool to choose? See
 [the catalogue comparison](CATALOG.md#which-knowledge-base-tool-should-i-use).
 
-## Install one plugin
+## More
 
-**Cowork:** use the [Cowork guide](guides/cowork.md) to add the marketplace and
-choose a plugin through Claude's menus.
-
-**Claude Code:** enter these commands one at a time in a Code session to try the
-governance tools:
-
-```text
-/plugin marketplace add xSolutions365/delivery_skills
-/plugin install governance-tools@createfuture-delivery-marketplace
-```
-
-Choose the option to install for yourself when prompted. Then type `/` and select
-the skill you want, or ask for it by name. See the
-[Code guide](guides/claude-code.md) for setup and updates.
-
-You do not need to clone this repository or download individual files to install
-a plugin. Some workflows have additional requirements listed in the catalogue.
-
-## Where things live
-
-| Location | Contents |
+| I want to… | Go to |
 | --- | --- |
-| [Catalogue](CATALOG.md) | Each tool's purpose, requirements, source, and example request |
-| [Guides](guides/adding-a-marketplace.md) | Setup, updates, and troubleshooting |
-| [Contributing](CONTRIBUTING.md) | How to propose changes and maintain the catalogue |
-| [Marketplace manifest](.claude-plugin/marketplace.json) | The installable plugin list |
-
-Plugin source folders: [governance-tools](governance-tools/),
-[engagement-reporting](engagement-reporting/), [kb-creation](kb-creation/),
-[delivery-tooling](delivery-tooling/), [OKF-commands](OKF-commands/),
-[agent-setup](agent-setup/), and [example-skills](example-skills/).
+| See every tool and what it needs | [Catalogue](CATALOG.md) |
+| Get updates or use Claude Code | [Install guide](guides/adding-a-marketplace.md) |
+| Fix a problem | [Help](guides/troubleshooting.md) |
+| Add or improve a skill | [Contributing](CONTRIBUTING.md) |
 
 ## Help and feedback
 

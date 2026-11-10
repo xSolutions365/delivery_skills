@@ -78,5 +78,5 @@ name to `renames` in the marketplace manifest, as was done for
 rename a plugin incidentally as part of another change.
 
 A version bump signals a release; it does not enable users' automatic updates.
-Follow [Code update guidance](guides/claude-code.md#keep-a-direct-installation-up-to-date)
+Follow [the update guidance](guides/adding-a-marketplace.md#keep-up-to-date)
 or the organization's publishing process.

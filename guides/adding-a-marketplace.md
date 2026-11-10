@@ -1,46 +1,69 @@
-# Getting started with delivery skills
+# Install delivery skills
 
 [Home](../README.md) · [Catalogue](../CATALOG.md) · [Help](troubleshooting.md)
 
-Install a bundle once, then ask Claude to use a tool from it when you need it.
-You do not need to understand the source files to get started.
+One setup covers Cowork, chat and Claude Code. You do not need a GitHub account,
+and there is nothing to download.
 
-## Three useful terms
+## Install
 
-| Term | Meaning | Example |
-| --- | --- | --- |
-| **Skill** | Instructions for a particular task | `sow-risk-analyzer` reviews a Statement of Work |
-| **Plugin** | An installable bundle of related tools | `governance-tools` contains SOW analysis, risk scanning, and ISO checks |
-| **Marketplace** | The list of plugins to choose from | `createfuture-delivery-marketplace` is this repository's marketplace |
+1. Open Claude (the desktop app or claude.ai) and select **Customize**, then
+   the **Plugins** tab.
+2. Select **Add → Add marketplace → Add from a repository** and paste:
 
-Some tools are stored as **commands**, run explicitly through the `/` menu.
-Skills can also be selected in that menu, or Claude can recognise when one
-matches your request. Naming the skill makes your intention clear.
+   ```text
+   https://github.com/xSolutions365/delivery_skills
+   ```
 
-## Choose your app
+3. Open **Discover**. The delivery plugins are marked "by delivery_skills".
+   Names appear without hyphens, so `governance-tools` in the
+   [catalogue](../CATALOG.md) shows as **Governance tools**.
+4. Select **Add** next to the plugin you want. Add more at any time.
 
-- **[I use Cowork](cowork.md):** add the marketplace and plugin through Claude's
-  menus, then share the files the task needs.
-- **[I use Claude Code](claude-code.md):** check for an account-synced plugin or
-  add the marketplace directly in a Code session.
+You only add the marketplace once. If Claude refuses the repository, your
+organization restricts sources; ask in **#ITSD** on Slack.
 
-Use both? Start with Cowork and read [how account sync works](claude-code.md#already-added-it-in-cowork).
+## Use a skill
 
-## Choose one task
+Start a task in Cowork, give it the files or folder the task needs, and ask for
+the tool by name:
 
-Browse the [catalogue](../CATALOG.md), note the containing plugin, install it, and
-try the example request. Add other plugins later. For a practice run without
-project files, try [the joke example](../CATALOG.md#try-a-simple-example).
+> Use sow-risk-analyzer to review this SOW from our perspective as the supplier.
 
-## What do I need to download?
+You can also type `/` and pick the skill from the list. The
+[catalogue](../CATALOG.md) gives a request to try for every tool and lists what
+each one needs. For a practice run with no files, add **Example skills** and ask
+for a joke.
 
-Normal installation fetches the plugin for you; no manual GitHub download or
-clone is needed. This repository is public, so direct installation from its
-public Git source does not require GitHub organization membership. Individual
-workflows may need access to another repository or service.
+## Keep up to date
 
-## Keeping it working
+On the Plugins page, open **Manage marketplaces**. `delivery_skills` shows
+**Synced** and the version it last picked up.
 
-Follow the update steps for your app. A change on GitHub does not immediately
-replace the version in every running session. If something looks different in
-your app, see [Help](troubleshooting.md) or ask in **#ITSD** on Slack.
+- To get the latest now, open its **…** menu and check for updates.
+- If **Sync automatically** is offered, turn it on so new versions arrive
+  without another step.
+
+Updates apply to the next task you start, not one already running.
+
+## Claude Code
+
+Plugins you add in Customize also appear in Claude Code when you are signed in
+with the same Claude account. Start a new session, type `/plugin`, and look for
+the plugin with `@synced` after its name. Nothing else to install.
+
+If it is not there, see
+[the plugin does not appear in Claude Code](troubleshooting.md#the-plugin-does-not-appear-in-claude-code).
+
+## Words you will see
+
+| Term | Meaning |
+| --- | --- |
+| **Skill** | Instructions for one task, such as `sow-risk-analyzer` |
+| **Plugin** | A bundle of related skills that you add in one go |
+| **Marketplace** | The list of plugins; ours is `delivery_skills` |
+
+The steps follow Anthropic's [plugin guide](https://support.claude.com/en/articles/13837440-use-plugins-in-claude)
+and [plugin overview](https://claude.com/docs/plugins/overview), checked on
+10 November 2026. Adding the marketplace and plugins was confirmed in the
+CreateFuture app; the update controls and the Claude Code sync were not.
