@@ -1,7 +1,7 @@
 {
   "name": "delivery-tooling",
-  "description": "Delivery workflow tools — new project KB setup, changelog hooks, and team onboarding",
-  "version": "1.0.1",
+  "description": "Set up a new client project knowledge base from the delivery KB template, with an optional GitHub repo",
+  "version": "1.0.2",
   "author": { "name": "CreateFuture" },
   "license": "MIT",
   "keywords": ["delivery", "project", "kb", "setup", "onboarding"]

@@ -6,7 +6,8 @@
 ## I cannot find the marketplace or plugin
 
 - **Cowork:** [add the marketplace](cowork.md#3-add-the-marketplace-if-it-is-missing).
-  Your organization may restrict sources or plugins.
+  It is listed as `delivery_skills`. Your organization may restrict sources or
+  plugins.
 - **Code:** run `/plugin` and check Marketplaces and Installed. The marketplace
   name is `createfuture-delivery-marketplace`.
 - Adding a marketplace makes its list available; you still install the plugin.

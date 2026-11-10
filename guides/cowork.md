@@ -24,7 +24,8 @@ repository**. Enter:
 https://github.com/xSolutions365/delivery_skills
 ```
 
-Open the resulting marketplace and add your chosen plugin. Turn on **Sync
+The marketplace is listed as `delivery_skills`, and its plugins show as "by
+delivery_skills" under **Discover**. Add your chosen plugin. Turn on **Sync
 automatically** for the marketplace if the option is shown, so improvements
 reach you without another step. Organization policies may restrict sources; ask
 an Owner or **#ITSD** if this source is blocked.
