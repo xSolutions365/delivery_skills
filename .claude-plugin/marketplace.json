@@ -11,7 +11,7 @@
   "plugins": [
     {
       "name": "delivery-tooling",
-      "source": "./delivery-tooling",
+      "source": "./plugins/delivery-tooling",
       "description": "Set up a new client project knowledge base from the delivery KB template, with an optional GitHub repo",
       "version": "1.0.2",
       "category": "delivery",
@@ -19,7 +19,7 @@
     },
     {
       "name": "governance-tools",
-      "source": "./governance-tools",
+      "source": "./plugins/governance-tools",
       "description": "Governance and compliance tools — ISO delivery requirements audit, delivery risk scanning, SOW supplier-risk analysis, RAG status reporting, and remediation guidance",
       "version": "1.2.0",
       "category": "governance",
@@ -27,15 +27,15 @@
     },
     {
       "name": "agent-setup",
-      "source": "./agent-setup",
+      "source": "./plugins/agent-setup",
       "description": "Interactive setup wizard for personalising your Claude Code agent",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "category": "setup",
       "tags": ["setup", "onboarding"]
     },
     {
       "name": "okf-commands",
-      "source": "./OKF-commands",
+      "source": "./plugins/okf-commands",
       "description": "Open Knowledge Format vault commands — create notes, summarise sections, lint the vault, query with citations, and validate links",
       "version": "1.0.0",
       "category": "knowledge",
@@ -43,7 +43,7 @@
     },
     {
       "name": "engagement-reporting",
-      "source": "./engagement-reporting",
+      "source": "./plugins/engagement-reporting",
       "description": "Scaffold, draft, revise, and present weekly/fortnightly client engagement checkin reports, and manage the account-level repo that holds them across engagements",
       "version": "1.0.0",
       "category": "delivery",
@@ -51,7 +51,7 @@
     },
     {
       "name": "kb-creation",
-      "source": "./kb-creation",
+      "source": "./plugins/kb-creation",
       "description": "Scaffold, configure, onboard, capture into, harden, and close out an engagement knowledge-base vault — from a brand-new client project through to archiving it at the end",
       "version": "1.0.0",
       "category": "knowledge",
@@ -59,7 +59,7 @@
     },
     {
       "name": "example-skills",
-      "source": "./example-skills",
+      "source": "./plugins/example-skills",
       "description": "Example skills for learning how Claude Code skills work",
       "version": "1.0.0",
       "category": "demo",

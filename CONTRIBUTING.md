@@ -13,9 +13,13 @@ purpose fits: governance, reporting, engagement KBs, delivery-template setup,
 OKF vaults, agent personalisation, or learning examples. New plugin names use
 lowercase letters, numbers, and hyphens.
 
+Still trying an idea out? Put it in [drafts](drafts/README.md) first. Drafts are
+not installable, so nothing reaches anyone's Claude until it moves into a
+plugin.
+
 ## Add a skill or command
 
-A skill lives in `<plugin>/skills/<skill-name>/SKILL.md`:
+A skill lives in `plugins/<plugin>/skills/<skill-name>/SKILL.md`:
 
 ```yaml
 ---
@@ -28,7 +32,7 @@ Below the frontmatter, describe the inputs, steps, output, and handling of
 missing information. Put longer references/templates alongside it and use
 fictional examples.
 
-An explicit command can live in `<plugin>/commands/<command-name>.md`:
+An explicit command can live in `plugins/<plugin>/commands/<command-name>.md`:
 
 ```yaml
 ---
@@ -40,7 +44,7 @@ argument-hint: "[optional input]"
 Both kinds can be selected by users; skills can also match a request
 automatically. Choose the form that suits the workflow.
 
-A new plugin also needs `<plugin>/.claude-plugin/plugin.json` and an entry in
+A new plugin also needs `plugins/<plugin>/.claude-plugin/plugin.json` and an entry in
 [the marketplace manifest](.claude-plugin/marketplace.json). Keep skills,
 commands, and resources outside `.claude-plugin/`, which holds the manifest.
 
@@ -60,11 +64,13 @@ Update README navigation if plugin names or task categories change.
 
 ## Check and release
 
-1. Run `claude plugin validate .` and `claude plugin validate ./<plugin>` for
+1. Run `claude plugin validate .` and `claude plugin validate ./plugins/<plugin>` for
    each changed plugin.
 2. Exercise the workflow on a representative fictional example in the intended
    app. Describe the input and result in the PR.
-3. Check changed links, examples, and installation identifiers.
+3. Run `python3 scripts/check_repo.py`. It confirms that every skill and command
+   is in the catalogue, the marketplace matches the plugin folders, and links
+   resolve.
 4. For changed plugin behavior or bundled files, increase the version in its
    `plugin.json`. This repo also declares versions in marketplace entries, so
    keep the matching entry equal; the plugin manifest takes precedence.
