@@ -34,21 +34,21 @@ Code. If a step does not match what you see, go to [Help](guides/troubleshooting
 
 | Your task | What to use | Plugin to install |
 | --- | --- | --- |
-| Review a Statement of Work | [SOW risk analysis](CATALOG.md#review-risks-and-governance) | `governance-tools` |
-| Assess an engagement's delivery risks | [Delivery risk scanner](CATALOG.md#review-risks-and-governance) | `governance-tools` |
-| Check a project KB against delivery ISO requirements | [ISO compliance check](CATALOG.md#review-risks-and-governance) | `governance-tools` |
-| Prepare a weekly or fortnightly client check-in | [Engagement reporting](CATALOG.md#prepare-an-engagement-report) | `engagement-reporting` |
-| Start or maintain an engagement knowledge base | [Knowledge-base lifecycle](CATALOG.md#build-and-maintain-an-engagement-knowledge-base) | `kb-creation` |
-| Personalise a project's `CLAUDE.md` instructions | [Agent setup](CATALOG.md#personalise-your-project-agent) | `agent-setup` |
+| Review a Statement of Work | [SOW risk analysis](CATALOGUE.md#review-risks-and-governance) | `governance-tools` |
+| Assess an engagement's delivery risks | [Delivery risk scanner](CATALOGUE.md#review-risks-and-governance) | `governance-tools` |
+| Check a project KB against delivery ISO requirements | [ISO compliance check](CATALOGUE.md#review-risks-and-governance) | `governance-tools` |
+| Prepare a weekly or fortnightly client check-in | [Engagement reporting](CATALOGUE.md#prepare-an-engagement-report) | `engagement-reporting` |
+| Start or maintain an engagement knowledge base | [Knowledge-base lifecycle](CATALOGUE.md#build-and-maintain-an-engagement-knowledge-base) | `kb-creation` |
+| Personalise a project's `CLAUDE.md` instructions | [Agent setup](CATALOGUE.md#personalise-your-project-agent) | `agent-setup` |
 
 Not sure which knowledge-base tool to choose? See
-[the catalogue comparison](CATALOG.md#which-knowledge-base-tool-should-i-use).
+[the catalogue comparison](CATALOGUE.md#which-knowledge-base-tool-should-i-use).
 
 ## More
 
 | I want to… | Go to |
 | --- | --- |
-| See every tool and what it needs | [Catalogue](CATALOG.md) |
+| See every tool and what it needs | [Catalogue](CATALOGUE.md) |
 | Get updates or use Claude Code | [Install guide](guides/adding-a-marketplace.md) |
 | Fix a problem | [Help](guides/troubleshooting.md) |
 | Add or improve a skill | [Contributing](CONTRIBUTING.md) |

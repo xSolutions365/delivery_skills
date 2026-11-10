@@ -1,6 +1,6 @@
 # `revise-report`
 
-Synthesizes unstructured notes into the structured report. The single command
+Synthesises unstructured notes into the structured report. The single command
 used both before the checkin (to fold in notes captured so far) and after it (to
 fold in agreed amendments) — there is no separate "amend" command, because both
 are the same job at different points in the period.

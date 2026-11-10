@@ -115,7 +115,7 @@ viewBox="0 0 1100 750"
 | Minor | #1976D2 | 18 | 22px | 2 |
 | Minimal | #78716C | 16 | 20px | 2 |
 
-- Letter identifier inside each blip (A, B, C…), white, bold, centered — never numbers
+- Letter identifier inside each blip (A, B, C…), white, bold, centred — never numbers
 - Stroke: `#1a1a1a`
 - CSS hover: `filter: brightness(1.12); cursor: pointer`
 - Wrap each blip in `<g onclick="toggleDetail('A')" class="blip">`
