@@ -1,5 +1,5 @@
 {
-  "name": "OKF-commands",
+  "name": "okf-commands",
   "description": "Open Knowledge Format vault commands — create notes, summarise sections, lint the vault, query with citations, and validate links",
   "version": "1.0.0",
   "author": { "name": "CreateFuture" },
