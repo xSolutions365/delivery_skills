@@ -1,6 +1,6 @@
 # CreateFuture Delivery Skills
 
-Reusable tools for delivery managers and engineers: review a Statement of Work,
+Reusable tools for delivery managers: review a Statement of Work,
 assess delivery risks, prepare a stakeholder report, or build a project knowledge
 base.
 
