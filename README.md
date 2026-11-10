@@ -1,198 +1,76 @@
-# CreateFuture Delivery Plugin Marketplace
+# CreateFuture Delivery Skills
 
-A Claude Code plugin marketplace for CreateFuture delivery managers and engineers. Install it once and get access to delivery workflow skills across all your projects.
+Reusable tools for delivery managers and engineers: review a Statement of Work,
+assess delivery risks, prepare a stakeholder report, or build a project knowledge
+base.
 
-## Quick Install
+**Choose a task, install its plugin, and try the example request.** A plugin is
+a bundle of related skills; you can install just the bundles you need.
 
-### Prerequisites
+## Start here
 
-1. **Claude Code** installed — [claude.ai/code](https://claude.ai/code)
-2. **GitHub CLI** installed and authenticated (see [Authentication](#authenticating-with-github) below)
-3. Access to the `xSolutions365/delivery_skills` repo — if you don't have access, reach out to **#ITSD** on Slack
+| I want to… | Go to |
+| --- | --- |
+| Find a tool for my work | [Browse the skill catalogue](CATALOG.md) |
+| Use these tools in Cowork | [Set up Cowork](guides/cowork.md) |
+| Use these tools in Claude Code | [Set up Claude Code](guides/claude-code.md) |
+| Understand skills, plugins, and marketplaces | [Read the quick introduction](guides/adding-a-marketplace.md) |
+| Fix an installation or update problem | [Get help](guides/troubleshooting.md) |
+| Add or improve a skill | [Contribute](CONTRIBUTING.md) |
 
-> **New to marketplaces and plugins, or not technical?** See [`guides/adding-a-marketplace.md`](guides/adding-a-marketplace.md) for a plain-English walkthrough using the Claude Code desktop app.
+## Find a useful starting point
 
-### Add the Marketplace
+| Your task | What to use | Plugin to install |
+| --- | --- | --- |
+| Review a Statement of Work | [SOW risk analysis](CATALOG.md#review-risks-and-governance) | `governance-tools` |
+| Assess an engagement's delivery risks | [Delivery risk scanner](CATALOG.md#review-risks-and-governance) | `governance-tools` |
+| Check a project KB against delivery ISO requirements | [ISO compliance check](CATALOG.md#review-risks-and-governance) | `governance-tools` |
+| Prepare a weekly or fortnightly client check-in | [Engagement reporting](CATALOG.md#prepare-an-engagement-report) | `engagement-reporting` |
+| Start or maintain an engagement knowledge base | [Knowledge-base lifecycle](CATALOG.md#build-and-maintain-an-engagement-knowledge-base) | `kb-creation` |
+| Work with an existing Open Knowledge Format vault | [Vault tools](CATALOG.md#work-with-an-open-knowledge-format-vault) | `OKF-commands` |
+| Personalise a project's `CLAUDE.md` instructions | [Agent setup](CATALOG.md#personalise-your-project-agent) | `agent-setup` |
 
-Open Claude Code in any project and type:
+Not sure which knowledge-base tool to choose? See
+[the catalogue comparison](CATALOG.md#which-knowledge-base-tool-should-i-use).
 
-```
+## Install one plugin
+
+**Cowork:** use the [Cowork guide](guides/cowork.md) to add the marketplace and
+choose a plugin through Claude's menus.
+
+**Claude Code:** enter these commands one at a time in a Code session to try the
+governance tools:
+
+```text
 /plugin marketplace add xSolutions365/delivery_skills
-```
-
-### Install Plugins
-
-```
-/plugin install delivery-tooling@createfuture-delivery-marketplace
 /plugin install governance-tools@createfuture-delivery-marketplace
-/plugin install agent-setup@createfuture-delivery-marketplace
-/plugin install OKF-commands@createfuture-delivery-marketplace
-/plugin install kb-creation@createfuture-delivery-marketplace
-/plugin install engagement-reporting@createfuture-delivery-marketplace
-/plugin install example-skills@createfuture-delivery-marketplace
 ```
 
-Your commands and skills are now available in every Claude Code session. Type `/` to see them.
+Choose the option to install for yourself when prompted. Then type `/` and select
+the skill you want, or ask for it by name. See the
+[Code guide](guides/claude-code.md) for setup and updates.
 
-## Available Plugins
+You do not need to clone this repository or download individual files to install
+a plugin. Some workflows have additional requirements listed in the catalogue.
 
-### delivery-tooling
+## Where things live
 
-Delivery workflow and project setup tools.
+| Location | Contents |
+| --- | --- |
+| [Catalogue](CATALOG.md) | Each tool's purpose, requirements, source, and example request |
+| [Guides](guides/adding-a-marketplace.md) | Setup, updates, and troubleshooting |
+| [Contributing](CONTRIBUTING.md) | How to propose changes and maintain the catalogue |
+| [Marketplace manifest](.claude-plugin/marketplace.json) | The installable plugin list |
 
-| Command | What It Does |
-| ------- | ------------ |
-| `/new-project-kb` | Set up a new client project knowledge base — copies the KB template, creates the local folder structure, and creates or updates a GitHub repo under `xSolutions365` |
+Plugin source folders: [governance-tools](governance-tools/),
+[engagement-reporting](engagement-reporting/), [kb-creation](kb-creation/),
+[delivery-tooling](delivery-tooling/), [OKF-commands](OKF-commands/),
+[agent-setup](agent-setup/), and [example-skills](example-skills/).
 
-### governance-tools
+## Help and feedback
 
-Governance and compliance tools.
-
-| Skill | What It Does |
-| ----- | ------------ |
-| `iso-compliance-check` | Audit a delivery KB against the seven CreateFuture ISO requirements — produces a RAG status report per requirement, cross-reference checks, and prioritised remediation steps |
-| `delivery-risk-scanner` | Build a self-contained "Agentic Delivery Risk Scanner" HTML page — scores an engagement against 21 standard delivery risk factors, plots them on an impact/probability matrix, and produces an exec summary, quadrant playbook, ranked register and risk glossary |
-| `sow-risk-analyzer` | Analyse SOWs from the supplier's perspective — produces a summary card, an interactive 5×5 risk radar, and a prioritised risk and redline recommendations table |
-
-### agent-setup
-
-Agent personalisation.
-
-| Skill | What It Does |
-| ----- | ------------ |
-| `customise-agent` | Interactive wizard to personalise your Claude Code agent for delivery work |
-
-### OKF-commands
-
-Open Knowledge Format vault management commands for running an Obsidian vault as an LLM-friendly knowledge base.
-
-| Command | What It Does |
-| ------- | ------------ |
-| `/new-note [folder] [title]` | Create a new OKF-stamped note with frontmatter, `## Related` links, and updates `index.md` + `log.md` |
-| `/summarise-section [folder]` | Regenerate a folder's `index.md` Map of Content, grouped by note type |
-| `/lint-vault` | Full vault health check — broken links, orphans, missing frontmatter, index drift, and knowledge gaps |
-| `/ask [question]` | Answer a question from the vault with citations; optionally file the answer back as a new note |
-| `/validate-links` | Fast scan for broken `[[wiki links]]` only |
-
-### kb-creation
-
-Engagement knowledge-base vault lifecycle — scaffold, configure, onboard, capture into, harden, and close out a shared team vault.
-
-| Skill | What It Does |
-| ----- | ------------ |
-| `new-kb` | Scaffold a brand-new engagement vault from this skill's own bundled reference copy |
-| `configure-engagement` | Turn a freshly scaffolded, generic knowledge base into one specific engagement |
-| `define-roles` | Fill in the role profiles for a newly configured engagement |
-| `seed-references` | Create the registry and reference files that `capture` and `onboard` assume already exist |
-| `harden-vault` | Install and tailor the vault's safety net (pre-commit guard, blocked-terms list, `CLAUDE.md`/`AGENTS.md`) for this engagement |
-| `onboard` | First run for a new person on the project's vault |
-| `capture` | The one verb for putting anything into the vault — files it, synthesises findings, logs risks/actions/decisions/lessons |
-| `launch-checklist` | Walk the preflight checklist before inviting the team into a new vault |
-| `close-out-engagement` | Wind down a vault at the end of an engagement |
-
-### engagement-reporting
-
-Client engagement checkin reporting.
-
-| Skill | What It Does |
-| ----- | ------------ |
-| `engagement-report` | Scaffold, draft, revise, and present weekly/fortnightly client engagement checkin reports, and manage the account-level repo that holds them across engagements |
-
-### example-skills
-
-Example skills for learning how Claude Code skills work.
-
-| Skill | What It Does |
-| ----- | ------------ |
-| `tell-a-joke` | Tells a short, light-hearted joke |
-
-## Authenticating with GitHub
-
-This is a private repo, so you need to authenticate with the GitHub CLI before Claude Code can access it.
-
-### Step 1: Install GitHub CLI
-
-```bash
-brew install gh
-```
-
-### Step 2: Log in
-
-```bash
-gh auth login
-```
-
-Choose these options when prompted:
-
-| Prompt | Choose |
-| ------ | ------ |
-| Where do you use GitHub? | **GitHub.com** |
-| Preferred protocol? | **HTTPS** |
-| Authenticate Git with GitHub credentials? | **Yes** |
-| How to authenticate? | **Login with a web browser** |
-
-### Step 3: Verify
-
-```bash
-gh auth status
-```
-
-You should see: `Logged in to github.com account YourName`
-
-### Step 4: Enable auto-updates (optional)
-
-Add this to your `~/.zshrc` so plugins update automatically at startup:
-
-```bash
-export GITHUB_TOKEN=$(gh auth token)
-```
-
-Then restart your terminal. If you skip this, you can update manually with `/plugin marketplace update`.
-
-## Updating
-
-```
-/plugin marketplace update
-```
-
-## Contributing
-
-New skills are always welcome! If you've built something useful with Claude Code, consider sharing it here so others can benefit.
-
-### How to Add a Command or Skill
-
-Plugins can contain **commands** (user-invoked with `/`) or **skills** (AI-invoked based on context). Commands are the preferred approach for most use cases.
-
-1. **Fork and clone** the repo, then create a feature branch.
-2. **Decide which plugin** your asset belongs to, or create a new plugin directory at `<plugin-name>/` if it doesn't fit an existing one.
-3. **For a command**, create `<plugin-name>/commands/<your-command-name>.md` with YAML frontmatter:
-   ```markdown
-   ---
-   description: One sentence shown in the command picker
-   argument-hint: "[optional-arg]"   # shown as usage hint
-   ---
-   
-   Your command instructions here...
-   ```
-4. **For a skill**, create `<plugin-name>/skills/<your-skill-name>/SKILL.md` with YAML frontmatter:
-   ```markdown
-   ---
-   name: your-skill-name
-   description: Trigger phrases that cause this skill to activate automatically
-   ---
-   
-   Your skill instructions here...
-   ```
-5. **If creating a new plugin**, add a `<plugin-name>/.claude-plugin/plugin.json` manifest and register it in `.claude-plugin/marketplace.json`.
-6. **Use the official `skill-creator` skill** (from the `claude-plugins-official` marketplace) if you want a guided walkthrough.
-7. **Open a pull request** with a short description of what the command/skill does and when it's useful.
-
-### Tips
-
-- Commands are discovered automatically from the `commands/` folder — no need to declare them in `plugin.json`.
-- Put detailed reference material in a `references/` subfolder alongside your skill.
-- Test locally before submitting by installing the plugin from your branch in a Claude Code session.
-
-## Credits
+Ask in **#ITSD** on Slack if setup is blocking you, or
+[open an issue](https://github.com/xSolutions365/delivery_skills/issues).
+Include the tool name, which app you used, and what you expected to happen.
 
 Created by Richard Davidson, CreateFuture.
