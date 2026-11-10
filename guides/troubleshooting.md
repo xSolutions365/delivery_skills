@@ -1,6 +1,6 @@
 # Help with delivery skills
 
-[Home](../README.md) · [Catalogue](../CATALOGUE.md) ·
+[Home](../README.md) · [Catalogue](../CATALOG.md) ·
 [Install](adding-a-marketplace.md)
 
 ## I cannot find the marketplace or plugin
@@ -15,7 +15,7 @@ If Claude refuses the repository, your organisation restricts sources; ask in
 
 Start a new task/session and check that the containing plugin is installed and
 enabled. Type `/` and find the plugin prefix, or name the skill in your request.
-Provide the files/folder listed in the [catalogue](../CATALOGUE.md).
+Provide the files/folder listed in the [catalogue](../CATALOG.md).
 
 ## I see the same skill twice
 

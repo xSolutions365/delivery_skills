@@ -1,6 +1,6 @@
 # Contribute a delivery skill
 
-[Home](README.md) · [Catalogue](CATALOGUE.md) · [Help](guides/troubleshooting.md)
+[Home](README.md) · [Catalogue](CATALOG.md) · [Help](guides/troubleshooting.md)
 
 [Open an issue](https://github.com/xSolutions365/delivery_skills/issues) with an
 idea or feedback; you do not need to write a skill to contribute. For file
@@ -8,7 +8,7 @@ changes, create a branch (or fork) and open a small pull request.
 
 ## Choose where it belongs
 
-Check the [catalogue](CATALOGUE.md) for overlap. Use an existing plugin when its
+Check the [catalogue](CATALOG.md) for overlap. Use an existing plugin when its
 purpose fits: governance, reporting, engagement KBs, delivery-template setup,
 OKF vaults, agent personalisation, or learning examples. New plugin names use
 lowercase letters, numbers, and hyphens.
@@ -50,7 +50,7 @@ commands, and resources outside `.claude-plugin/`, which holds the manifest.
 
 ## Keep the catalogue useful
 
-Update [CATALOGUE.md](CATALOGUE.md) in the same PR as a new or changed tool:
+Update [CATALOG.md](CATALOG.md) in the same PR as a new or changed tool:
 
 - Explain the task and expected output in plain language.
 - Link the source and name the containing plugin.
