@@ -10,7 +10,7 @@ import re
 import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-DOCS = ["README.md", "CATALOGUE.md", "CONTRIBUTING.md", "drafts/README.md"]
+DOCS = ["README.md", "CATALOG.md", "CONTRIBUTING.md", "drafts/README.md"]
 NAME = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*$")
 problems = []
 
@@ -63,7 +63,7 @@ for folder in sorted((ROOT / "plugins").iterdir()):
         problem(f"plugins/{folder.name} is not listed in the marketplace")
 
 # 2. Every skill and command is described and appears in the catalogue.
-catalogue = (ROOT / "CATALOGUE.md").read_text()
+catalogue = (ROOT / "CATALOG.md").read_text()
 tools = sorted(ROOT.glob("plugins/*/skills/*/SKILL.md")) + sorted(ROOT.glob("plugins/*/commands/*.md"))
 for tool in tools:
     relative = tool.relative_to(ROOT).as_posix()
@@ -73,7 +73,7 @@ for tool in tools:
     if tool.name == "SKILL.md" and meta.get("name") != tool.parent.name:
         problem(f"{relative}: frontmatter name should be '{tool.parent.name}'")
     if relative not in catalogue and tool.parent.relative_to(ROOT).as_posix() + "/)" not in catalogue:
-        problem(f"{relative}: not linked from CATALOGUE.md")
+        problem(f"{relative}: not linked from CATALOG.md")
 
 # 3. Local links, anchors and code fences in the documentation.
 documents = [ROOT / d for d in DOCS] + sorted((ROOT / "guides").glob("*.md"))
