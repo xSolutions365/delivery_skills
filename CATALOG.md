@@ -112,10 +112,13 @@ and approved use of the supplied material.
 **Command:** `/delivery-tooling:new-project-kb`
 
 Copies `exampleProject` from the separate delivery KB template repository into a
-client/project folder, then offers to create or update its GitHub repo.
+client/project folder, then offers to create or update a private
+`deliveryKB-<client>` repo in the xSolutions365 GitHub organization.
 
-**Bring:** client and project names, a destination, Git, authenticated GitHub CLI
-(`gh`), and access to the [delivery KB template](https://github.com/xSolutions365/delivery-kb-template).
+**Bring:** client and project names, a destination, Git with your name and email
+configured, authenticated GitHub CLI (`gh`), and membership of the xSolutions365
+GitHub organization. The [delivery KB template](https://github.com/xSolutions365/delivery-kb-template)
+is private, and the new repo is created in that organization.
 The command checks for `gh` before copying, even if you later choose not to
 publish. Use Code for this workflow.
 
@@ -162,8 +165,10 @@ before trying this plugin through Cowork or organization distribution.
 An interactive walkthrough to update a project's `CLAUDE.md` with your role,
 project context, and communication preferences.
 
-**Bring:** the intended project's existing `CLAUDE.md`. Start in Code with that
-project open. This changes a project file, not your Claude account preferences.
+**Bring:** a project `CLAUDE.md` based on [this repository's template](CLAUDE.md).
+The skill fills that template's bracketed sections; if your project's file does
+not have them, copy the template in first. Start in Code with that project open.
+This changes a project file, not your Claude account preferences.
 
 **Try:** “Use customise-agent to update this project's instructions for my role.”
 

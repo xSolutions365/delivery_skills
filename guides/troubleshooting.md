@@ -17,6 +17,15 @@ Start a new task/session and check that the containing plugin is installed and
 enabled. Type `/` and find the plugin prefix, or name the skill in your request.
 Provide the files/folder listed in the [catalogue](../CATALOG.md).
 
+## I see the same skill twice
+
+You probably have an older copy from another route: a personal skill folder
+(`~/.claude/skills/`), a skill uploaded under **Customize → Skills**, or the
+same plugin both synced from your account and installed directly in Code. Keep
+the marketplace plugin, whose entries carry the plugin prefix (for example
+`governance-tools:sow-risk-analyzer`), and remove or turn off the others so you
+are not running an out-of-date copy.
+
 ## It works in Code but does not appear in Cowork
 
 A direct Code installation is local to Code. Follow [Cowork setup](cowork.md)

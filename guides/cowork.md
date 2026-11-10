@@ -24,9 +24,10 @@ repository**. Enter:
 https://github.com/xSolutions365/delivery_skills
 ```
 
-Open the resulting marketplace and add your chosen plugin. Organization policies
-may restrict sources; ask an Owner or **#ITSD** if this source is blocked. For
-an invalid-name error, see [the OKF limitation](troubleshooting.md#okf-commands-and-account-sync).
+Open the resulting marketplace and add your chosen plugin. Turn on **Sync
+automatically** for the marketplace if the option is shown, so improvements
+reach you without another step. Organization policies may restrict sources; ask
+an Owner or **#ITSD** if this source is blocked.
 
 ## 4. Try a skill
 
@@ -41,14 +42,17 @@ Installing a plugin does not verify its local dependencies.
 
 ## Updates and using Code too
 
-Organization-managed updates follow the organization's publishing or sync
-process. For a marketplace you added yourself, use its refresh/update control
-when offered; ask **#ITSD** if a published change is missing. Check the version
-in a new task.
+For a marketplace you added yourself, **Sync automatically** delivers new
+versions on their own. To pull the latest straight away, open the marketplace
+and choose **Check for updates**. Changes appear in the next task you start.
+Plugins supplied by the organization update through its own sync; ask **#ITSD**
+if a published change is missing.
 
 Account plugins can also sync into Code. Read [the Code guide](claude-code.md#already-added-it-in-cowork)
 before installing a second copy directly.
 
 Menu names were checked against [Anthropic's plugin guide](https://support.claude.com/en/articles/13837440-use-plugins-in-claude)
-on 10 November 2026. CreateFuture workflow execution in Cowork still needs
+on 10 November 2026; the update controls are named in
+[Anthropic's plugin overview](https://claude.com/docs/plugins/overview) and have
+not been confirmed in the CreateFuture app. CreateFuture workflow execution in Cowork still needs
 verification; see [compatibility status](../CATALOG.md#where-can-i-use-these).
