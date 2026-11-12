@@ -1,7 +1,7 @@
 {
   "name": "kb-creation",
   "description": "Set up and run an engagement knowledge base, step by step: create it, configure it for the client, onboard the team, capture meeting notes and documents, and archive it at the end. Setup needs Claude Code.",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "author": { "name": "CreateFuture" },
   "license": "Internal-CreateFuture-Only",
   "keywords": ["kb", "knowledge-base", "vault", "engagement", "onboarding", "delivery"]

@@ -1008,6 +1008,15 @@ bash SETUP/hooks/install-guard.sh</code></pre>
     </div>
   </div>
 
+  <div class="sym" id="multiple-branches">
+    <div class="sym-h"><strong>"Cannot rebase onto multiple branches"</strong><span class="pill ok">Normal — retry</span></div>
+    <div class="sym-b">
+      <p>Obsidian and a Claude or Codex session fetched at the same moment. Nothing is broken and your work is safe. The vault's own hooks avoid this (they use <code>SETUP/hooks/sync-pull.sh</code>), but a manual <code>git pull</code> still can hit it.</p>
+      <p><b>Do:</b> wait a few seconds and sync again, or run:</p>
+      <pre class="shell"><code>bash SETUP/hooks/sync-pull.sh</code></pre>
+    </div>
+  </div>
+
   <div class="sym">
     <div class="sym-h"><strong>"Conflict", or strange <code>&lt;&lt;&lt;&lt;</code> markers in a file</strong><span class="pill stopp">Stop — get help</span></div>
     <div class="sym-b">

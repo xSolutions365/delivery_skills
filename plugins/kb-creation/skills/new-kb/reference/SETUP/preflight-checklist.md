@@ -34,7 +34,7 @@ actually use, not just the terminal** — a hook that only fires on a typed
 `git commit` protects nobody here.
 
 - [ ] Guard installed: `test -x .git/hooks/pre-commit`
-- [ ] Scripts parse under macOS bash 3.2: `for s in check-rules.sh pre-commit install-guard.sh; do /bin/bash -n SETUP/hooks/$s; done` → no output
+- [ ] Scripts parse under macOS bash 3.2: `for s in check-rules.sh pre-commit install-guard.sh session-sync.sh sync-pull.sh; do /bin/bash -n SETUP/hooks/$s; done` → no output
 - [ ] **Rule 1** — shared `.md` with no classification is blocked, and the message says *why*
 - [ ] **Rule 2** — `classification: private` outside an ignored path is blocked
 - [ ] **Rule 3** — a file over 50 MB is blocked
@@ -43,6 +43,7 @@ actually use, not just the terminal** — a hook that only fires on a typed
 - [ ] **Via Obsidian Git's automatic commit:** create an unclassified `.md` in a shared folder, let the plugin auto-commit (or run Sync now), confirm it does **not** land. → If it *does* land, the local hook is not firing on the plugin's path. Record it, and treat `guard.yml` as the primary control rather than the backstop. **Do not launch pretending both work.**
 - [ ] **Via Claude Code:** ask it to commit a deliberately unclassified file → blocked, reason reported, no `--no-verify` retry
 - [ ] **Via the Stop hook (the no-Obsidian path):** `bash SETUP/hooks/session-sync.sh` with (a) no changes → silent, (b) a clean change → commits and pushes, (c) a file containing a blocked term → guard blocks, HEAD unchanged, file preserved on disk, index left clean
+- [ ] **Sync survives a concurrent fetch:** with Obsidian open, `git fetch -q && git fetch -q --append` (the branch is now listed twice, as when Obsidian and a hook fetch together), then `bash SETUP/hooks/sync-pull.sh; echo $?` → `0`. Plain `git pull --rebase` fails here with "Cannot rebase onto multiple branches", which is why the hooks never use it
 - [ ] **Obsidian Git settings actually match what the guide promises:** `autoPullOnBoot: true`, `autoPullInterval: 5`, `autoPushInterval: 2`, `autoSaveInterval: 2` in `.obsidian/plugins/obsidian-git/data.json`. A plugin that auto-commits but never pushes looks like it is working and is not
 
 ## Server-side enforcement

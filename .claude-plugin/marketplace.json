@@ -53,7 +53,7 @@
       "name": "kb-creation",
       "source": "./plugins/kb-creation",
       "description": "Set up and run an engagement knowledge base, step by step: create it, configure it for the client, onboard the team, capture meeting notes and documents, and archive it at the end. Setup needs Claude Code.",
-      "version": "1.0.2",
+      "version": "1.0.3",
       "category": "knowledge",
       "tags": ["kb", "knowledge-base", "vault", "engagement", "onboarding", "delivery"]
     },
