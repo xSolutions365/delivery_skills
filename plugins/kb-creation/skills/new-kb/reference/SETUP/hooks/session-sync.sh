@@ -84,7 +84,7 @@ if ! out=$(git commit -m "Vault update — $stamp ($count file(s))" 2>&1); then
 fi
 
 # Pull anything new before pushing, so we never force a divergence.
-if ! git pull --rebase --autostash --quiet 2>/dev/null; then
+if ! bash SETUP/hooks/sync-pull.sh; then
   echo "  ⓘ  Vault: committed locally, but could not pull to sync."
   echo "     Your work is safe. Post a screenshot in the project Slack channel if this repeats."
   exit 0

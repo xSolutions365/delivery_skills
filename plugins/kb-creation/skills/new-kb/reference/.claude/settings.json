@@ -7,7 +7,9 @@
     "same guarantee at the two moments that matter: you start with everyone's",
     "latest, and your work is never left sitting only on your laptop.",
     "",
-    "SessionStart: pull before you read anything. --autostash protects any",
+    "SessionStart: pull before you read anything, via SETUP/hooks/sync-pull.sh.",
+    "It rebases onto the upstream ref rather than running git pull, so a",
+    "concurrent Obsidian fetch cannot break it. --autostash protects any",
     "uncommitted work across the rebase.",
     "",
     "Stop: fires when Claude finishes responding. Commits and pushes only if",
@@ -18,7 +20,7 @@
     "Deliberately NOT --no-verify. If the guard blocks, the work stays local and",
     "the message explains why. That is the control working, not a fault.",
     "",
-    "Stop guards its own existence before running: a vault mid-scaffold (new-kb",
+    "Both hooks guard their own script's existence before running: a vault mid-scaffold (new-kb",
     "still copying, or this file present before SETUP/hooks/ is) must not surface",
     "a scary 'No such file or directory' for something that isn't a fault."
   ],
@@ -28,7 +30,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "git pull --rebase --autostash --quiet 2>&1 || echo 'Vault sync: could not pull. Your work is safe — post a screenshot in the project Slack channel if this repeats.'",
+            "command": "test -f SETUP/hooks/sync-pull.sh || exit 0; bash SETUP/hooks/sync-pull.sh || echo 'Vault sync: could not pull. Your work is safe — post a screenshot in the project Slack channel if this repeats.'",
             "timeout": 30
           }
         ]
