@@ -94,9 +94,12 @@ for f in "$@"; do
   fi
 
   # --- Rule 1: shared .md must carry a valid classification --------------
+  # Generated OKF index files (SETUP/tools/okf_index.py) have no frontmatter
+  # by spec, so they are exempt from RULE 1 ONLY. They list links and notes'
+  # own descriptions; rules 2, 3 and 4 still apply to them.
   case "$f" in
     *.md)
-      if printf '%s' "$f" | grep -qE "$SHARED_RE"; then
+      if [ "$(basename "$f")" != "index.md" ] && printf '%s' "$f" | grep -qE "$SHARED_RE"; then
         if ! grep -qiE '^classification:[[:space:]]*(internal|client|portfolio)[[:space:]]*$' "$f" 2>/dev/null; then
           problem "$f" \
             "it is in a shared folder but has no audience set, so nobody can tell who it is for." \
