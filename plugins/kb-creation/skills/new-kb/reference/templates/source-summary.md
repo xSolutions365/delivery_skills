@@ -1,5 +1,7 @@
 ---
 type: source-summary
+title: [readable name for the note]
+description: [one neutral line: what this is and its topic. No findings, opinions or private context]
 owner: [your name]
 area: discovery
 classification: internal

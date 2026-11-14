@@ -24,6 +24,14 @@ if git diff --quiet HEAD -- 2>/dev/null && [ -z "$(git ls-files --others --exclu
   exit 0
 fi
 
+# --- Refresh the generated index.md files -----------------------------------
+# Keeps the OKF indexes current without anyone remembering. Deterministic and
+# idempotent: it rewrites a file only if its content changed. Never fatal and
+# never blocks the sync; if python3 is missing or it errors, we carry on.
+if command -v python3 >/dev/null 2>&1 && [ -f SETUP/tools/okf_index.py ]; then
+  python3 -I SETUP/tools/okf_index.py --all >/dev/null 2>&1 || true
+fi
+
 # --- Stage only known vault paths -------------------------------------------
 # This used to be `git add -A`, which was wrong. Any tool that writes a new
 # top-level directory got silently committed and pushed — that is exactly how a
@@ -32,7 +40,7 @@ fi
 # unknown paths are NOT shared until a human decides.
 KNOWN="00-source-documents 01-engagement 02-discovery 03-deliverables 04-delivery \
 05-stakeholders 06-value-and-lessons 07-governance roles schema templates SETUP \
-.claude .agents/skills .codex/hooks.json .github .obsidian CLAUDE.md AGENTS.md START-HERE.md project-config.md .gitignore"
+.claude .agents/skills .codex/hooks.json .github .obsidian CLAUDE.md AGENTS.md START-HERE.md project-config.md index.md .gitignore"
 
 for p in $KNOWN; do
   [ -e "$p" ] && git add -- "$p" 2>/dev/null

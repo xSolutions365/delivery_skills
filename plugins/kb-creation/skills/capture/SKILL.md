@@ -134,7 +134,9 @@ tool call is interrupted or dismissed without an answer, that is not a yes.
 
 Write it to the right `00-source-documents/` subfolder with full frontmatter per
 `schema/frontmatter.md`: `owner` is the capturing person, `date` and `updated`
-today, `type` and `area` per the table above.
+today, `type` and `area` per the table above. **Raw records get no `title` or
+`description`**: they are filed as received and are listed by filename in the
+folder's index.
 
 For anything large or binary — recordings, decks, big exports — **do not put the
 file in the vault.** Write a `source-summary` note holding the summary plus the
@@ -195,6 +197,13 @@ new findings sort together:
 Keep **what they said** separate from **what you think it means.** Their framing
 first, your read second. On a listening-first engagement that distinction is the
 work, and the templates enforce it.
+
+**Give every note you write a `title` and a one-line `description`** in its
+frontmatter (the templates carry both). The description says what the note is and
+its topic, in neutral terms, and nothing else: no findings, no opinions or
+characterisations of anyone, no private or off-record context. The folder index
+copies it word for word, so write it to be read aloud in a room. Do not mention
+indexes to the person; they are regenerated automatically.
 
 ### Never fill a gap with a plausible guess
 
@@ -648,7 +657,7 @@ missed an entire interview.
 Run this list before you write the report. Every line gets an answer, and
 "nothing here" is a valid answer you must **say out loud**, not assume:
 
-- [ ] Raw record filed, frontmatter complete (step 3)
+- [ ] Raw record filed, frontmatter complete (step 3); every note you wrote has a `title` and a neutral one-line `description` (step 5)
 - [ ] Consent basis stated explicitly — granted, or public data (step 4)
 - [ ] Synthesis written, 4P + lens, their framing separate from our read, `verification:` line left blank (step 5)
 - [ ] **Findings rows appended to every pillar they touch** — People, Process, Product, Platform. If only one pillar got rows from a substantial interview, re-read it (step 6)

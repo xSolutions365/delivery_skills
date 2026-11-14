@@ -127,6 +127,9 @@ link, never a code block:
 >   skill's bundled reference copy — `SETUP/`, roles, templates, schema,
 >   folder skeleton, `.obsidian/`, hooks, `.github/workflows/guard.yml`,
 >   `.claude/settings.json`.
+> - Folder indexes: none yet. The end-of-session sync builds an OKF
+>   `index.md` in each folder once it holds notes
+>   (`SETUP/tools/okf_index.py`), so nothing needs doing.
 > - Every identifying field is still a bracketed placeholder — nothing
 >   guessed, nothing carried over from another engagement.
 > - Known gap, carried forward: `SETUP/user-guide.html` still illustrates

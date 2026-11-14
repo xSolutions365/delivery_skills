@@ -71,6 +71,17 @@ cover:
   rows on [YYYY-MM-DD] - result: [pass | issues noted below]` — left unfilled
   by whoever writes the table it belongs to, filled in only by the human who
   checks it
+- The two recommended keys from the Open Knowledge Format (OKF v0.2):
+  `title` (a readable name) and `description` (one neutral line on what the
+  note is and its topic; never findings, opinions or private context). Raw
+  records under `00-source-documents/` carry neither.
+- Folder indexes: every folder gets a generated `index.md` with no
+  frontmatter, rebuilt by the end-of-session sync from each note's
+  `description` (`python3 SETUP/tools/okf_index.py --all` by hand). Never
+  hand-edited; the guard exempts `index.md` from the classification rule only
+- The status mapping to OKF: `draft` and `in-review` are OKF `draft`;
+  `final`, `client-approved` and `active` are `stable`; superseded notes are
+  `deprecated`. The vault keeps its own values
 
 ## Step 3 — Glossary — `01-engagement/glossary.md`
 
